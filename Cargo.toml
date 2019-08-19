@@ -1,0 +1,16 @@
+[package]
+name = "stm32f103"
+version = "0.1.0"
+authors = ["stay-on-main <kravtsov.zakhar@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[build]
+target = "thumbv7m-none-eabi"
+
+[target.thumbv7m-none-eabi]
+rustflags = [
+  "-C", "link-arg=-nostartfiles",
+  "-C", "link-arg=-Tlayout.ld",
+]
