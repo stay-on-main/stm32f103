@@ -26,6 +26,8 @@ Discarded input sections
                 0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
  .ARM.exidx.text.main
                 0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .ARM.exidx.text.systick_handler_interrupt
+                0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
  .text          0x00000000        0x0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
  .ARM.exidx.text._ZN9stm32f1037startup17hardfault_handler17h8834e40ad50adbbaE
                 0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
@@ -34,6 +36,8 @@ Discarded input sections
  .ARM.exidx.text._ZN9stm32f1037startup15default_handler17h4fe6ca52168bb7bcE
                 0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
  .ARM.exidx.text._ZN9stm32f1037startup13reset_handler17h385d7b10f54d6b10E
+                0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+ .ARM.exidx.text._ZN9stm32f1037startup15systick_handler17h834e11f62524b5f7E
                 0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
  .ARM.exidx.text.rust_begin_unwind
                 0x00000000        0x8 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
@@ -5081,7 +5085,7 @@ LOAD C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\
 LOAD C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib
 LOAD C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcompiler_builtins-26b11cd3df3b5c44.rlib
 
-.text           0x08000000     0x12fa
+.text           0x08000000     0x14ee
                 0x08000000        0x4 LONG 0x20005000 (ORIGIN (RAM) + LENGTH (RAM))
  *(.reset_handler)
  .reset_handler
@@ -5093,506 +5097,574 @@ LOAD C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\
                 0x080007b0      0x11c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
  .text._ZN9stm32f10311system_init17h9a8f89564d327e73E
                 0x080008cc      0x680 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .text.main     0x08000f4c      0x2c2 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .text.main     0x08000f4c      0x4a0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
                 0x08000f4c                main
+ .text.systick_handler_interrupt
+                0x080013ec        0xc C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080013ec                systick_handler_interrupt
  .text._ZN9stm32f1037startup17hardfault_handler17h8834e40ad50adbbaE
-                0x0800120e        0x4 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                0x080013f8        0x4 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
  .text._ZN9stm32f1037startup11nmi_handler17h859df5394a445716E
-                0x08001212        0x4 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                0x080013fc        0x4 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
  .text._ZN9stm32f1037startup15default_handler17h4fe6ca52168bb7bcE
-                0x08001216        0x4 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                0x08001400        0x4 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
  .text._ZN9stm32f1037startup13reset_handler17h385d7b10f54d6b10E
-                0x0800121a       0x56 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                0x08001404       0x56 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+ .text._ZN9stm32f1037startup15systick_handler17h834e11f62524b5f7E
+                0x0800145a        0xa C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
  .text.rust_begin_unwind
-                0x08001270        0xc C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
-                0x08001270                rust_begin_unwind
+                0x08001464        0xc C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                0x08001464                rust_begin_unwind
  .text._ZN4core3ptr18real_drop_in_place17haefd2ced8e6bdfd2E
-                0x0800127c        0x2 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+                0x08001470        0x2 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
  .text._ZN36_$LT$T$u20$as$u20$core..any..Any$GT$7type_id17h4be6b44cff0b3a60E
-                0x0800127e       0x12 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+                0x08001472       0x12 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
  .text._ZN4core9panicking5panic17h5137ce59069236b2E
-                0x08001290       0x3a C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
-                0x08001290                core::panicking::panic
+                0x08001484       0x3a C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+                0x08001484                core::panicking::panic
  .text._ZN4core9panicking9panic_fmt17h0d6d5c8b201e3246E
-                0x080012ca       0x30 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
-                0x080012ca                core::panicking::panic_fmt
+                0x080014be       0x30 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+                0x080014be                core::panicking::panic_fmt
 
-.rodata.str.0   0x08001300       0x25
- .rodata.str.0  0x08001300       0x17 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .rodata.str.0  0x08001317        0xe C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+.rodata.str.0   0x080014f0       0x25
+ .rodata.str.0  0x080014f0       0x17 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .rodata.str.0  0x08001507        0xe C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
 
-.rodata.str.1   0x08001330       0x4c
- .rodata.str.1  0x08001330       0x21 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- *fill*         0x08001351        0xf 
- .rodata.str.1  0x08001360       0x1c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+.rodata.str.1   0x08001520       0x4c
+ .rodata.str.1  0x08001520       0x21 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ *fill*         0x08001541        0xf 
+ .rodata.str.1  0x08001550       0x1c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
 
 .rodata..L__unnamed_42
-                0x0800137c       0x18
+                0x0800156c       0x18
  .rodata..L__unnamed_42
-                0x0800137c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800156c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_43
-                0x08001394       0x18
+                0x08001584       0x18
  .rodata..L__unnamed_43
-                0x08001394       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001584       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_46
-                0x080013ac       0x18
+                0x0800159c       0x18
  .rodata..L__unnamed_46
-                0x080013ac       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800159c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_66
-                0x080013c4       0x18
+                0x080015b4       0x18
  .rodata..L__unnamed_66
-                0x080013c4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080015b4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_67
-                0x080013dc       0x18
+                0x080015cc       0x18
  .rodata..L__unnamed_67
-                0x080013dc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080015cc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_68
-                0x080013f4       0x18
+                0x080015e4       0x18
  .rodata..L__unnamed_68
-                0x080013f4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080015e4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata.str.2   0x08001410       0x1c
- .rodata.str.2  0x08001410       0x1c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.rodata.str.2   0x08001600       0x1c
+ .rodata.str.2  0x08001600       0x1c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_44
-                0x0800142c       0x18
+                0x0800161c       0x18
  .rodata..L__unnamed_44
-                0x0800142c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800161c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_41
-                0x08001444       0x18
+                0x08001634       0x18
  .rodata..L__unnamed_41
-                0x08001444       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001634       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_69
-                0x0800145c       0x18
+                0x0800164c       0x18
  .rodata..L__unnamed_69
-                0x0800145c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800164c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_70
-                0x08001474       0x18
+                0x08001664       0x18
  .rodata..L__unnamed_70
-                0x08001474       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001664       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_71
-                0x0800148c       0x18
+                0x0800167c       0x18
  .rodata..L__unnamed_71
-                0x0800148c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800167c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_53
-                0x080014a4       0x18
+                0x08001694       0x18
  .rodata..L__unnamed_53
-                0x080014a4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001694       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_54
-                0x080014bc       0x18
+                0x080016ac       0x18
  .rodata..L__unnamed_54
-                0x080014bc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080016ac       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_57
-                0x080014d4       0x18
+                0x080016c4       0x18
  .rodata..L__unnamed_57
-                0x080014d4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080016c4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_58
-                0x080014ec       0x18
+                0x080016dc       0x18
  .rodata..L__unnamed_58
-                0x080014ec       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080016dc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_55
-                0x08001504       0x18
+                0x080016f4       0x18
  .rodata..L__unnamed_55
-                0x08001504       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080016f4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_56
-                0x0800151c       0x18
+                0x0800170c       0x18
  .rodata..L__unnamed_56
-                0x0800151c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800170c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_63
-                0x08001534       0x18
+                0x08001724       0x18
  .rodata..L__unnamed_63
-                0x08001534       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001724       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_64
-                0x0800154c       0x18
+                0x0800173c       0x18
  .rodata..L__unnamed_64
-                0x0800154c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800173c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_61
-                0x08001564       0x18
+                0x08001754       0x18
  .rodata..L__unnamed_61
-                0x08001564       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001754       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_62
-                0x0800157c       0x18
+                0x0800176c       0x18
  .rodata..L__unnamed_62
-                0x0800157c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800176c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_59
-                0x08001594       0x18
+                0x08001784       0x18
  .rodata..L__unnamed_59
-                0x08001594       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001784       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_60
-                0x080015ac       0x18
+                0x0800179c       0x18
  .rodata..L__unnamed_60
-                0x080015ac       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x0800179c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_65
-                0x080015c4       0x18
+                0x080017b4       0x18
  .rodata..L__unnamed_65
-                0x080015c4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080017b4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_52
-                0x080015dc       0x18
+                0x080017cc       0x18
  .rodata..L__unnamed_52
-                0x080015dc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080017cc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_4
-                0x080015f4       0x18
+                0x080017e4       0x18
  .rodata..L__unnamed_4
-                0x080015f4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080017e4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_5
-                0x0800160c       0x18
+                0x080017fc       0x18
  .rodata..L__unnamed_5
-                0x0800160c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x080017fc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_2
-                0x08001624       0x18
+                0x08001814       0x18
  .rodata..L__unnamed_2
-                0x08001624       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001814       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_3
-                0x0800163c       0x18
- .rodata..L__unnamed_3
-                0x0800163c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_72
-                0x08001654       0x18
- .rodata..L__unnamed_72
-                0x08001654       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_73
-                0x0800166c       0x18
- .rodata..L__unnamed_73
-                0x0800166c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_17
-                0x08001684       0x18
- .rodata..L__unnamed_17
-                0x08001684       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_18
-                0x0800169c       0x18
- .rodata..L__unnamed_18
-                0x0800169c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_6
-                0x080016b4       0x18
- .rodata..L__unnamed_6
-                0x080016b4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_1
-                0x080016cc       0x30
- .rodata..L__unnamed_1
-                0x080016cc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .rodata..L__unnamed_1
-                0x080016e4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
-
-.rodata.str.3   0x08001700       0x19
- .rodata.str.3  0x08001700       0x19 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_8
-                0x0800171c       0x18
- .rodata..L__unnamed_8
-                0x0800171c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_9
-                0x08001734       0x18
- .rodata..L__unnamed_9
-                0x08001734       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_10
-                0x0800174c       0x18
- .rodata..L__unnamed_10
-                0x0800174c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_11
-                0x08001764       0x18
- .rodata..L__unnamed_11
-                0x08001764       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_13
-                0x0800177c       0x18
- .rodata..L__unnamed_13
-                0x0800177c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_14
-                0x08001794       0x18
- .rodata..L__unnamed_14
-                0x08001794       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_15
-                0x080017ac       0x18
- .rodata..L__unnamed_15
-                0x080017ac       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_16
-                0x080017c4       0x18
- .rodata..L__unnamed_16
-                0x080017c4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_12
-                0x080017dc       0x18
- .rodata..L__unnamed_12
-                0x080017dc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_7
-                0x080017f4       0x18
- .rodata..L__unnamed_7
-                0x080017f4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata.str.4   0x08001810       0x19
- .rodata.str.4  0x08001810       0x19 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_75
                 0x0800182c       0x18
- .rodata..L__unnamed_75
+ .rodata..L__unnamed_3
                 0x0800182c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_76
+.rodata..L__unnamed_72
                 0x08001844       0x18
- .rodata..L__unnamed_76
+ .rodata..L__unnamed_72
                 0x08001844       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_77
+.rodata..L__unnamed_73
                 0x0800185c       0x18
- .rodata..L__unnamed_77
+ .rodata..L__unnamed_73
                 0x0800185c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_78
+.rodata..L__unnamed_17
                 0x08001874       0x18
- .rodata..L__unnamed_78
+ .rodata..L__unnamed_17
                 0x08001874       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_79
+.rodata..L__unnamed_18
                 0x0800188c       0x18
- .rodata..L__unnamed_79
+ .rodata..L__unnamed_18
                 0x0800188c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_74
+.rodata..L__unnamed_6
                 0x080018a4       0x18
- .rodata..L__unnamed_74
+ .rodata..L__unnamed_6
                 0x080018a4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_81
-                0x080018bc       0x18
- .rodata..L__unnamed_81
+.rodata..L__unnamed_1
+                0x080018bc       0x30
+ .rodata..L__unnamed_1
                 0x080018bc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .rodata..L__unnamed_1
+                0x080018d4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
 
-.rodata..L__unnamed_82
-                0x080018d4       0x18
- .rodata..L__unnamed_82
-                0x080018d4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.rodata.str.3   0x080018f0       0x19
+ .rodata.str.3  0x080018f0       0x19 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_83
-                0x080018ec       0x18
- .rodata..L__unnamed_83
-                0x080018ec       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.rodata..L__unnamed_8
+                0x0800190c       0x18
+ .rodata..L__unnamed_8
+                0x0800190c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_80
-                0x08001904       0x18
- .rodata..L__unnamed_80
-                0x08001904       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.rodata..L__unnamed_9
+                0x08001924       0x18
+ .rodata..L__unnamed_9
+                0x08001924       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata.str.5   0x08001920       0x1a
- .rodata.str.5  0x08001920       0x1a C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-
-.rodata..L__unnamed_40
+.rodata..L__unnamed_10
                 0x0800193c       0x18
- .rodata..L__unnamed_40
+ .rodata..L__unnamed_10
                 0x0800193c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_39
+.rodata..L__unnamed_11
                 0x08001954       0x18
- .rodata..L__unnamed_39
+ .rodata..L__unnamed_11
                 0x08001954       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_36
+.rodata..L__unnamed_13
                 0x0800196c       0x18
- .rodata..L__unnamed_36
+ .rodata..L__unnamed_13
                 0x0800196c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_37
+.rodata..L__unnamed_14
                 0x08001984       0x18
- .rodata..L__unnamed_37
+ .rodata..L__unnamed_14
                 0x08001984       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_38
+.rodata..L__unnamed_15
                 0x0800199c       0x18
- .rodata..L__unnamed_38
+ .rodata..L__unnamed_15
                 0x0800199c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_35
+.rodata..L__unnamed_16
                 0x080019b4       0x18
- .rodata..L__unnamed_35
+ .rodata..L__unnamed_16
                 0x080019b4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_28
+.rodata..L__unnamed_12
                 0x080019cc       0x18
- .rodata..L__unnamed_28
+ .rodata..L__unnamed_12
                 0x080019cc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata..L__unnamed_29
+.rodata..L__unnamed_7
                 0x080019e4       0x18
- .rodata..L__unnamed_29
+ .rodata..L__unnamed_7
                 0x080019e4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
+.rodata.str.4   0x08001a00       0x19
+ .rodata.str.4  0x08001a00       0x19 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_75
+                0x08001a1c       0x18
+ .rodata..L__unnamed_75
+                0x08001a1c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_76
+                0x08001a34       0x18
+ .rodata..L__unnamed_76
+                0x08001a34       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_77
+                0x08001a4c       0x18
+ .rodata..L__unnamed_77
+                0x08001a4c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_78
+                0x08001a64       0x18
+ .rodata..L__unnamed_78
+                0x08001a64       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_79
+                0x08001a7c       0x18
+ .rodata..L__unnamed_79
+                0x08001a7c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_74
+                0x08001a94       0x18
+ .rodata..L__unnamed_74
+                0x08001a94       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_81
+                0x08001aac       0x18
+ .rodata..L__unnamed_81
+                0x08001aac       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_82
+                0x08001ac4       0x18
+ .rodata..L__unnamed_82
+                0x08001ac4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_83
+                0x08001adc       0x18
+ .rodata..L__unnamed_83
+                0x08001adc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_80
+                0x08001af4       0x18
+ .rodata..L__unnamed_80
+                0x08001af4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata.str.5   0x08001b10       0x1a
+ .rodata.str.5  0x08001b10       0x1a C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_40
+                0x08001b2c       0x18
+ .rodata..L__unnamed_40
+                0x08001b2c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_39
+                0x08001b44       0x18
+ .rodata..L__unnamed_39
+                0x08001b44       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_36
+                0x08001b5c       0x18
+ .rodata..L__unnamed_36
+                0x08001b5c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_37
+                0x08001b74       0x18
+ .rodata..L__unnamed_37
+                0x08001b74       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_38
+                0x08001b8c       0x18
+ .rodata..L__unnamed_38
+                0x08001b8c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_35
+                0x08001ba4       0x18
+ .rodata..L__unnamed_35
+                0x08001ba4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_28
+                0x08001bbc       0x18
+ .rodata..L__unnamed_28
+                0x08001bbc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_29
+                0x08001bd4       0x18
+ .rodata..L__unnamed_29
+                0x08001bd4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
 .rodata..L__unnamed_30
-                0x080019fc       0x18
+                0x08001bec       0x18
  .rodata..L__unnamed_30
-                0x080019fc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001bec       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_31
-                0x08001a14       0x18
+                0x08001c04       0x18
  .rodata..L__unnamed_31
-                0x08001a14       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001c04       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_32
-                0x08001a2c       0x18
+                0x08001c1c       0x18
  .rodata..L__unnamed_32
-                0x08001a2c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001c1c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_27
-                0x08001a44       0x18
+                0x08001c34       0x18
  .rodata..L__unnamed_27
-                0x08001a44       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001c34       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_20
-                0x08001a5c       0x18
+                0x08001c4c       0x18
  .rodata..L__unnamed_20
-                0x08001a5c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001c4c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_21
-                0x08001a74       0x18
+                0x08001c64       0x18
  .rodata..L__unnamed_21
-                0x08001a74       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001c64       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_33
-                0x08001a8c       0x18
+                0x08001c7c       0x18
  .rodata..L__unnamed_33
-                0x08001a8c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001c7c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_34
-                0x08001aa4       0x18
+                0x08001c94       0x18
  .rodata..L__unnamed_34
-                0x08001aa4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001c94       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_22
-                0x08001abc       0x18
+                0x08001cac       0x18
  .rodata..L__unnamed_22
-                0x08001abc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001cac       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_19
-                0x08001ad4       0x18
+                0x08001cc4       0x18
  .rodata..L__unnamed_19
-                0x08001ad4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001cc4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_24
-                0x08001aec       0x18
+                0x08001cdc       0x18
  .rodata..L__unnamed_24
-                0x08001aec       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001cdc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_25
-                0x08001b04       0x18
+                0x08001cf4       0x18
  .rodata..L__unnamed_25
-                0x08001b04       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001cf4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_26
-                0x08001b1c       0x18
+                0x08001d0c       0x18
  .rodata..L__unnamed_26
-                0x08001b1c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001d0c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_23
-                0x08001b34       0x18
+                0x08001d24       0x18
  .rodata..L__unnamed_23
-                0x08001b34       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001d24       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata.str.6   0x08001b50       0x19
- .rodata.str.6  0x08001b50       0x19 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.rodata.str.6   0x08001d40       0x19
+ .rodata.str.6  0x08001d40       0x19 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_49
-                0x08001b6c       0x18
+                0x08001d5c       0x18
  .rodata..L__unnamed_49
-                0x08001b6c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001d5c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_50
-                0x08001b84       0x18
+                0x08001d74       0x18
  .rodata..L__unnamed_50
-                0x08001b84       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001d74       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_47
-                0x08001b9c       0x18
+                0x08001d8c       0x18
  .rodata..L__unnamed_47
-                0x08001b9c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001d8c       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_48
-                0x08001bb4       0x18
+                0x08001da4       0x18
  .rodata..L__unnamed_48
-                0x08001bb4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001da4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_51
-                0x08001bcc       0x18
+                0x08001dbc       0x18
  .rodata..L__unnamed_51
-                0x08001bcc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001dbc       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_45
-                0x08001be4       0x18
+                0x08001dd4       0x18
  .rodata..L__unnamed_45
-                0x08001be4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001dd4       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rodata.str.7   0x08001bfc        0xb
- .rodata.str.7  0x08001bfc        0xb C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.rodata.str.7   0x08001df0       0x17
+ .rodata.str.7  0x08001df0       0x17 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_93
+                0x08001e08       0x18
+ .rodata..L__unnamed_93
+                0x08001e08       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_94
+                0x08001e20       0x18
+ .rodata..L__unnamed_94
+                0x08001e20       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_91
+                0x08001e38       0x18
+ .rodata..L__unnamed_91
+                0x08001e38       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_92
+                0x08001e50       0x18
+ .rodata..L__unnamed_92
+                0x08001e50       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_89
+                0x08001e68       0x18
+ .rodata..L__unnamed_89
+                0x08001e68       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_90
+                0x08001e80       0x18
+ .rodata..L__unnamed_90
+                0x08001e80       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_95
+                0x08001e98       0x18
+ .rodata..L__unnamed_95
+                0x08001e98       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_88
+                0x08001eb0       0x18
+ .rodata..L__unnamed_88
+                0x08001eb0       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_85
+                0x08001ec8       0x18
+ .rodata..L__unnamed_85
+                0x08001ec8       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_86
+                0x08001ee0       0x18
+ .rodata..L__unnamed_86
+                0x08001ee0       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_87
+                0x08001ef8       0x18
+ .rodata..L__unnamed_87
+                0x08001ef8       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..L__unnamed_84
-                0x08001c08       0x18
+                0x08001f10       0x18
  .rodata..L__unnamed_84
-                0x08001c08       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x08001f10       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata.str.8   0x08001f28        0xb
+ .rodata.str.8  0x08001f28        0xb C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+
+.rodata..L__unnamed_96
+                0x08001f34       0x18
+ .rodata..L__unnamed_96
+                0x08001f34       0x18 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .rodata..Lanon.2923166e0a1dc33d57b7aca9d1bd722e.71
-                0x08001c20        0x0
+                0x08001f4c        0x0
  .rodata..Lanon.2923166e0a1dc33d57b7aca9d1bd722e.71
-                0x08001c20        0x0 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+                0x08001f4c        0x0 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
 
 .rodata..Lanon.2923166e0a1dc33d57b7aca9d1bd722e.139
-                0x08001c20       0x10
+                0x08001f4c       0x10
  .rodata..Lanon.2923166e0a1dc33d57b7aca9d1bd722e.139
-                0x08001c20       0x10 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+                0x08001f4c       0x10 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
 
-.glue_7         0x08001c30        0x0
- .glue_7        0x08001c30        0x0 linker stubs
+.glue_7         0x08001f5c        0x0
+ .glue_7        0x08001f5c        0x0 linker stubs
 
-.glue_7t        0x08001c30        0x0
- .glue_7t       0x08001c30        0x0 linker stubs
+.glue_7t        0x08001f5c        0x0
+ .glue_7t       0x08001f5c        0x0 linker stubs
 
-.vfp11_veneer   0x08001c30        0x0
- .vfp11_veneer  0x08001c30        0x0 linker stubs
+.vfp11_veneer   0x08001f5c        0x0
+ .vfp11_veneer  0x08001f5c        0x0 linker stubs
 
-.v4_bx          0x08001c30        0x0
- .v4_bx         0x08001c30        0x0 linker stubs
+.v4_bx          0x08001f5c        0x0
+ .v4_bx         0x08001f5c        0x0 linker stubs
 
-.iplt           0x08001c30        0x0
- .iplt          0x08001c30        0x0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.iplt           0x08001f5c        0x0
+ .iplt          0x08001f5c        0x0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
-.rel.dyn        0x08001c30        0x0
- .rel.iplt      0x08001c30        0x0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+.rel.dyn        0x08001f5c        0x0
+ .rel.iplt      0x08001f5c        0x0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
 
 .data           0x20000000        0x0
  *(.data)
@@ -5615,28 +5687,28 @@ LOAD C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\
  *(.ARM.exidx.*)
 OUTPUT(C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e elf32-littlearm)
 
-.debug_str      0x00000000     0x82d0
- .debug_str     0x00000000     0x10ad C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
-                               0x10e0 (size before relaxing)
- .debug_str     0x000010ad      0x525 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
-                                0x654 (size before relaxing)
- .debug_str     0x000015d2     0x6cfe C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+.debug_str      0x00000000     0x8570
+ .debug_str     0x00000000     0x1302 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                               0x1335 (size before relaxing)
+ .debug_str     0x00001302      0x570 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                                0x69f (size before relaxing)
+ .debug_str     0x00001872     0x6cfe C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
                                0x79bc (size before relaxing)
 
-.debug_abbrev   0x00000000      0x459
- .debug_abbrev  0x00000000      0x131 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .debug_abbrev  0x00000131      0x14f C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
- .debug_abbrev  0x00000280      0x1d9 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+.debug_abbrev   0x00000000      0x46e
+ .debug_abbrev  0x00000000      0x146 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .debug_abbrev  0x00000146      0x14f C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+ .debug_abbrev  0x00000295      0x1d9 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
 
-.debug_info     0x00000000    0x19694
- .debug_info    0x00000000     0x1002 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .debug_info    0x00001002      0x6c0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
- .debug_info    0x000016c2    0x17fd2 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+.debug_info     0x00000000    0x198ba
+ .debug_info    0x00000000     0x1213 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .debug_info    0x00001213      0x6d5 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+ .debug_info    0x000018e8    0x17fd2 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
 
-.debug_ranges   0x00000000    0x10dc8
- .debug_ranges  0x00000000       0x28 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .debug_ranges  0x00000028       0x70 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
- .debug_ranges  0x00000098    0x10d30 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+.debug_ranges   0x00000000    0x10dd8
+ .debug_ranges  0x00000000       0x30 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .debug_ranges  0x00000030       0x78 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+ .debug_ranges  0x000000a8    0x10d30 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
 
 .debug_macinfo  0x00000000        0x3
  .debug_macinfo
@@ -5647,18 +5719,18 @@ OUTPUT(C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-
                 0x00000002        0x1 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
 
 .debug_pubnames
-                0x00000000      0x366
+                0x00000000      0x3e3
  .debug_pubnames
-                0x00000000      0x25c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x00000000      0x2c5 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
  .debug_pubnames
-                0x0000025c      0x10a C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                0x000002c5      0x11e C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
 
 .debug_pubtypes
-                0x00000000      0x48b
+                0x00000000      0x49e
  .debug_pubtypes
-                0x00000000       0xf2 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+                0x00000000      0x105 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
  .debug_pubtypes
-                0x000000f2      0x399 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+                0x00000105      0x399 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
 
 .note.GNU-stack
                 0x00000000        0x0
@@ -5692,12 +5764,12 @@ OUTPUT(C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-
  .comment       0x00000000       0x7f C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcompiler_builtins-26b11cd3df3b5c44.rlib(aeabi_div0.o)
                                  0x80 (size before relaxing)
 
-.debug_frame    0x00000000     0x4350
- .debug_frame   0x00000000       0x6c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .debug_frame   0x0000006c       0x74 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
- .debug_frame   0x000000e0     0x4270 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+.debug_frame    0x00000000     0x4380
+ .debug_frame   0x00000000       0x84 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .debug_frame   0x00000084       0x8c C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+ .debug_frame   0x00000110     0x4270 C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
 
-.debug_line     0x00000000    0x1c685
- .debug_line    0x00000000      0xcfe C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
- .debug_line    0x00000cfe       0xca C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
- .debug_line    0x00000dc8    0x1b8bd C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)
+.debug_line     0x00000000    0x1c7f4
+ .debug_line    0x00000000      0xe57 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.1lnyj2xp0jzj5wo9.rcgu.o
+ .debug_line    0x00000e57       0xe0 C:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\debug\deps\stm32f103-d8df0dc61f79641e.2fgiu903arh8yzmg.rcgu.o
+ .debug_line    0x00000f37    0x1b8bd C:\Users\stay-on-main\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\thumbv7m-none-eabi\lib\libcore-8010f7064010be9c.rlib(core-8010f7064010be9c.core.5h9aq91n-cgu.0.rcgu.o)

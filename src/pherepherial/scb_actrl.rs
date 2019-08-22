@@ -49,7 +49,7 @@ impl Actrl {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000E008 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0xE000E008u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -57,13 +57,13 @@ pub mod actrl {
     #[inline(always)]
     pub fn read() -> super::Actrl {
         super::Actrl {
-            raw: unsafe { *((0xE000E008 + 0x0) as *const u32) }
+            raw: unsafe { *((0xE000E008u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Actrl) {
-       unsafe { *((0xE000E008 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0xE000E008u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 

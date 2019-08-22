@@ -115,7 +115,7 @@ impl Dmabmr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -123,13 +123,13 @@ pub mod dmabmr {
     #[inline(always)]
     pub fn read() -> super::Dmabmr {
         super::Dmabmr {
-            raw: unsafe { *((0x40029000 + 0x0) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmabmr) {
-       unsafe { *((0x40029000 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -151,7 +151,7 @@ impl Dmatpdr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x4) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -159,13 +159,13 @@ pub mod dmatpdr {
     #[inline(always)]
     pub fn read() -> super::Dmatpdr {
         super::Dmatpdr {
-            raw: unsafe { *((0x40029000 + 0x4) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmatpdr) {
-       unsafe { *((0x40029000 + 0x4) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x4u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -187,7 +187,7 @@ impl Dmarpdr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x8) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x8u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -195,13 +195,13 @@ pub mod dmarpdr {
     #[inline(always)]
     pub fn read() -> super::Dmarpdr {
         super::Dmarpdr {
-            raw: unsafe { *((0x40029000 + 0x8) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x8u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmarpdr) {
-       unsafe { *((0x40029000 + 0x8) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x8u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -223,7 +223,7 @@ impl Dmardlar {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0xC) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0xCu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -231,13 +231,13 @@ pub mod dmardlar {
     #[inline(always)]
     pub fn read() -> super::Dmardlar {
         super::Dmardlar {
-            raw: unsafe { *((0x40029000 + 0xC) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0xCu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmardlar) {
-       unsafe { *((0x40029000 + 0xC) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0xCu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -259,7 +259,7 @@ impl Dmatdlar {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x10) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x10u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -267,13 +267,13 @@ pub mod dmatdlar {
     #[inline(always)]
     pub fn read() -> super::Dmatdlar {
         super::Dmatdlar {
-            raw: unsafe { *((0x40029000 + 0x10) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x10u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmatdlar) {
-       unsafe { *((0x40029000 + 0x10) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x10u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -515,7 +515,7 @@ impl Dmasr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x14) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x14u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -523,13 +523,13 @@ pub mod dmasr {
     #[inline(always)]
     pub fn read() -> super::Dmasr {
         super::Dmasr {
-            raw: unsafe { *((0x40029000 + 0x14) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x14u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmasr) {
-       unsafe { *((0x40029000 + 0x14) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x14u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -672,7 +672,7 @@ impl Dmaomr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x18) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x18u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -680,13 +680,13 @@ pub mod dmaomr {
     #[inline(always)]
     pub fn read() -> super::Dmaomr {
         super::Dmaomr {
-            raw: unsafe { *((0x40029000 + 0x18) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x18u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmaomr) {
-       unsafe { *((0x40029000 + 0x18) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x18u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -862,7 +862,7 @@ impl Dmaier {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x1C) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x1Cu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -870,13 +870,13 @@ pub mod dmaier {
     #[inline(always)]
     pub fn read() -> super::Dmaier {
         super::Dmaier {
-            raw: unsafe { *((0x40029000 + 0x1C) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x1Cu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmaier) {
-       unsafe { *((0x40029000 + 0x1C) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x1Cu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -931,7 +931,7 @@ impl Dmamfbocr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x20) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x20u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -939,13 +939,13 @@ pub mod dmamfbocr {
     #[inline(always)]
     pub fn read() -> super::Dmamfbocr {
         super::Dmamfbocr {
-            raw: unsafe { *((0x40029000 + 0x20) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x20u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmamfbocr) {
-       unsafe { *((0x40029000 + 0x20) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x20u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -967,7 +967,7 @@ impl Dmachtdr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x48) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x48u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -975,13 +975,13 @@ pub mod dmachtdr {
     #[inline(always)]
     pub fn read() -> super::Dmachtdr {
         super::Dmachtdr {
-            raw: unsafe { *((0x40029000 + 0x48) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x48u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmachtdr) {
-       unsafe { *((0x40029000 + 0x48) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x48u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1003,7 +1003,7 @@ impl Dmachrdr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x4C) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x4Cu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1011,13 +1011,13 @@ pub mod dmachrdr {
     #[inline(always)]
     pub fn read() -> super::Dmachrdr {
         super::Dmachrdr {
-            raw: unsafe { *((0x40029000 + 0x4C) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x4Cu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmachrdr) {
-       unsafe { *((0x40029000 + 0x4C) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x4Cu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1039,7 +1039,7 @@ impl Dmachtbar {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x50) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x50u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1047,13 +1047,13 @@ pub mod dmachtbar {
     #[inline(always)]
     pub fn read() -> super::Dmachtbar {
         super::Dmachtbar {
-            raw: unsafe { *((0x40029000 + 0x50) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x50u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmachtbar) {
-       unsafe { *((0x40029000 + 0x50) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x50u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1075,7 +1075,7 @@ impl Dmachrbar {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40029000 + 0x54) as *mut u32) = self.raw; }
+       unsafe { *((0x40029000u32 + 0x54u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1083,13 +1083,13 @@ pub mod dmachrbar {
     #[inline(always)]
     pub fn read() -> super::Dmachrbar {
         super::Dmachrbar {
-            raw: unsafe { *((0x40029000 + 0x54) as *const u32) }
+            raw: unsafe { *((0x40029000u32 + 0x54u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dmachrbar) {
-       unsafe { *((0x40029000 + 0x54) as *mut u32) = val.raw; }
+       unsafe { *((0x40029000u32 + 0x54u32) as *mut u32) = val.raw; }
     }
 }
 

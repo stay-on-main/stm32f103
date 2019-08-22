@@ -49,7 +49,7 @@ impl Mmccr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -57,13 +57,13 @@ pub mod mmccr {
     #[inline(always)]
     pub fn read() -> super::Mmccr {
         super::Mmccr {
-            raw: unsafe { *((0x40028100 + 0x0) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmccr) {
-       unsafe { *((0x40028100 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -107,7 +107,7 @@ impl Mmcrir {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x4) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -115,13 +115,13 @@ pub mod mmcrir {
     #[inline(always)]
     pub fn read() -> super::Mmcrir {
         super::Mmcrir {
-            raw: unsafe { *((0x40028100 + 0x4) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmcrir) {
-       unsafe { *((0x40028100 + 0x4) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x4u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -165,7 +165,7 @@ impl Mmctir {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x8) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x8u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -173,13 +173,13 @@ pub mod mmctir {
     #[inline(always)]
     pub fn read() -> super::Mmctir {
         super::Mmctir {
-            raw: unsafe { *((0x40028100 + 0x8) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x8u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmctir) {
-       unsafe { *((0x40028100 + 0x8) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x8u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -223,7 +223,7 @@ impl Mmcrimr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0xC) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0xCu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -231,13 +231,13 @@ pub mod mmcrimr {
     #[inline(always)]
     pub fn read() -> super::Mmcrimr {
         super::Mmcrimr {
-            raw: unsafe { *((0x40028100 + 0xC) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0xCu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmcrimr) {
-       unsafe { *((0x40028100 + 0xC) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0xCu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -281,7 +281,7 @@ impl Mmctimr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x10) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x10u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -289,13 +289,13 @@ pub mod mmctimr {
     #[inline(always)]
     pub fn read() -> super::Mmctimr {
         super::Mmctimr {
-            raw: unsafe { *((0x40028100 + 0x10) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x10u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmctimr) {
-       unsafe { *((0x40028100 + 0x10) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x10u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -317,7 +317,7 @@ impl Mmctgfsccr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x4C) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x4Cu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -325,13 +325,13 @@ pub mod mmctgfsccr {
     #[inline(always)]
     pub fn read() -> super::Mmctgfsccr {
         super::Mmctgfsccr {
-            raw: unsafe { *((0x40028100 + 0x4C) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x4Cu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmctgfsccr) {
-       unsafe { *((0x40028100 + 0x4C) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x4Cu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -353,7 +353,7 @@ impl Mmctgfmsccr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x50) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x50u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -361,13 +361,13 @@ pub mod mmctgfmsccr {
     #[inline(always)]
     pub fn read() -> super::Mmctgfmsccr {
         super::Mmctgfmsccr {
-            raw: unsafe { *((0x40028100 + 0x50) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x50u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmctgfmsccr) {
-       unsafe { *((0x40028100 + 0x50) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x50u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -389,7 +389,7 @@ impl Mmctgfcr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x68) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x68u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -397,13 +397,13 @@ pub mod mmctgfcr {
     #[inline(always)]
     pub fn read() -> super::Mmctgfcr {
         super::Mmctgfcr {
-            raw: unsafe { *((0x40028100 + 0x68) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x68u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmctgfcr) {
-       unsafe { *((0x40028100 + 0x68) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x68u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -425,7 +425,7 @@ impl Mmcrfcecr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x94) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x94u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -433,13 +433,13 @@ pub mod mmcrfcecr {
     #[inline(always)]
     pub fn read() -> super::Mmcrfcecr {
         super::Mmcrfcecr {
-            raw: unsafe { *((0x40028100 + 0x94) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x94u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmcrfcecr) {
-       unsafe { *((0x40028100 + 0x94) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x94u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -461,7 +461,7 @@ impl Mmcrfaecr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0x98) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0x98u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -469,13 +469,13 @@ pub mod mmcrfaecr {
     #[inline(always)]
     pub fn read() -> super::Mmcrfaecr {
         super::Mmcrfaecr {
-            raw: unsafe { *((0x40028100 + 0x98) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0x98u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmcrfaecr) {
-       unsafe { *((0x40028100 + 0x98) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0x98u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -497,7 +497,7 @@ impl Mmcrgufcr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40028100 + 0xC4) as *mut u32) = self.raw; }
+       unsafe { *((0x40028100u32 + 0xC4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -505,13 +505,13 @@ pub mod mmcrgufcr {
     #[inline(always)]
     pub fn read() -> super::Mmcrgufcr {
         super::Mmcrgufcr {
-            raw: unsafe { *((0x40028100 + 0xC4) as *const u32) }
+            raw: unsafe { *((0x40028100u32 + 0xC4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mmcrgufcr) {
-       unsafe { *((0x40028100 + 0xC4) as *mut u32) = val.raw; }
+       unsafe { *((0x40028100u32 + 0xC4u32) as *mut u32) = val.raw; }
     }
 }
 

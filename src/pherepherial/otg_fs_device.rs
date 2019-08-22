@@ -49,7 +49,7 @@ impl Fs_dcfg {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -57,13 +57,13 @@ pub mod fs_dcfg {
     #[inline(always)]
     pub fn read() -> super::Fs_dcfg {
         super::Fs_dcfg {
-            raw: unsafe { *((0x50000800 + 0x0) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_dcfg) {
-       unsafe { *((0x50000800 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -184,7 +184,7 @@ impl Fs_dctl {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x4) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -192,13 +192,13 @@ pub mod fs_dctl {
     #[inline(always)]
     pub fn read() -> super::Fs_dctl {
         super::Fs_dctl {
-            raw: unsafe { *((0x50000800 + 0x4) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_dctl) {
-       unsafe { *((0x50000800 + 0x4) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x4u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -253,7 +253,7 @@ impl Fs_dsts {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x8) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x8u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -261,13 +261,13 @@ pub mod fs_dsts {
     #[inline(always)]
     pub fn read() -> super::Fs_dsts {
         super::Fs_dsts {
-            raw: unsafe { *((0x50000800 + 0x8) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x8u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_dsts) {
-       unsafe { *((0x50000800 + 0x8) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x8u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -344,7 +344,7 @@ impl Fs_diepmsk {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x10) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x10u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -352,13 +352,13 @@ pub mod fs_diepmsk {
     #[inline(always)]
     pub fn read() -> super::Fs_diepmsk {
         super::Fs_diepmsk {
-            raw: unsafe { *((0x50000800 + 0x10) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x10u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_diepmsk) {
-       unsafe { *((0x50000800 + 0x10) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x10u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -413,7 +413,7 @@ impl Fs_doepmsk {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x14) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x14u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -421,13 +421,13 @@ pub mod fs_doepmsk {
     #[inline(always)]
     pub fn read() -> super::Fs_doepmsk {
         super::Fs_doepmsk {
-            raw: unsafe { *((0x50000800 + 0x14) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x14u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_doepmsk) {
-       unsafe { *((0x50000800 + 0x14) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x14u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -460,7 +460,7 @@ impl Fs_daint {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x18) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x18u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -468,13 +468,13 @@ pub mod fs_daint {
     #[inline(always)]
     pub fn read() -> super::Fs_daint {
         super::Fs_daint {
-            raw: unsafe { *((0x50000800 + 0x18) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x18u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_daint) {
-       unsafe { *((0x50000800 + 0x18) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x18u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -507,7 +507,7 @@ impl Fs_daintmsk {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x1C) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x1Cu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -515,13 +515,13 @@ pub mod fs_daintmsk {
     #[inline(always)]
     pub fn read() -> super::Fs_daintmsk {
         super::Fs_daintmsk {
-            raw: unsafe { *((0x50000800 + 0x1C) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x1Cu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_daintmsk) {
-       unsafe { *((0x50000800 + 0x1C) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x1Cu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -543,7 +543,7 @@ impl Dvbusdis {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x28) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x28u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -551,13 +551,13 @@ pub mod dvbusdis {
     #[inline(always)]
     pub fn read() -> super::Dvbusdis {
         super::Dvbusdis {
-            raw: unsafe { *((0x50000800 + 0x28) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x28u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dvbusdis) {
-       unsafe { *((0x50000800 + 0x28) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x28u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -579,7 +579,7 @@ impl Dvbuspulse {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x2C) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x2Cu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -587,13 +587,13 @@ pub mod dvbuspulse {
     #[inline(always)]
     pub fn read() -> super::Dvbuspulse {
         super::Dvbuspulse {
-            raw: unsafe { *((0x50000800 + 0x2C) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x2Cu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dvbuspulse) {
-       unsafe { *((0x50000800 + 0x2C) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x2Cu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -615,7 +615,7 @@ impl Diepempmsk {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x34) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x34u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -623,13 +623,13 @@ pub mod diepempmsk {
     #[inline(always)]
     pub fn read() -> super::Diepempmsk {
         super::Diepempmsk {
-            raw: unsafe { *((0x50000800 + 0x34) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x34u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepempmsk) {
-       unsafe { *((0x50000800 + 0x34) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x34u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -750,7 +750,7 @@ impl Fs_diepctl0 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x100) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x100u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -758,13 +758,13 @@ pub mod fs_diepctl0 {
     #[inline(always)]
     pub fn read() -> super::Fs_diepctl0 {
         super::Fs_diepctl0 {
-            raw: unsafe { *((0x50000800 + 0x100) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x100u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_diepctl0) {
-       unsafe { *((0x50000800 + 0x100) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x100u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -918,7 +918,7 @@ impl Diepctl1 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x120) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x120u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -926,13 +926,13 @@ pub mod diepctl1 {
     #[inline(always)]
     pub fn read() -> super::Diepctl1 {
         super::Diepctl1 {
-            raw: unsafe { *((0x50000800 + 0x120) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x120u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepctl1) {
-       unsafe { *((0x50000800 + 0x120) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x120u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1086,7 +1086,7 @@ impl Diepctl2 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x140) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x140u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1094,13 +1094,13 @@ pub mod diepctl2 {
     #[inline(always)]
     pub fn read() -> super::Diepctl2 {
         super::Diepctl2 {
-            raw: unsafe { *((0x50000800 + 0x140) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x140u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepctl2) {
-       unsafe { *((0x50000800 + 0x140) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x140u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1254,7 +1254,7 @@ impl Diepctl3 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x160) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x160u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1262,13 +1262,13 @@ pub mod diepctl3 {
     #[inline(always)]
     pub fn read() -> super::Diepctl3 {
         super::Diepctl3 {
-            raw: unsafe { *((0x50000800 + 0x160) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x160u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepctl3) {
-       unsafe { *((0x50000800 + 0x160) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x160u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1389,7 +1389,7 @@ impl Doepctl0 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x300) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x300u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1397,13 +1397,13 @@ pub mod doepctl0 {
     #[inline(always)]
     pub fn read() -> super::Doepctl0 {
         super::Doepctl0 {
-            raw: unsafe { *((0x50000800 + 0x300) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x300u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepctl0) {
-       unsafe { *((0x50000800 + 0x300) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x300u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1557,7 +1557,7 @@ impl Doepctl1 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x320) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x320u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1565,13 +1565,13 @@ pub mod doepctl1 {
     #[inline(always)]
     pub fn read() -> super::Doepctl1 {
         super::Doepctl1 {
-            raw: unsafe { *((0x50000800 + 0x320) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x320u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepctl1) {
-       unsafe { *((0x50000800 + 0x320) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x320u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1725,7 +1725,7 @@ impl Doepctl2 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x340) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x340u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1733,13 +1733,13 @@ pub mod doepctl2 {
     #[inline(always)]
     pub fn read() -> super::Doepctl2 {
         super::Doepctl2 {
-            raw: unsafe { *((0x50000800 + 0x340) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x340u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepctl2) {
-       unsafe { *((0x50000800 + 0x340) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x340u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1893,7 +1893,7 @@ impl Doepctl3 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x360) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x360u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1901,13 +1901,13 @@ pub mod doepctl3 {
     #[inline(always)]
     pub fn read() -> super::Doepctl3 {
         super::Doepctl3 {
-            raw: unsafe { *((0x50000800 + 0x360) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x360u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepctl3) {
-       unsafe { *((0x50000800 + 0x360) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x360u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1984,7 +1984,7 @@ impl Diepint0 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x108) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x108u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1992,13 +1992,13 @@ pub mod diepint0 {
     #[inline(always)]
     pub fn read() -> super::Diepint0 {
         super::Diepint0 {
-            raw: unsafe { *((0x50000800 + 0x108) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x108u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepint0) {
-       unsafe { *((0x50000800 + 0x108) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x108u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2075,7 +2075,7 @@ impl Diepint1 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x128) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x128u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2083,13 +2083,13 @@ pub mod diepint1 {
     #[inline(always)]
     pub fn read() -> super::Diepint1 {
         super::Diepint1 {
-            raw: unsafe { *((0x50000800 + 0x128) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x128u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepint1) {
-       unsafe { *((0x50000800 + 0x128) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x128u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2166,7 +2166,7 @@ impl Diepint2 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x148) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x148u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2174,13 +2174,13 @@ pub mod diepint2 {
     #[inline(always)]
     pub fn read() -> super::Diepint2 {
         super::Diepint2 {
-            raw: unsafe { *((0x50000800 + 0x148) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x148u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepint2) {
-       unsafe { *((0x50000800 + 0x148) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x148u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2257,7 +2257,7 @@ impl Diepint3 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x168) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x168u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2265,13 +2265,13 @@ pub mod diepint3 {
     #[inline(always)]
     pub fn read() -> super::Diepint3 {
         super::Diepint3 {
-            raw: unsafe { *((0x50000800 + 0x168) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x168u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Diepint3) {
-       unsafe { *((0x50000800 + 0x168) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x168u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2337,7 +2337,7 @@ impl Doepint0 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x308) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x308u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2345,13 +2345,13 @@ pub mod doepint0 {
     #[inline(always)]
     pub fn read() -> super::Doepint0 {
         super::Doepint0 {
-            raw: unsafe { *((0x50000800 + 0x308) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x308u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepint0) {
-       unsafe { *((0x50000800 + 0x308) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x308u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2417,7 +2417,7 @@ impl Doepint1 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x328) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x328u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2425,13 +2425,13 @@ pub mod doepint1 {
     #[inline(always)]
     pub fn read() -> super::Doepint1 {
         super::Doepint1 {
-            raw: unsafe { *((0x50000800 + 0x328) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x328u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepint1) {
-       unsafe { *((0x50000800 + 0x328) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x328u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2497,7 +2497,7 @@ impl Doepint2 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x348) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x348u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2505,13 +2505,13 @@ pub mod doepint2 {
     #[inline(always)]
     pub fn read() -> super::Doepint2 {
         super::Doepint2 {
-            raw: unsafe { *((0x50000800 + 0x348) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x348u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepint2) {
-       unsafe { *((0x50000800 + 0x348) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x348u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2577,7 +2577,7 @@ impl Doepint3 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x368) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x368u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2585,13 +2585,13 @@ pub mod doepint3 {
     #[inline(always)]
     pub fn read() -> super::Doepint3 {
         super::Doepint3 {
-            raw: unsafe { *((0x50000800 + 0x368) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x368u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doepint3) {
-       unsafe { *((0x50000800 + 0x368) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x368u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2624,7 +2624,7 @@ impl Dieptsiz0 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x110) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x110u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2632,13 +2632,13 @@ pub mod dieptsiz0 {
     #[inline(always)]
     pub fn read() -> super::Dieptsiz0 {
         super::Dieptsiz0 {
-            raw: unsafe { *((0x50000800 + 0x110) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x110u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dieptsiz0) {
-       unsafe { *((0x50000800 + 0x110) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x110u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2682,7 +2682,7 @@ impl Doeptsiz0 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x310) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x310u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2690,13 +2690,13 @@ pub mod doeptsiz0 {
     #[inline(always)]
     pub fn read() -> super::Doeptsiz0 {
         super::Doeptsiz0 {
-            raw: unsafe { *((0x50000800 + 0x310) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x310u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doeptsiz0) {
-       unsafe { *((0x50000800 + 0x310) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x310u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2740,7 +2740,7 @@ impl Dieptsiz1 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x130) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x130u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2748,13 +2748,13 @@ pub mod dieptsiz1 {
     #[inline(always)]
     pub fn read() -> super::Dieptsiz1 {
         super::Dieptsiz1 {
-            raw: unsafe { *((0x50000800 + 0x130) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x130u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dieptsiz1) {
-       unsafe { *((0x50000800 + 0x130) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x130u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2798,7 +2798,7 @@ impl Dieptsiz2 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x150) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x150u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2806,13 +2806,13 @@ pub mod dieptsiz2 {
     #[inline(always)]
     pub fn read() -> super::Dieptsiz2 {
         super::Dieptsiz2 {
-            raw: unsafe { *((0x50000800 + 0x150) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x150u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dieptsiz2) {
-       unsafe { *((0x50000800 + 0x150) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x150u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2856,7 +2856,7 @@ impl Dieptsiz3 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x170) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x170u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2864,13 +2864,13 @@ pub mod dieptsiz3 {
     #[inline(always)]
     pub fn read() -> super::Dieptsiz3 {
         super::Dieptsiz3 {
-            raw: unsafe { *((0x50000800 + 0x170) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x170u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dieptsiz3) {
-       unsafe { *((0x50000800 + 0x170) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x170u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2892,7 +2892,7 @@ impl Dtxfsts0 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x118) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x118u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2900,13 +2900,13 @@ pub mod dtxfsts0 {
     #[inline(always)]
     pub fn read() -> super::Dtxfsts0 {
         super::Dtxfsts0 {
-            raw: unsafe { *((0x50000800 + 0x118) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x118u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dtxfsts0) {
-       unsafe { *((0x50000800 + 0x118) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x118u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2928,7 +2928,7 @@ impl Dtxfsts1 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x138) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x138u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2936,13 +2936,13 @@ pub mod dtxfsts1 {
     #[inline(always)]
     pub fn read() -> super::Dtxfsts1 {
         super::Dtxfsts1 {
-            raw: unsafe { *((0x50000800 + 0x138) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x138u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dtxfsts1) {
-       unsafe { *((0x50000800 + 0x138) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x138u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -2964,7 +2964,7 @@ impl Dtxfsts2 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x158) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x158u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -2972,13 +2972,13 @@ pub mod dtxfsts2 {
     #[inline(always)]
     pub fn read() -> super::Dtxfsts2 {
         super::Dtxfsts2 {
-            raw: unsafe { *((0x50000800 + 0x158) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x158u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dtxfsts2) {
-       unsafe { *((0x50000800 + 0x158) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x158u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -3000,7 +3000,7 @@ impl Dtxfsts3 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x178) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x178u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -3008,13 +3008,13 @@ pub mod dtxfsts3 {
     #[inline(always)]
     pub fn read() -> super::Dtxfsts3 {
         super::Dtxfsts3 {
-            raw: unsafe { *((0x50000800 + 0x178) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x178u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Dtxfsts3) {
-       unsafe { *((0x50000800 + 0x178) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x178u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -3058,7 +3058,7 @@ impl Doeptsiz1 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x330) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x330u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -3066,13 +3066,13 @@ pub mod doeptsiz1 {
     #[inline(always)]
     pub fn read() -> super::Doeptsiz1 {
         super::Doeptsiz1 {
-            raw: unsafe { *((0x50000800 + 0x330) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x330u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doeptsiz1) {
-       unsafe { *((0x50000800 + 0x330) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x330u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -3116,7 +3116,7 @@ impl Doeptsiz2 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x350) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x350u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -3124,13 +3124,13 @@ pub mod doeptsiz2 {
     #[inline(always)]
     pub fn read() -> super::Doeptsiz2 {
         super::Doeptsiz2 {
-            raw: unsafe { *((0x50000800 + 0x350) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x350u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doeptsiz2) {
-       unsafe { *((0x50000800 + 0x350) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x350u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -3174,7 +3174,7 @@ impl Doeptsiz3 {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000800 + 0x370) as *mut u32) = self.raw; }
+       unsafe { *((0x50000800u32 + 0x370u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -3182,13 +3182,13 @@ pub mod doeptsiz3 {
     #[inline(always)]
     pub fn read() -> super::Doeptsiz3 {
         super::Doeptsiz3 {
-            raw: unsafe { *((0x50000800 + 0x370) as *const u32) }
+            raw: unsafe { *((0x50000800u32 + 0x370u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Doeptsiz3) {
-       unsafe { *((0x50000800 + 0x370) as *mut u32) = val.raw; }
+       unsafe { *((0x50000800u32 + 0x370u32) as *mut u32) = val.raw; }
     }
 }
 

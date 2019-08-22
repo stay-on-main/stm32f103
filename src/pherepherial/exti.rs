@@ -214,7 +214,7 @@ impl Imr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40010400 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0x40010400u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -222,13 +222,13 @@ pub mod imr {
     #[inline(always)]
     pub fn read() -> super::Imr {
         super::Imr {
-            raw: unsafe { *((0x40010400 + 0x0) as *const u32) }
+            raw: unsafe { *((0x40010400u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Imr) {
-       unsafe { *((0x40010400 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0x40010400u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -448,7 +448,7 @@ impl Emr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40010400 + 0x4) as *mut u32) = self.raw; }
+       unsafe { *((0x40010400u32 + 0x4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -456,13 +456,13 @@ pub mod emr {
     #[inline(always)]
     pub fn read() -> super::Emr {
         super::Emr {
-            raw: unsafe { *((0x40010400 + 0x4) as *const u32) }
+            raw: unsafe { *((0x40010400u32 + 0x4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Emr) {
-       unsafe { *((0x40010400 + 0x4) as *mut u32) = val.raw; }
+       unsafe { *((0x40010400u32 + 0x4u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -682,7 +682,7 @@ impl Rtsr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40010400 + 0x8) as *mut u32) = self.raw; }
+       unsafe { *((0x40010400u32 + 0x8u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -690,13 +690,13 @@ pub mod rtsr {
     #[inline(always)]
     pub fn read() -> super::Rtsr {
         super::Rtsr {
-            raw: unsafe { *((0x40010400 + 0x8) as *const u32) }
+            raw: unsafe { *((0x40010400u32 + 0x8u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Rtsr) {
-       unsafe { *((0x40010400 + 0x8) as *mut u32) = val.raw; }
+       unsafe { *((0x40010400u32 + 0x8u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -916,7 +916,7 @@ impl Ftsr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40010400 + 0xC) as *mut u32) = self.raw; }
+       unsafe { *((0x40010400u32 + 0xCu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -924,13 +924,13 @@ pub mod ftsr {
     #[inline(always)]
     pub fn read() -> super::Ftsr {
         super::Ftsr {
-            raw: unsafe { *((0x40010400 + 0xC) as *const u32) }
+            raw: unsafe { *((0x40010400u32 + 0xCu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Ftsr) {
-       unsafe { *((0x40010400 + 0xC) as *mut u32) = val.raw; }
+       unsafe { *((0x40010400u32 + 0xCu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1150,7 +1150,7 @@ impl Swier {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40010400 + 0x10) as *mut u32) = self.raw; }
+       unsafe { *((0x40010400u32 + 0x10u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1158,13 +1158,13 @@ pub mod swier {
     #[inline(always)]
     pub fn read() -> super::Swier {
         super::Swier {
-            raw: unsafe { *((0x40010400 + 0x10) as *const u32) }
+            raw: unsafe { *((0x40010400u32 + 0x10u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Swier) {
-       unsafe { *((0x40010400 + 0x10) as *mut u32) = val.raw; }
+       unsafe { *((0x40010400u32 + 0x10u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -1384,7 +1384,7 @@ impl Pr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40010400 + 0x14) as *mut u32) = self.raw; }
+       unsafe { *((0x40010400u32 + 0x14u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -1392,13 +1392,13 @@ pub mod pr {
     #[inline(always)]
     pub fn read() -> super::Pr {
         super::Pr {
-            raw: unsafe { *((0x40010400 + 0x14) as *const u32) }
+            raw: unsafe { *((0x40010400u32 + 0x14u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Pr) {
-       unsafe { *((0x40010400 + 0x14) as *mut u32) = val.raw; }
+       unsafe { *((0x40010400u32 + 0x14u32) as *mut u32) = val.raw; }
     }
 }
 

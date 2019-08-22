@@ -7,6 +7,7 @@ extern "C" {
 
 extern {
     fn main();
+    fn systick_handler_interrupt();
 }
 
 extern "C" fn hardfault_handler() {
@@ -43,6 +44,12 @@ extern "C" fn reset_handler() {
     main();
     }
 }
+
+extern "C" fn systick_handler() {
+    unsafe {
+    systick_handler_interrupt();
+    }
+}
 /*
 extern "C" fn systick_handler() {
 	unsafe {
@@ -72,7 +79,7 @@ static RESET_HANDLER: [extern "C" fn(); 15] = [
     default_handler,	// 0x2C
     default_handler,	// 0x30
     default_handler,//pend_sv_handler,	// 0x34
-    default_handler,//systick_handler,	// 0x38
+    systick_handler,//systick_handler,	// 0x38
 ];
 
 #[panic_handler]

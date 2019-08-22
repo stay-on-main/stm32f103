@@ -16,7 +16,7 @@ impl Stir {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000EF00 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0xE000EF00u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -24,13 +24,13 @@ pub mod stir {
     #[inline(always)]
     pub fn read() -> super::Stir {
         super::Stir {
-            raw: unsafe { *((0xE000EF00 + 0x0) as *const u32) }
+            raw: unsafe { *((0xE000EF00u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Stir) {
-       unsafe { *((0xE000EF00 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0xE000EF00u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 

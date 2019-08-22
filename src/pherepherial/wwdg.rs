@@ -27,7 +27,7 @@ impl Cr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40002C00 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0x40002C00u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -35,13 +35,13 @@ pub mod cr {
     #[inline(always)]
     pub fn read() -> super::Cr {
         super::Cr {
-            raw: unsafe { *((0x40002C00 + 0x0) as *const u32) }
+            raw: unsafe { *((0x40002C00u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Cr) {
-       unsafe { *((0x40002C00 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0x40002C00u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -85,7 +85,7 @@ impl Cfr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40002C00 + 0x4) as *mut u32) = self.raw; }
+       unsafe { *((0x40002C00u32 + 0x4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -93,13 +93,13 @@ pub mod cfr {
     #[inline(always)]
     pub fn read() -> super::Cfr {
         super::Cfr {
-            raw: unsafe { *((0x40002C00 + 0x4) as *const u32) }
+            raw: unsafe { *((0x40002C00u32 + 0x4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Cfr) {
-       unsafe { *((0x40002C00 + 0x4) as *mut u32) = val.raw; }
+       unsafe { *((0x40002C00u32 + 0x4u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -121,7 +121,7 @@ impl Sr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x40002C00 + 0x8) as *mut u32) = self.raw; }
+       unsafe { *((0x40002C00u32 + 0x8u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -129,13 +129,13 @@ pub mod sr {
     #[inline(always)]
     pub fn read() -> super::Sr {
         super::Sr {
-            raw: unsafe { *((0x40002C00 + 0x8) as *const u32) }
+            raw: unsafe { *((0x40002C00u32 + 0x8u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Sr) {
-       unsafe { *((0x40002C00 + 0x8) as *mut u32) = val.raw; }
+       unsafe { *((0x40002C00u32 + 0x8u32) as *mut u32) = val.raw; }
     }
 }
 

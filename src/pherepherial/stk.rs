@@ -49,7 +49,7 @@ impl Ctrl {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000E010 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0xE000E010u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -57,13 +57,13 @@ pub mod ctrl {
     #[inline(always)]
     pub fn read() -> super::Ctrl {
         super::Ctrl {
-            raw: unsafe { *((0xE000E010 + 0x0) as *const u32) }
+            raw: unsafe { *((0xE000E010u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Ctrl) {
-       unsafe { *((0xE000E010 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0xE000E010u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -85,7 +85,7 @@ impl Load_ {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000E010 + 0x4) as *mut u32) = self.raw; }
+       unsafe { *((0xE000E010u32 + 0x4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -93,13 +93,13 @@ pub mod load_ {
     #[inline(always)]
     pub fn read() -> super::Load_ {
         super::Load_ {
-            raw: unsafe { *((0xE000E010 + 0x4) as *const u32) }
+            raw: unsafe { *((0xE000E010u32 + 0x4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Load_) {
-       unsafe { *((0xE000E010 + 0x4) as *mut u32) = val.raw; }
+       unsafe { *((0xE000E010u32 + 0x4u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -121,7 +121,7 @@ impl Val {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000E010 + 0x8) as *mut u32) = self.raw; }
+       unsafe { *((0xE000E010u32 + 0x8u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -129,13 +129,13 @@ pub mod val {
     #[inline(always)]
     pub fn read() -> super::Val {
         super::Val {
-            raw: unsafe { *((0xE000E010 + 0x8) as *const u32) }
+            raw: unsafe { *((0xE000E010u32 + 0x8u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Val) {
-       unsafe { *((0xE000E010 + 0x8) as *mut u32) = val.raw; }
+       unsafe { *((0xE000E010u32 + 0x8u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -157,7 +157,7 @@ impl Calib {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000E010 + 0xC) as *mut u32) = self.raw; }
+       unsafe { *((0xE000E010u32 + 0xCu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -165,13 +165,13 @@ pub mod calib {
     #[inline(always)]
     pub fn read() -> super::Calib {
         super::Calib {
-            raw: unsafe { *((0xE000E010 + 0xC) as *const u32) }
+            raw: unsafe { *((0xE000E010u32 + 0xCu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Calib) {
-       unsafe { *((0xE000E010 + 0xC) as *mut u32) = val.raw; }
+       unsafe { *((0xE000E010u32 + 0xCu32) as *mut u32) = val.raw; }
     }
 }
 

@@ -38,7 +38,7 @@ impl Fs_pcgcctl {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0x50000E00 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0x50000E00u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -46,13 +46,13 @@ pub mod fs_pcgcctl {
     #[inline(always)]
     pub fn read() -> super::Fs_pcgcctl {
         super::Fs_pcgcctl {
-            raw: unsafe { *((0x50000E00 + 0x0) as *const u32) }
+            raw: unsafe { *((0x50000E00u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Fs_pcgcctl) {
-       unsafe { *((0x50000E00 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0x50000E00u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 

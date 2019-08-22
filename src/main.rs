@@ -70,8 +70,6 @@ fn system_init()
 pub fn main() {
     system_init();
     
-    stk::load_::read().reload(9000).write();
-    stk::ctrl::read().clksource(1).tickint(1).enable(1).write();
 
     rcc::apb2enr::read().iopben(1).write();
     // output 50 MHz general purpose push-pull
@@ -80,12 +78,21 @@ pub fn main() {
 
     usart_init();
 
+    stk::load_::read().reload(7200000u32).write();
+    stk::ctrl::read().clksource(1).tickint(1).enable(1).write();
+
+
     let mut count: u32 = 0;
     loop {
         if count % 100000 == 0 {
-            usart_send(0x55);
+            //usart_send(0x55);
         }
 
         count += 1;
     }
+}
+
+#[no_mangle]
+pub fn systick_handler_interrupt() {
+	usart_send(0x55);
 }

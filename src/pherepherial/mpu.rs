@@ -38,7 +38,7 @@ impl Mpu_typer {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000ED90 + 0x0) as *mut u32) = self.raw; }
+       unsafe { *((0xE000ED90u32 + 0x0u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -46,13 +46,13 @@ pub mod mpu_typer {
     #[inline(always)]
     pub fn read() -> super::Mpu_typer {
         super::Mpu_typer {
-            raw: unsafe { *((0xE000ED90 + 0x0) as *const u32) }
+            raw: unsafe { *((0xE000ED90u32 + 0x0u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mpu_typer) {
-       unsafe { *((0xE000ED90 + 0x0) as *mut u32) = val.raw; }
+       unsafe { *((0xE000ED90u32 + 0x0u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -96,7 +96,7 @@ impl Mpu_ctrl {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000ED90 + 0x4) as *mut u32) = self.raw; }
+       unsafe { *((0xE000ED90u32 + 0x4u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -104,13 +104,13 @@ pub mod mpu_ctrl {
     #[inline(always)]
     pub fn read() -> super::Mpu_ctrl {
         super::Mpu_ctrl {
-            raw: unsafe { *((0xE000ED90 + 0x4) as *const u32) }
+            raw: unsafe { *((0xE000ED90u32 + 0x4u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mpu_ctrl) {
-       unsafe { *((0xE000ED90 + 0x4) as *mut u32) = val.raw; }
+       unsafe { *((0xE000ED90u32 + 0x4u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -132,7 +132,7 @@ impl Mpu_rnr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000ED90 + 0x8) as *mut u32) = self.raw; }
+       unsafe { *((0xE000ED90u32 + 0x8u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -140,13 +140,13 @@ pub mod mpu_rnr {
     #[inline(always)]
     pub fn read() -> super::Mpu_rnr {
         super::Mpu_rnr {
-            raw: unsafe { *((0xE000ED90 + 0x8) as *const u32) }
+            raw: unsafe { *((0xE000ED90u32 + 0x8u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mpu_rnr) {
-       unsafe { *((0xE000ED90 + 0x8) as *mut u32) = val.raw; }
+       unsafe { *((0xE000ED90u32 + 0x8u32) as *mut u32) = val.raw; }
     }
 }
 
@@ -190,7 +190,7 @@ impl Mpu_rbar {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000ED90 + 0xC) as *mut u32) = self.raw; }
+       unsafe { *((0xE000ED90u32 + 0xCu32) as *mut u32) = self.raw; }
     }
 }
 
@@ -198,13 +198,13 @@ pub mod mpu_rbar {
     #[inline(always)]
     pub fn read() -> super::Mpu_rbar {
         super::Mpu_rbar {
-            raw: unsafe { *((0xE000ED90 + 0xC) as *const u32) }
+            raw: unsafe { *((0xE000ED90u32 + 0xCu32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mpu_rbar) {
-       unsafe { *((0xE000ED90 + 0xC) as *mut u32) = val.raw; }
+       unsafe { *((0xE000ED90u32 + 0xCu32) as *mut u32) = val.raw; }
     }
 }
 
@@ -314,7 +314,7 @@ impl Mpu_rasr {
 
     #[inline(always)]
     pub fn write(self) {
-       unsafe { *((0xE000ED90 + 0x10) as *mut u32) = self.raw; }
+       unsafe { *((0xE000ED90u32 + 0x10u32) as *mut u32) = self.raw; }
     }
 }
 
@@ -322,13 +322,13 @@ pub mod mpu_rasr {
     #[inline(always)]
     pub fn read() -> super::Mpu_rasr {
         super::Mpu_rasr {
-            raw: unsafe { *((0xE000ED90 + 0x10) as *const u32) }
+            raw: unsafe { *((0xE000ED90u32 + 0x10u32) as *const u32) }
         }
     }
 
     #[inline(always)]
     pub fn write(val: & super::Mpu_rasr) {
-       unsafe { *((0xE000ED90 + 0x10) as *mut u32) = val.raw; }
+       unsafe { *((0xE000ED90u32 + 0x10u32) as *mut u32) = val.raw; }
     }
 }
 
