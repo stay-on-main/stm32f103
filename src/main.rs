@@ -8,87 +8,27 @@ use pherepherial::gpiob;
 use pherepherial::gpioa;
 use pherepherial::rcc;
 use pherepherial::usart1;
-/*
-macro_rules! reg_modify {
-    ($m:path, $($method:ident($arg:expr)), *) => {
-        // The macro will expand into the contents of this block.
-        let mut reg = <$m>::read();
-        $(
-            reg.$method($arg);
-        )*
-        <$m>::write(&reg);
-    };
-}
-*/
+use pherepherial::flash;
+use pherepherial::stk;
+
 fn usart_init() {
     // PA9, PA10
-    /*
-    let mut rcc = rcc::apb2enr::read();
-    rcc.iopaen_set(1);
-    rcc.afioen_set(1);
-    rcc::apb2enr::write(&rcc);
-    */
 	rcc::apb2enr::read().iopaen(3).afioen(1).write();
-	/*
-    let mut crh = gpioa::crh::read(); // tx
-    crh.mode9_set(1); // output 50 MHz
-    crh.cnf9_set(2); // Alternate Function output
-    gpioa::crh::write(&crh);
-    */
     gpioa::crh::read().mode9(1).cnf9(2).write();
-    /*
-    let mut crh = gpioa::crh::read(); // tx
-    crh.mode10_set(0);
-    crh.cnf10_set(1); // Input floating
-    gpioa::crh::write(&crh);
-    */
     gpioa::crh::read().mode10(0).cnf10(1).write();
-    /*
-    let mut rcc = rcc::Apb2enr::read();
-    rcc.usart1en_set(1);
-    rcc::Apb2enr::write(&rcc);
-    */
+
+    rcc::apb2enr::read().usart1en(1).write();
     // Enable the USART by writing the UE bit in USART_CR1 register to 1.
-    /*
-    let mut cr1 = usart1::cr1::read();
-    cr1.ue_set(1);
-    usart1::cr1::write(&cr1);
-    */
     usart1::cr1::read().ue(1).write();
     // Program the M bit in USART_CR1 to define the word length.
-    /*
-    cr1.m_set(0); // 0: 1 Start bit, 8 Data bits, n Stop bit
-    usart1::cr1::write(&cr1);
-    */
     usart1::cr2::read().stop(0).write();
     // Program the number of stop bits in USART_CR2.
-    /*
-    let mut cr2 = usart1::cr2::read();
-    cr2.stop_set(0); // 00: 1 Stop bit
-    usart1::cr2::write(&cr2);
-    */
     // Select the desired baud rate using the USART_BRR register
     usart1::brr::read().div_mantissa(27).div_fraction(12).write();
-    /*
-    let mut brr = usart1::brr::read();
-    brr.div_mantissa_set(27);
-    brr.div_fraction_set(12);
-    usart1::brr::write(&brr);
-    */
     // Set the TE bit in USART_CR1 to send an idle frame as first transmission
-    /*
-    let mut cr1 = usart1::cr1::read();
-    cr1.te_set(1);
-    usart1::cr1::write(&cr1);
-    */
     usart1::cr1::read().te(1).write();
     // Write the data to send in the USART_DR register (this clears the TXE bit).
     // Repeat this for each data to be transmitted in case of single buffer.
-    /*
-    let mut dr = usart1::dr::read();
-    dr.dr_set(0x0f);
-    usart1::dr::write(&dr);
-    */
     usart1::dr::read().dr(0x0f).write();
 }
 
@@ -100,11 +40,42 @@ fn usart_send(byte: u8) {
     usart1::dr::read().dr(byte as u32).write();
 }
 
+fn system_init()
+{
+    // turn on high speed external osicilator
+    rcc::cr::read().hseon(1).write();
+    // waiting while HSE unstable
+    while rcc::cr::read().hserdy_get() == 0 {
+
+    }
+
+    flash::acr::read().prftbe(1).latency(2).write();
+
+    rcc::cfgr::read().hpre(0).ppre2(0).ppre1(0).pllmul(0b111).pllxtpre(0).pllsrc(1).write(); // SYSCLK not divided, HCLK not divided,
+    // Caution: The PLL output frequency must not exceed 72 MHz
+    rcc::cr::read().pllon(1).write();
+
+    while rcc::cr::read().pllrdy_get() == 0 {
+
+    }
+    // PLL selected as system clock
+    rcc::cfgr::read().sw(2).write(); 
+
+    while rcc::cfgr::read().sws_get() != 2 {
+
+    }
+}
+
 #[no_mangle]
 pub fn main() {
-    rcc::apb2enr::read().iopben(1).write();
+    system_init();
+    
+    stk::load_::read().reload(9000).write();
+    stk::ctrl::read().clksource(1).tickint(1).enable(1).write();
 
-    gpiob::crh::read().mode12(1).cnf12(0).write(); // output 50 MHz general purpose push-pull
+    rcc::apb2enr::read().iopben(1).write();
+    // output 50 MHz general purpose push-pull
+    gpiob::crh::read().mode12(1).cnf12(0).write(); 
     gpiob::odr::read().odr12(0).write();
 
     usart_init();
