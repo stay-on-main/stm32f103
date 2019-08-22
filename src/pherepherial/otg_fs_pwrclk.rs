@@ -9,8 +9,9 @@ impl Fs_pcgcctl {
     }
 
     #[inline(always)]
-    pub fn stppclk_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn stppclk(mut self, val: u32) -> Fs_pcgcctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Fs_pcgcctl {
     }
 
     #[inline(always)]
-    pub fn gatehclk_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn gatehclk(mut self, val: u32) -> Fs_pcgcctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -29,10 +31,15 @@ impl Fs_pcgcctl {
     }
 
     #[inline(always)]
-    pub fn physusp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn physusp(mut self, val: u32) -> Fs_pcgcctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000E00 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_pcgcctl {

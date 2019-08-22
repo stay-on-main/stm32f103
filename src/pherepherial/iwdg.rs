@@ -9,10 +9,15 @@ impl Kr {
     }
 
     #[inline(always)]
-    pub fn key_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn key(mut self, val: u32) -> Kr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40003000 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod kr {
@@ -40,10 +45,15 @@ impl Pr {
     }
 
     #[inline(always)]
-    pub fn pr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 0)) | ((val & ((1 << 3) - 1)) << 0)
+    pub fn pr(mut self, val: u32) -> Pr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 0)) | ((val & ((1 << 3) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40003000 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod pr {
@@ -71,10 +81,15 @@ impl Rlr {
     }
 
     #[inline(always)]
-    pub fn rl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn rl(mut self, val: u32) -> Rlr {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40003000 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod rlr {
@@ -102,8 +117,9 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn pvu_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn pvu(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -112,10 +128,15 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn rvu_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn rvu(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40003000 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod sr {

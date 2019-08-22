@@ -9,8 +9,9 @@ impl Ctrl {
     }
 
     #[inline(always)]
-    pub fn enable_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn enable(mut self, val: u32) -> Ctrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Ctrl {
     }
 
     #[inline(always)]
-    pub fn tickint_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tickint(mut self, val: u32) -> Ctrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Ctrl {
     }
 
     #[inline(always)]
-    pub fn clksource_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn clksource(mut self, val: u32) -> Ctrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -39,10 +42,15 @@ impl Ctrl {
     }
 
     #[inline(always)]
-    pub fn countflag_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn countflag(mut self, val: u32) -> Ctrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E010 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ctrl {
@@ -70,10 +78,15 @@ impl Load_ {
     }
 
     #[inline(always)]
-    pub fn reload_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 24) - 1) << 0)) | ((val & ((1 << 24) - 1)) << 0)
+    pub fn reload(mut self, val: u32) -> Load_ {
+        self.raw = (self.raw & !(((1 << 24) - 1) << 0)) | ((val & ((1 << 24) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E010 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod load_ {
@@ -101,10 +114,15 @@ impl Val {
     }
 
     #[inline(always)]
-    pub fn current_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 24) - 1) << 0)) | ((val & ((1 << 24) - 1)) << 0)
+    pub fn current(mut self, val: u32) -> Val {
+        self.raw = (self.raw & !(((1 << 24) - 1) << 0)) | ((val & ((1 << 24) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E010 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod val {
@@ -132,10 +150,15 @@ impl Calib {
     }
 
     #[inline(always)]
-    pub fn tenms_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 24) - 1) << 0)) | ((val & ((1 << 24) - 1)) << 0)
+    pub fn tenms(mut self, val: u32) -> Calib {
+        self.raw = (self.raw & !(((1 << 24) - 1) << 0)) | ((val & ((1 << 24) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E010 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod calib {

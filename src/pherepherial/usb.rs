@@ -9,8 +9,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -39,8 +42,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -49,8 +53,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -59,8 +64,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -69,8 +75,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -79,8 +86,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -89,8 +97,9 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -99,10 +108,15 @@ impl Ep0r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep0r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep0r {
@@ -130,8 +144,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -140,8 +155,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -150,8 +166,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -160,8 +177,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -170,8 +188,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -180,8 +199,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -190,8 +210,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -200,8 +221,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -210,8 +232,9 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -220,10 +243,15 @@ impl Ep1r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep1r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep1r {
@@ -251,8 +279,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -261,8 +290,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -271,8 +301,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -281,8 +312,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -291,8 +323,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -301,8 +334,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -311,8 +345,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -321,8 +356,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -331,8 +367,9 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -341,10 +378,15 @@ impl Ep2r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep2r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep2r {
@@ -372,8 +414,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -382,8 +425,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -392,8 +436,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -402,8 +447,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -412,8 +458,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -422,8 +469,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -432,8 +480,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -442,8 +491,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -452,8 +502,9 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -462,10 +513,15 @@ impl Ep3r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep3r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep3r {
@@ -493,8 +549,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -503,8 +560,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -513,8 +571,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -523,8 +582,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -533,8 +593,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -543,8 +604,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -553,8 +615,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -563,8 +626,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -573,8 +637,9 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -583,10 +648,15 @@ impl Ep4r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep4r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep4r {
@@ -614,8 +684,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -624,8 +695,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -634,8 +706,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -644,8 +717,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -654,8 +728,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -664,8 +739,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -674,8 +750,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -684,8 +761,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -694,8 +772,9 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -704,10 +783,15 @@ impl Ep5r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep5r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep5r {
@@ -735,8 +819,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -745,8 +830,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -755,8 +841,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -765,8 +852,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -775,8 +863,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -785,8 +874,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -795,8 +885,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -805,8 +896,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -815,8 +907,9 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -825,10 +918,15 @@ impl Ep6r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep6r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep6r {
@@ -856,8 +954,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn ea_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ea(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -866,8 +965,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn stat_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn stat_tx(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -876,8 +976,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn dtog_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn dtog_tx(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -886,8 +987,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn ctr_tx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ctr_tx(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -896,8 +998,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn ep_kind_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn ep_kind(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -906,8 +1009,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn ep_type_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9)
+    pub fn ep_type(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 9)) | ((val & ((1 << 2) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -916,8 +1020,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn setup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn setup(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -926,8 +1031,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn stat_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn stat_rx(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -936,8 +1042,9 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn dtog_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dtog_rx(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -946,10 +1053,15 @@ impl Ep7r {
     }
 
     #[inline(always)]
-    pub fn ctr_rx_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr_rx(mut self, val: u32) -> Ep7r {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ep7r {
@@ -977,8 +1089,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn fres_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn fres(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -987,8 +1100,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn pdwn_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn pdwn(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -997,8 +1111,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn lpmode_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn lpmode(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -1007,8 +1122,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn fsusp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn fsusp(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1017,8 +1133,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn resume_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn resume(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1027,8 +1144,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn esofm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn esofm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1037,8 +1155,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn sofm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn sofm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1047,8 +1166,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn resetm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn resetm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -1057,8 +1177,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn suspm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn suspm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -1067,8 +1188,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn wkupm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn wkupm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -1077,8 +1199,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn errm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13)
+    pub fn errm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -1087,8 +1210,9 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn pmaovrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn pmaovrm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -1097,10 +1221,15 @@ impl Cntr {
     }
 
     #[inline(always)]
-    pub fn ctrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctrm(mut self, val: u32) -> Cntr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x40) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cntr {
@@ -1128,8 +1257,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn ep_id_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn ep_id(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1138,8 +1268,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1148,8 +1279,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn esof_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn esof(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1158,8 +1290,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn sof_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn sof(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1168,8 +1301,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn reset_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn reset(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -1178,8 +1312,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn susp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn susp(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -1188,8 +1323,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn wkup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn wkup(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -1198,8 +1334,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn err_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13)
+    pub fn err(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -1208,8 +1345,9 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn pmaovr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn pmaovr(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -1218,10 +1356,15 @@ impl Istr {
     }
 
     #[inline(always)]
-    pub fn ctr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn ctr(mut self, val: u32) -> Istr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x44) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod istr {
@@ -1249,8 +1392,9 @@ impl Fnr {
     }
 
     #[inline(always)]
-    pub fn fn_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn fn(mut self, val: u32) -> Fnr {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1259,8 +1403,9 @@ impl Fnr {
     }
 
     #[inline(always)]
-    pub fn lsof_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 11)) | ((val & ((1 << 2) - 1)) << 11)
+    pub fn lsof(mut self, val: u32) -> Fnr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 11)) | ((val & ((1 << 2) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -1269,8 +1414,9 @@ impl Fnr {
     }
 
     #[inline(always)]
-    pub fn lck_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13)
+    pub fn lck(mut self, val: u32) -> Fnr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -1279,8 +1425,9 @@ impl Fnr {
     }
 
     #[inline(always)]
-    pub fn rxdm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn rxdm(mut self, val: u32) -> Fnr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -1289,10 +1436,15 @@ impl Fnr {
     }
 
     #[inline(always)]
-    pub fn rxdp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn rxdp(mut self, val: u32) -> Fnr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x48) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fnr {
@@ -1320,8 +1472,9 @@ impl Daddr {
     }
 
     #[inline(always)]
-    pub fn add_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0)
+    pub fn add(mut self, val: u32) -> Daddr {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1330,10 +1483,15 @@ impl Daddr {
     }
 
     #[inline(always)]
-    pub fn ef_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn ef(mut self, val: u32) -> Daddr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x4C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod daddr {
@@ -1361,10 +1519,15 @@ impl Btable {
     }
 
     #[inline(always)]
-    pub fn btable_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 13) - 1) << 3)) | ((val & ((1 << 13) - 1)) << 3)
+    pub fn btable(mut self, val: u32) -> Btable {
+        self.raw = (self.raw & !(((1 << 13) - 1) << 3)) | ((val & ((1 << 13) - 1)) << 3);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40005C00 + 0x50) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod btable {

@@ -9,8 +9,9 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn strt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn strt(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn jstrt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn jstrt(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn jeoc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn jeoc(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -39,8 +42,9 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn eoc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn eoc(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -49,10 +53,15 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn awd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn awd(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod sr {
@@ -80,8 +89,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn awden_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23)
+    pub fn awden(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23);
+        self
     }
 
     #[inline(always)]
@@ -90,8 +100,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn jawden_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22)
+    pub fn jawden(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -100,8 +111,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn dualmod_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 16)) | ((val & ((1 << 4) - 1)) << 16)
+    pub fn dualmod(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 16)) | ((val & ((1 << 4) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -110,8 +122,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn discnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 13)) | ((val & ((1 << 3) - 1)) << 13)
+    pub fn discnum(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 13)) | ((val & ((1 << 3) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -120,8 +133,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn jdiscen_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn jdiscen(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -130,8 +144,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn discen_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn discen(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -140,8 +155,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn jauto_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn jauto(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -150,8 +166,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn awdsgl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn awdsgl(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -160,8 +177,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn scan_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn scan(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -170,8 +188,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn jeocie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn jeocie(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -180,8 +199,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn awdie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn awdie(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -190,8 +210,9 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn eocie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn eocie(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -200,10 +221,15 @@ impl Cr1 {
     }
 
     #[inline(always)]
-    pub fn awdch_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0)
+    pub fn awdch(mut self, val: u32) -> Cr1 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cr1 {
@@ -231,8 +257,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn tsvrefe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23)
+    pub fn tsvrefe(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23);
+        self
     }
 
     #[inline(always)]
@@ -241,8 +268,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn swstart_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22)
+    pub fn swstart(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -251,8 +279,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn jswstart_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn jswstart(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -261,8 +290,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn exttrig_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn exttrig(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -271,8 +301,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn extsel_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 17)) | ((val & ((1 << 3) - 1)) << 17)
+    pub fn extsel(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 17)) | ((val & ((1 << 3) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -281,8 +312,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn jexttrig_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn jexttrig(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -291,8 +323,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn jextsel_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 12)) | ((val & ((1 << 3) - 1)) << 12)
+    pub fn jextsel(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 12)) | ((val & ((1 << 3) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -301,8 +334,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn align_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn align(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -311,8 +345,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn dma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn dma(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -321,8 +356,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn rstcal_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn rstcal(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -331,8 +367,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn cal_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn cal(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -341,8 +378,9 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn cont_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn cont(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -351,10 +389,15 @@ impl Cr2 {
     }
 
     #[inline(always)]
-    pub fn adon_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn adon(mut self, val: u32) -> Cr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cr2 {
@@ -382,8 +425,9 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp10_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 0)) | ((val & ((1 << 3) - 1)) << 0)
+    pub fn smp10(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 0)) | ((val & ((1 << 3) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -392,8 +436,9 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp11_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 3)) | ((val & ((1 << 3) - 1)) << 3)
+    pub fn smp11(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 3)) | ((val & ((1 << 3) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -402,8 +447,9 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp12_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 6)) | ((val & ((1 << 3) - 1)) << 6)
+    pub fn smp12(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 6)) | ((val & ((1 << 3) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -412,8 +458,9 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp13_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 9)) | ((val & ((1 << 3) - 1)) << 9)
+    pub fn smp13(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 9)) | ((val & ((1 << 3) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -422,8 +469,9 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp14_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 12)) | ((val & ((1 << 3) - 1)) << 12)
+    pub fn smp14(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 12)) | ((val & ((1 << 3) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -432,8 +480,9 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp15_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 15)) | ((val & ((1 << 3) - 1)) << 15)
+    pub fn smp15(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 15)) | ((val & ((1 << 3) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -442,8 +491,9 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp16_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 18)) | ((val & ((1 << 3) - 1)) << 18)
+    pub fn smp16(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 18)) | ((val & ((1 << 3) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -452,10 +502,15 @@ impl Smpr1 {
     }
 
     #[inline(always)]
-    pub fn smp17_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 21)) | ((val & ((1 << 3) - 1)) << 21)
+    pub fn smp17(mut self, val: u32) -> Smpr1 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 21)) | ((val & ((1 << 3) - 1)) << 21);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod smpr1 {
@@ -483,8 +538,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 0)) | ((val & ((1 << 3) - 1)) << 0)
+    pub fn smp0(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 0)) | ((val & ((1 << 3) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -493,8 +549,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 3)) | ((val & ((1 << 3) - 1)) << 3)
+    pub fn smp1(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 3)) | ((val & ((1 << 3) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -503,8 +560,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 6)) | ((val & ((1 << 3) - 1)) << 6)
+    pub fn smp2(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 6)) | ((val & ((1 << 3) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -513,8 +571,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 9)) | ((val & ((1 << 3) - 1)) << 9)
+    pub fn smp3(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 9)) | ((val & ((1 << 3) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -523,8 +582,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 12)) | ((val & ((1 << 3) - 1)) << 12)
+    pub fn smp4(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 12)) | ((val & ((1 << 3) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -533,8 +593,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 15)) | ((val & ((1 << 3) - 1)) << 15)
+    pub fn smp5(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 15)) | ((val & ((1 << 3) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -543,8 +604,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 18)) | ((val & ((1 << 3) - 1)) << 18)
+    pub fn smp6(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 18)) | ((val & ((1 << 3) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -553,8 +615,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 21)) | ((val & ((1 << 3) - 1)) << 21)
+    pub fn smp7(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 21)) | ((val & ((1 << 3) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -563,8 +626,9 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp8_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 24)) | ((val & ((1 << 3) - 1)) << 24)
+    pub fn smp8(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 24)) | ((val & ((1 << 3) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -573,10 +637,15 @@ impl Smpr2 {
     }
 
     #[inline(always)]
-    pub fn smp9_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 27)) | ((val & ((1 << 3) - 1)) << 27)
+    pub fn smp9(mut self, val: u32) -> Smpr2 {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 27)) | ((val & ((1 << 3) - 1)) << 27);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod smpr2 {
@@ -604,10 +673,15 @@ impl Jofr1 {
     }
 
     #[inline(always)]
-    pub fn joffset1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn joffset1(mut self, val: u32) -> Jofr1 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jofr1 {
@@ -635,10 +709,15 @@ impl Jofr2 {
     }
 
     #[inline(always)]
-    pub fn joffset2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn joffset2(mut self, val: u32) -> Jofr2 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jofr2 {
@@ -666,10 +745,15 @@ impl Jofr3 {
     }
 
     #[inline(always)]
-    pub fn joffset3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn joffset3(mut self, val: u32) -> Jofr3 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jofr3 {
@@ -697,10 +781,15 @@ impl Jofr4 {
     }
 
     #[inline(always)]
-    pub fn joffset4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn joffset4(mut self, val: u32) -> Jofr4 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x20) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jofr4 {
@@ -728,10 +817,15 @@ impl Htr {
     }
 
     #[inline(always)]
-    pub fn ht_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn ht(mut self, val: u32) -> Htr {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x24) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod htr {
@@ -759,10 +853,15 @@ impl Ltr {
     }
 
     #[inline(always)]
-    pub fn lt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn lt(mut self, val: u32) -> Ltr {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x28) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ltr {
@@ -790,8 +889,9 @@ impl Sqr1 {
     }
 
     #[inline(always)]
-    pub fn l_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 20)) | ((val & ((1 << 4) - 1)) << 20)
+    pub fn l(mut self, val: u32) -> Sqr1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 20)) | ((val & ((1 << 4) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -800,8 +900,9 @@ impl Sqr1 {
     }
 
     #[inline(always)]
-    pub fn sq16_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15)
+    pub fn sq16(mut self, val: u32) -> Sqr1 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -810,8 +911,9 @@ impl Sqr1 {
     }
 
     #[inline(always)]
-    pub fn sq15_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10)
+    pub fn sq15(mut self, val: u32) -> Sqr1 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -820,8 +922,9 @@ impl Sqr1 {
     }
 
     #[inline(always)]
-    pub fn sq14_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5)
+    pub fn sq14(mut self, val: u32) -> Sqr1 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -830,10 +933,15 @@ impl Sqr1 {
     }
 
     #[inline(always)]
-    pub fn sq13_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0)
+    pub fn sq13(mut self, val: u32) -> Sqr1 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x2C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod sqr1 {
@@ -861,8 +969,9 @@ impl Sqr2 {
     }
 
     #[inline(always)]
-    pub fn sq12_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 25)) | ((val & ((1 << 5) - 1)) << 25)
+    pub fn sq12(mut self, val: u32) -> Sqr2 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 25)) | ((val & ((1 << 5) - 1)) << 25);
+        self
     }
 
     #[inline(always)]
@@ -871,8 +980,9 @@ impl Sqr2 {
     }
 
     #[inline(always)]
-    pub fn sq11_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 20)) | ((val & ((1 << 5) - 1)) << 20)
+    pub fn sq11(mut self, val: u32) -> Sqr2 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 20)) | ((val & ((1 << 5) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -881,8 +991,9 @@ impl Sqr2 {
     }
 
     #[inline(always)]
-    pub fn sq10_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15)
+    pub fn sq10(mut self, val: u32) -> Sqr2 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -891,8 +1002,9 @@ impl Sqr2 {
     }
 
     #[inline(always)]
-    pub fn sq9_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10)
+    pub fn sq9(mut self, val: u32) -> Sqr2 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -901,8 +1013,9 @@ impl Sqr2 {
     }
 
     #[inline(always)]
-    pub fn sq8_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5)
+    pub fn sq8(mut self, val: u32) -> Sqr2 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -911,10 +1024,15 @@ impl Sqr2 {
     }
 
     #[inline(always)]
-    pub fn sq7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0)
+    pub fn sq7(mut self, val: u32) -> Sqr2 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x30) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod sqr2 {
@@ -942,8 +1060,9 @@ impl Sqr3 {
     }
 
     #[inline(always)]
-    pub fn sq6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 25)) | ((val & ((1 << 5) - 1)) << 25)
+    pub fn sq6(mut self, val: u32) -> Sqr3 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 25)) | ((val & ((1 << 5) - 1)) << 25);
+        self
     }
 
     #[inline(always)]
@@ -952,8 +1071,9 @@ impl Sqr3 {
     }
 
     #[inline(always)]
-    pub fn sq5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 20)) | ((val & ((1 << 5) - 1)) << 20)
+    pub fn sq5(mut self, val: u32) -> Sqr3 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 20)) | ((val & ((1 << 5) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -962,8 +1082,9 @@ impl Sqr3 {
     }
 
     #[inline(always)]
-    pub fn sq4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15)
+    pub fn sq4(mut self, val: u32) -> Sqr3 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -972,8 +1093,9 @@ impl Sqr3 {
     }
 
     #[inline(always)]
-    pub fn sq3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10)
+    pub fn sq3(mut self, val: u32) -> Sqr3 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -982,8 +1104,9 @@ impl Sqr3 {
     }
 
     #[inline(always)]
-    pub fn sq2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5)
+    pub fn sq2(mut self, val: u32) -> Sqr3 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -992,10 +1115,15 @@ impl Sqr3 {
     }
 
     #[inline(always)]
-    pub fn sq1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0)
+    pub fn sq1(mut self, val: u32) -> Sqr3 {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x34) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod sqr3 {
@@ -1023,8 +1151,9 @@ impl Jsqr {
     }
 
     #[inline(always)]
-    pub fn jl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn jl(mut self, val: u32) -> Jsqr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1033,8 +1162,9 @@ impl Jsqr {
     }
 
     #[inline(always)]
-    pub fn jsq4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15)
+    pub fn jsq4(mut self, val: u32) -> Jsqr {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 15)) | ((val & ((1 << 5) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1043,8 +1173,9 @@ impl Jsqr {
     }
 
     #[inline(always)]
-    pub fn jsq3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10)
+    pub fn jsq3(mut self, val: u32) -> Jsqr {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 10)) | ((val & ((1 << 5) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -1053,8 +1184,9 @@ impl Jsqr {
     }
 
     #[inline(always)]
-    pub fn jsq2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5)
+    pub fn jsq2(mut self, val: u32) -> Jsqr {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 5)) | ((val & ((1 << 5) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1063,10 +1195,15 @@ impl Jsqr {
     }
 
     #[inline(always)]
-    pub fn jsq1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0)
+    pub fn jsq1(mut self, val: u32) -> Jsqr {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 0)) | ((val & ((1 << 5) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x38) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jsqr {
@@ -1094,10 +1231,15 @@ impl Jdr1 {
     }
 
     #[inline(always)]
-    pub fn jdata_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn jdata(mut self, val: u32) -> Jdr1 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x3C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jdr1 {
@@ -1125,10 +1267,15 @@ impl Jdr2 {
     }
 
     #[inline(always)]
-    pub fn jdata_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn jdata(mut self, val: u32) -> Jdr2 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x40) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jdr2 {
@@ -1156,10 +1303,15 @@ impl Jdr3 {
     }
 
     #[inline(always)]
-    pub fn jdata_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn jdata(mut self, val: u32) -> Jdr3 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x44) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jdr3 {
@@ -1187,10 +1339,15 @@ impl Jdr4 {
     }
 
     #[inline(always)]
-    pub fn jdata_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn jdata(mut self, val: u32) -> Jdr4 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x48) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod jdr4 {
@@ -1218,8 +1375,9 @@ impl Dr {
     }
 
     #[inline(always)]
-    pub fn data_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn data(mut self, val: u32) -> Dr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1228,10 +1386,15 @@ impl Dr {
     }
 
     #[inline(always)]
-    pub fn adc2data_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16)
+    pub fn adc2data(mut self, val: u32) -> Dr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40012400 + 0x4C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr {

@@ -9,8 +9,9 @@ impl Evcr {
     }
 
     #[inline(always)]
-    pub fn pin_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn pin(mut self, val: u32) -> Evcr {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Evcr {
     }
 
     #[inline(always)]
-    pub fn port_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 4)) | ((val & ((1 << 3) - 1)) << 4)
+    pub fn port(mut self, val: u32) -> Evcr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 4)) | ((val & ((1 << 3) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -29,10 +31,15 @@ impl Evcr {
     }
 
     #[inline(always)]
-    pub fn evoe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn evoe(mut self, val: u32) -> Evcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40010000 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod evcr {
@@ -60,8 +67,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn spi1_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn spi1_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -70,8 +78,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn i2c1_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn i2c1_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -80,8 +89,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn usart1_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn usart1_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -90,8 +100,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn usart2_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn usart2_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -100,8 +111,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn usart3_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn usart3_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -110,8 +122,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn tim1_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6)
+    pub fn tim1_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -120,8 +133,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn tim2_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn tim2_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -130,8 +144,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn tim3_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn tim3_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -140,8 +155,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn tim4_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn tim4_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -150,8 +166,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn can_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 13)) | ((val & ((1 << 2) - 1)) << 13)
+    pub fn can_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 13)) | ((val & ((1 << 2) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -160,8 +177,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn pd01_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn pd01_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -170,8 +188,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn tim5ch4_iremap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn tim5ch4_iremap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -180,8 +199,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn adc1_etrginj_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn adc1_etrginj_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -190,8 +210,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn adc1_etrgreg_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18)
+    pub fn adc1_etrgreg_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -200,8 +221,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn adc2_etrginj_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19)
+    pub fn adc2_etrginj_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -210,8 +232,9 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn adc2_etrgreg_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn adc2_etrgreg_remap(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -220,10 +243,15 @@ impl Mapr {
     }
 
     #[inline(always)]
-    pub fn swj_cfg_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 24)) | ((val & ((1 << 3) - 1)) << 24)
+    pub fn swj_cfg(mut self, val: u32) -> Mapr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 24)) | ((val & ((1 << 3) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40010000 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mapr {
@@ -251,8 +279,9 @@ impl Exticr1 {
     }
 
     #[inline(always)]
-    pub fn exti0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn exti0(mut self, val: u32) -> Exticr1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -261,8 +290,9 @@ impl Exticr1 {
     }
 
     #[inline(always)]
-    pub fn exti1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4)
+    pub fn exti1(mut self, val: u32) -> Exticr1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -271,8 +301,9 @@ impl Exticr1 {
     }
 
     #[inline(always)]
-    pub fn exti2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8)
+    pub fn exti2(mut self, val: u32) -> Exticr1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -281,10 +312,15 @@ impl Exticr1 {
     }
 
     #[inline(always)]
-    pub fn exti3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12)
+    pub fn exti3(mut self, val: u32) -> Exticr1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40010000 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod exticr1 {
@@ -312,8 +348,9 @@ impl Exticr2 {
     }
 
     #[inline(always)]
-    pub fn exti4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn exti4(mut self, val: u32) -> Exticr2 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -322,8 +359,9 @@ impl Exticr2 {
     }
 
     #[inline(always)]
-    pub fn exti5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4)
+    pub fn exti5(mut self, val: u32) -> Exticr2 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -332,8 +370,9 @@ impl Exticr2 {
     }
 
     #[inline(always)]
-    pub fn exti6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8)
+    pub fn exti6(mut self, val: u32) -> Exticr2 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -342,10 +381,15 @@ impl Exticr2 {
     }
 
     #[inline(always)]
-    pub fn exti7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12)
+    pub fn exti7(mut self, val: u32) -> Exticr2 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40010000 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod exticr2 {
@@ -373,8 +417,9 @@ impl Exticr3 {
     }
 
     #[inline(always)]
-    pub fn exti8_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn exti8(mut self, val: u32) -> Exticr3 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -383,8 +428,9 @@ impl Exticr3 {
     }
 
     #[inline(always)]
-    pub fn exti9_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4)
+    pub fn exti9(mut self, val: u32) -> Exticr3 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -393,8 +439,9 @@ impl Exticr3 {
     }
 
     #[inline(always)]
-    pub fn exti10_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8)
+    pub fn exti10(mut self, val: u32) -> Exticr3 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -403,10 +450,15 @@ impl Exticr3 {
     }
 
     #[inline(always)]
-    pub fn exti11_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12)
+    pub fn exti11(mut self, val: u32) -> Exticr3 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40010000 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod exticr3 {
@@ -434,8 +486,9 @@ impl Exticr4 {
     }
 
     #[inline(always)]
-    pub fn exti12_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn exti12(mut self, val: u32) -> Exticr4 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -444,8 +497,9 @@ impl Exticr4 {
     }
 
     #[inline(always)]
-    pub fn exti13_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4)
+    pub fn exti13(mut self, val: u32) -> Exticr4 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 4)) | ((val & ((1 << 4) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -454,8 +508,9 @@ impl Exticr4 {
     }
 
     #[inline(always)]
-    pub fn exti14_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8)
+    pub fn exti14(mut self, val: u32) -> Exticr4 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -464,10 +519,15 @@ impl Exticr4 {
     }
 
     #[inline(always)]
-    pub fn exti15_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12)
+    pub fn exti15(mut self, val: u32) -> Exticr4 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 12)) | ((val & ((1 << 4) - 1)) << 12);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40010000 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod exticr4 {
@@ -495,8 +555,9 @@ impl Mapr2 {
     }
 
     #[inline(always)]
-    pub fn tim9_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn tim9_remap(mut self, val: u32) -> Mapr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -505,8 +566,9 @@ impl Mapr2 {
     }
 
     #[inline(always)]
-    pub fn tim10_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn tim10_remap(mut self, val: u32) -> Mapr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -515,8 +577,9 @@ impl Mapr2 {
     }
 
     #[inline(always)]
-    pub fn tim11_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn tim11_remap(mut self, val: u32) -> Mapr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -525,8 +588,9 @@ impl Mapr2 {
     }
 
     #[inline(always)]
-    pub fn tim13_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn tim13_remap(mut self, val: u32) -> Mapr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -535,8 +599,9 @@ impl Mapr2 {
     }
 
     #[inline(always)]
-    pub fn tim14_remap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn tim14_remap(mut self, val: u32) -> Mapr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -545,10 +610,15 @@ impl Mapr2 {
     }
 
     #[inline(always)]
-    pub fn fsmc_nadv_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn fsmc_nadv(mut self, val: u32) -> Mapr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40010000 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mapr2 {

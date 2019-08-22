@@ -9,8 +9,9 @@ impl Mmccr {
     }
 
     #[inline(always)]
-    pub fn cr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn cr(mut self, val: u32) -> Mmccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Mmccr {
     }
 
     #[inline(always)]
-    pub fn csr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn csr(mut self, val: u32) -> Mmccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Mmccr {
     }
 
     #[inline(always)]
-    pub fn ror_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn ror(mut self, val: u32) -> Mmccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -39,10 +42,15 @@ impl Mmccr {
     }
 
     #[inline(always)]
-    pub fn mcf_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn mcf(mut self, val: u32) -> Mmccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmccr {
@@ -70,8 +78,9 @@ impl Mmcrir {
     }
 
     #[inline(always)]
-    pub fn rfces_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn rfces(mut self, val: u32) -> Mmcrir {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -80,8 +89,9 @@ impl Mmcrir {
     }
 
     #[inline(always)]
-    pub fn rfaes_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn rfaes(mut self, val: u32) -> Mmcrir {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -90,10 +100,15 @@ impl Mmcrir {
     }
 
     #[inline(always)]
-    pub fn rgufs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn rgufs(mut self, val: u32) -> Mmcrir {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmcrir {
@@ -121,8 +136,9 @@ impl Mmctir {
     }
 
     #[inline(always)]
-    pub fn tgfscs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn tgfscs(mut self, val: u32) -> Mmctir {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -131,8 +147,9 @@ impl Mmctir {
     }
 
     #[inline(always)]
-    pub fn tgfmscs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn tgfmscs(mut self, val: u32) -> Mmctir {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -141,10 +158,15 @@ impl Mmctir {
     }
 
     #[inline(always)]
-    pub fn tgfs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn tgfs(mut self, val: u32) -> Mmctir {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmctir {
@@ -172,8 +194,9 @@ impl Mmcrimr {
     }
 
     #[inline(always)]
-    pub fn rfcem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn rfcem(mut self, val: u32) -> Mmcrimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -182,8 +205,9 @@ impl Mmcrimr {
     }
 
     #[inline(always)]
-    pub fn rfaem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn rfaem(mut self, val: u32) -> Mmcrimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -192,10 +216,15 @@ impl Mmcrimr {
     }
 
     #[inline(always)]
-    pub fn rgufm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn rgufm(mut self, val: u32) -> Mmcrimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmcrimr {
@@ -223,8 +252,9 @@ impl Mmctimr {
     }
 
     #[inline(always)]
-    pub fn tgfscm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn tgfscm(mut self, val: u32) -> Mmctimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -233,8 +263,9 @@ impl Mmctimr {
     }
 
     #[inline(always)]
-    pub fn tgfmscm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn tgfmscm(mut self, val: u32) -> Mmctimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -243,10 +274,15 @@ impl Mmctimr {
     }
 
     #[inline(always)]
-    pub fn tgfm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn tgfm(mut self, val: u32) -> Mmctimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmctimr {
@@ -274,10 +310,15 @@ impl Mmctgfsccr {
     }
 
     #[inline(always)]
-    pub fn tgfscc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn tgfscc(mut self, val: u32) -> Mmctgfsccr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x4C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmctgfsccr {
@@ -305,10 +346,15 @@ impl Mmctgfmsccr {
     }
 
     #[inline(always)]
-    pub fn tgfmscc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn tgfmscc(mut self, val: u32) -> Mmctgfmsccr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x50) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmctgfmsccr {
@@ -336,10 +382,15 @@ impl Mmctgfcr {
     }
 
     #[inline(always)]
-    pub fn tgfc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn tgfc(mut self, val: u32) -> Mmctgfcr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x68) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmctgfcr {
@@ -367,10 +418,15 @@ impl Mmcrfcecr {
     }
 
     #[inline(always)]
-    pub fn rfcfc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn rfcfc(mut self, val: u32) -> Mmcrfcecr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x94) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmcrfcecr {
@@ -398,10 +454,15 @@ impl Mmcrfaecr {
     }
 
     #[inline(always)]
-    pub fn rfaec_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn rfaec(mut self, val: u32) -> Mmcrfaecr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0x98) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmcrfaecr {
@@ -429,10 +490,15 @@ impl Mmcrgufcr {
     }
 
     #[inline(always)]
-    pub fn rgufc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn rgufc(mut self, val: u32) -> Mmcrgufcr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028100 + 0xC4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mmcrgufcr {

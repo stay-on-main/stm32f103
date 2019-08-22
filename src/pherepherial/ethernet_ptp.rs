@@ -9,8 +9,9 @@ impl Ptptscr {
     }
 
     #[inline(always)]
-    pub fn tse_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn tse(mut self, val: u32) -> Ptptscr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Ptptscr {
     }
 
     #[inline(always)]
-    pub fn tsfcu_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tsfcu(mut self, val: u32) -> Ptptscr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Ptptscr {
     }
 
     #[inline(always)]
-    pub fn tssti_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn tssti(mut self, val: u32) -> Ptptscr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -39,8 +42,9 @@ impl Ptptscr {
     }
 
     #[inline(always)]
-    pub fn tsstu_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn tsstu(mut self, val: u32) -> Ptptscr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -49,8 +53,9 @@ impl Ptptscr {
     }
 
     #[inline(always)]
-    pub fn tsite_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn tsite(mut self, val: u32) -> Ptptscr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -59,10 +64,15 @@ impl Ptptscr {
     }
 
     #[inline(always)]
-    pub fn tsaru_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn tsaru(mut self, val: u32) -> Ptptscr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptptscr {
@@ -90,10 +100,15 @@ impl Ptpssir {
     }
 
     #[inline(always)]
-    pub fn stssi_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn stssi(mut self, val: u32) -> Ptpssir {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptpssir {
@@ -121,10 +136,15 @@ impl Ptptshr {
     }
 
     #[inline(always)]
-    pub fn sts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn sts(mut self, val: u32) -> Ptptshr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptptshr {
@@ -152,8 +172,9 @@ impl Ptptslr {
     }
 
     #[inline(always)]
-    pub fn stss_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 31) - 1) << 0)) | ((val & ((1 << 31) - 1)) << 0)
+    pub fn stss(mut self, val: u32) -> Ptptslr {
+        self.raw = (self.raw & !(((1 << 31) - 1) << 0)) | ((val & ((1 << 31) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -162,10 +183,15 @@ impl Ptptslr {
     }
 
     #[inline(always)]
-    pub fn stpns_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn stpns(mut self, val: u32) -> Ptptslr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptptslr {
@@ -193,10 +219,15 @@ impl Ptptshur {
     }
 
     #[inline(always)]
-    pub fn tsus_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn tsus(mut self, val: u32) -> Ptptshur {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptptshur {
@@ -224,8 +255,9 @@ impl Ptptslur {
     }
 
     #[inline(always)]
-    pub fn tsuss_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 31) - 1) << 0)) | ((val & ((1 << 31) - 1)) << 0)
+    pub fn tsuss(mut self, val: u32) -> Ptptslur {
+        self.raw = (self.raw & !(((1 << 31) - 1) << 0)) | ((val & ((1 << 31) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -234,10 +266,15 @@ impl Ptptslur {
     }
 
     #[inline(always)]
-    pub fn tsupns_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn tsupns(mut self, val: u32) -> Ptptslur {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptptslur {
@@ -265,10 +302,15 @@ impl Ptptsar {
     }
 
     #[inline(always)]
-    pub fn tsa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn tsa(mut self, val: u32) -> Ptptsar {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptptsar {
@@ -296,10 +338,15 @@ impl Ptptthr {
     }
 
     #[inline(always)]
-    pub fn ttsh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ttsh(mut self, val: u32) -> Ptptthr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptptthr {
@@ -327,10 +374,15 @@ impl Ptpttlr {
     }
 
     #[inline(always)]
-    pub fn ttsl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ttsl(mut self, val: u32) -> Ptpttlr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028700 + 0x20) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ptpttlr {

@@ -9,8 +9,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn t_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0)
+    pub fn t(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,10 +20,15 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn wdga_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn wdga(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40002C00 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cr {
@@ -50,8 +56,9 @@ impl Cfr {
     }
 
     #[inline(always)]
-    pub fn w_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0)
+    pub fn w(mut self, val: u32) -> Cfr {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -60,8 +67,9 @@ impl Cfr {
     }
 
     #[inline(always)]
-    pub fn wdgtb_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 7)) | ((val & ((1 << 2) - 1)) << 7)
+    pub fn wdgtb(mut self, val: u32) -> Cfr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 7)) | ((val & ((1 << 2) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -70,10 +78,15 @@ impl Cfr {
     }
 
     #[inline(always)]
-    pub fn ewi_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn ewi(mut self, val: u32) -> Cfr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40002C00 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cfr {
@@ -101,10 +114,15 @@ impl Sr {
     }
 
     #[inline(always)]
-    pub fn ewi_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn ewi(mut self, val: u32) -> Sr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40002C00 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod sr {

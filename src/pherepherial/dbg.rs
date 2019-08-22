@@ -9,8 +9,9 @@ impl Idcode {
     }
 
     #[inline(always)]
-    pub fn dev_id_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn dev_id(mut self, val: u32) -> Idcode {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,10 +20,15 @@ impl Idcode {
     }
 
     #[inline(always)]
-    pub fn rev_id_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16)
+    pub fn rev_id(mut self, val: u32) -> Idcode {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE0042000 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod idcode {
@@ -50,8 +56,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_sleep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn dbg_sleep(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -60,8 +67,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn dbg_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -70,8 +78,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_standby_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn dbg_standby(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -80,8 +89,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn trace_ioen_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn trace_ioen(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -90,8 +100,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn trace_mode_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6)
+    pub fn trace_mode(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -100,8 +111,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_iwdg_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn dbg_iwdg_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -110,8 +122,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_wwdg_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn dbg_wwdg_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -120,8 +133,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim1_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dbg_tim1_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -130,8 +144,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim2_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn dbg_tim2_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -140,8 +155,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim3_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn dbg_tim3_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -150,8 +166,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim4_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13)
+    pub fn dbg_tim4_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -160,8 +177,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_can1_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn dbg_can1_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -170,8 +188,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_i2c1_smbus_timeout_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn dbg_i2c1_smbus_timeout(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -180,8 +199,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_i2c2_smbus_timeout_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn dbg_i2c2_smbus_timeout(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -190,8 +210,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim8_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn dbg_tim8_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -200,8 +221,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim5_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18)
+    pub fn dbg_tim5_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -210,8 +232,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim6_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19)
+    pub fn dbg_tim6_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -220,8 +243,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_tim7_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn dbg_tim7_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -230,10 +254,15 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dbg_can2_stop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn dbg_can2_stop(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE0042000 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cr {

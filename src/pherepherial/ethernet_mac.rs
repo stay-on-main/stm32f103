@@ -9,8 +9,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn re_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn re(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn te_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn te(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn dc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dc(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -39,8 +42,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn bl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 5)) | ((val & ((1 << 2) - 1)) << 5)
+    pub fn bl(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 5)) | ((val & ((1 << 2) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -49,8 +53,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn apcs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn apcs(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -59,8 +64,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn rd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn rd(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -69,8 +75,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn ipco_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn ipco(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -79,8 +86,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn dm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn dm(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -89,8 +97,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn lm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn lm(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -99,8 +108,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn rod_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13)
+    pub fn rod(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -109,8 +119,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn fes_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn fes(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -119,8 +130,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn csd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn csd(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -129,8 +141,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn ifg_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 17)) | ((val & ((1 << 3) - 1)) << 17)
+    pub fn ifg(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 17)) | ((val & ((1 << 3) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -139,8 +152,9 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn jd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22)
+    pub fn jd(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -149,10 +163,15 @@ impl Maccr {
     }
 
     #[inline(always)]
-    pub fn wd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23)
+    pub fn wd(mut self, val: u32) -> Maccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maccr {
@@ -180,8 +199,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn pm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn pm(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -190,8 +210,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn hu_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn hu(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -200,8 +221,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn hm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn hm(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -210,8 +232,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn daif_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn daif(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -220,8 +243,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn pam_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn pam(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -230,8 +254,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn bfd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn bfd(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -240,8 +265,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn pcf_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6)
+    pub fn pcf(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -250,8 +276,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn saif_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn saif(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -260,8 +287,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn saf_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn saf(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -270,8 +298,9 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn hpf_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn hpf(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -280,10 +309,15 @@ impl Macffr {
     }
 
     #[inline(always)]
-    pub fn ra_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn ra(mut self, val: u32) -> Macffr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macffr {
@@ -311,10 +345,15 @@ impl Machthr {
     }
 
     #[inline(always)]
-    pub fn hth_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn hth(mut self, val: u32) -> Machthr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod machthr {
@@ -342,10 +381,15 @@ impl Machtlr {
     }
 
     #[inline(always)]
-    pub fn htl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn htl(mut self, val: u32) -> Machtlr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod machtlr {
@@ -373,8 +417,9 @@ impl Macmiiar {
     }
 
     #[inline(always)]
-    pub fn mb_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn mb(mut self, val: u32) -> Macmiiar {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -383,8 +428,9 @@ impl Macmiiar {
     }
 
     #[inline(always)]
-    pub fn mw_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn mw(mut self, val: u32) -> Macmiiar {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -393,8 +439,9 @@ impl Macmiiar {
     }
 
     #[inline(always)]
-    pub fn cr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 2)) | ((val & ((1 << 3) - 1)) << 2)
+    pub fn cr(mut self, val: u32) -> Macmiiar {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 2)) | ((val & ((1 << 3) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -403,8 +450,9 @@ impl Macmiiar {
     }
 
     #[inline(always)]
-    pub fn mr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 6)) | ((val & ((1 << 5) - 1)) << 6)
+    pub fn mr(mut self, val: u32) -> Macmiiar {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 6)) | ((val & ((1 << 5) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -413,10 +461,15 @@ impl Macmiiar {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 11)) | ((val & ((1 << 5) - 1)) << 11)
+    pub fn pa(mut self, val: u32) -> Macmiiar {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 11)) | ((val & ((1 << 5) - 1)) << 11);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macmiiar {
@@ -444,10 +497,15 @@ impl Macmiidr {
     }
 
     #[inline(always)]
-    pub fn md_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn md(mut self, val: u32) -> Macmiidr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macmiidr {
@@ -475,8 +533,9 @@ impl Macfcr {
     }
 
     #[inline(always)]
-    pub fn fcb_bpa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn fcb_bpa(mut self, val: u32) -> Macfcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -485,8 +544,9 @@ impl Macfcr {
     }
 
     #[inline(always)]
-    pub fn tfce_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tfce(mut self, val: u32) -> Macfcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -495,8 +555,9 @@ impl Macfcr {
     }
 
     #[inline(always)]
-    pub fn rfce_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn rfce(mut self, val: u32) -> Macfcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -505,8 +566,9 @@ impl Macfcr {
     }
 
     #[inline(always)]
-    pub fn upfd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn upfd(mut self, val: u32) -> Macfcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -515,8 +577,9 @@ impl Macfcr {
     }
 
     #[inline(always)]
-    pub fn plt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4)
+    pub fn plt(mut self, val: u32) -> Macfcr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 4)) | ((val & ((1 << 2) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -525,8 +588,9 @@ impl Macfcr {
     }
 
     #[inline(always)]
-    pub fn zqpd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn zqpd(mut self, val: u32) -> Macfcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -535,10 +599,15 @@ impl Macfcr {
     }
 
     #[inline(always)]
-    pub fn pt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16)
+    pub fn pt(mut self, val: u32) -> Macfcr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macfcr {
@@ -566,8 +635,9 @@ impl Macvlantr {
     }
 
     #[inline(always)]
-    pub fn vlanti_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn vlanti(mut self, val: u32) -> Macvlantr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -576,10 +646,15 @@ impl Macvlantr {
     }
 
     #[inline(always)]
-    pub fn vlantc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn vlantc(mut self, val: u32) -> Macvlantr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macvlantr {
@@ -625,8 +700,9 @@ impl Macpmtcsr {
     }
 
     #[inline(always)]
-    pub fn pd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn pd(mut self, val: u32) -> Macpmtcsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -635,8 +711,9 @@ impl Macpmtcsr {
     }
 
     #[inline(always)]
-    pub fn mpe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn mpe(mut self, val: u32) -> Macpmtcsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -645,8 +722,9 @@ impl Macpmtcsr {
     }
 
     #[inline(always)]
-    pub fn wfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn wfe(mut self, val: u32) -> Macpmtcsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -655,8 +733,9 @@ impl Macpmtcsr {
     }
 
     #[inline(always)]
-    pub fn mpr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn mpr(mut self, val: u32) -> Macpmtcsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -665,8 +744,9 @@ impl Macpmtcsr {
     }
 
     #[inline(always)]
-    pub fn wfr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn wfr(mut self, val: u32) -> Macpmtcsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -675,8 +755,9 @@ impl Macpmtcsr {
     }
 
     #[inline(always)]
-    pub fn gu_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn gu(mut self, val: u32) -> Macpmtcsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -685,10 +766,15 @@ impl Macpmtcsr {
     }
 
     #[inline(always)]
-    pub fn wffrpr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn wffrpr(mut self, val: u32) -> Macpmtcsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x2C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macpmtcsr {
@@ -716,8 +802,9 @@ impl Macsr {
     }
 
     #[inline(always)]
-    pub fn pmts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn pmts(mut self, val: u32) -> Macsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -726,8 +813,9 @@ impl Macsr {
     }
 
     #[inline(always)]
-    pub fn mmcs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn mmcs(mut self, val: u32) -> Macsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -736,8 +824,9 @@ impl Macsr {
     }
 
     #[inline(always)]
-    pub fn mmcrs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn mmcrs(mut self, val: u32) -> Macsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -746,8 +835,9 @@ impl Macsr {
     }
 
     #[inline(always)]
-    pub fn mmcts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn mmcts(mut self, val: u32) -> Macsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -756,10 +846,15 @@ impl Macsr {
     }
 
     #[inline(always)]
-    pub fn tsts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn tsts(mut self, val: u32) -> Macsr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x38) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macsr {
@@ -787,8 +882,9 @@ impl Macimr {
     }
 
     #[inline(always)]
-    pub fn pmtim_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn pmtim(mut self, val: u32) -> Macimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -797,10 +893,15 @@ impl Macimr {
     }
 
     #[inline(always)]
-    pub fn tstim_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn tstim(mut self, val: u32) -> Macimr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x3C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod macimr {
@@ -828,8 +929,9 @@ impl Maca0hr {
     }
 
     #[inline(always)]
-    pub fn maca0h_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn maca0h(mut self, val: u32) -> Maca0hr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -838,10 +940,15 @@ impl Maca0hr {
     }
 
     #[inline(always)]
-    pub fn mo_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn mo(mut self, val: u32) -> Maca0hr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x40) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca0hr {
@@ -869,10 +976,15 @@ impl Maca0lr {
     }
 
     #[inline(always)]
-    pub fn maca0l_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn maca0l(mut self, val: u32) -> Maca0lr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x44) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca0lr {
@@ -900,8 +1012,9 @@ impl Maca1hr {
     }
 
     #[inline(always)]
-    pub fn maca1h_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn maca1h(mut self, val: u32) -> Maca1hr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -910,8 +1023,9 @@ impl Maca1hr {
     }
 
     #[inline(always)]
-    pub fn mbc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 6) - 1) << 24)) | ((val & ((1 << 6) - 1)) << 24)
+    pub fn mbc(mut self, val: u32) -> Maca1hr {
+        self.raw = (self.raw & !(((1 << 6) - 1) << 24)) | ((val & ((1 << 6) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -920,8 +1034,9 @@ impl Maca1hr {
     }
 
     #[inline(always)]
-    pub fn sa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn sa(mut self, val: u32) -> Maca1hr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -930,10 +1045,15 @@ impl Maca1hr {
     }
 
     #[inline(always)]
-    pub fn ae_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn ae(mut self, val: u32) -> Maca1hr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x48) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca1hr {
@@ -961,10 +1081,15 @@ impl Maca1lr {
     }
 
     #[inline(always)]
-    pub fn maca1l_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn maca1l(mut self, val: u32) -> Maca1lr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x4C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca1lr {
@@ -992,8 +1117,9 @@ impl Maca2hr {
     }
 
     #[inline(always)]
-    pub fn eth_maca2hr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn eth_maca2hr(mut self, val: u32) -> Maca2hr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1002,8 +1128,9 @@ impl Maca2hr {
     }
 
     #[inline(always)]
-    pub fn mbc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 6) - 1) << 24)) | ((val & ((1 << 6) - 1)) << 24)
+    pub fn mbc(mut self, val: u32) -> Maca2hr {
+        self.raw = (self.raw & !(((1 << 6) - 1) << 24)) | ((val & ((1 << 6) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -1012,8 +1139,9 @@ impl Maca2hr {
     }
 
     #[inline(always)]
-    pub fn sa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn sa(mut self, val: u32) -> Maca2hr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1022,10 +1150,15 @@ impl Maca2hr {
     }
 
     #[inline(always)]
-    pub fn ae_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn ae(mut self, val: u32) -> Maca2hr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x50) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca2hr {
@@ -1053,10 +1186,15 @@ impl Maca2lr {
     }
 
     #[inline(always)]
-    pub fn maca2l_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 31) - 1) << 0)) | ((val & ((1 << 31) - 1)) << 0)
+    pub fn maca2l(mut self, val: u32) -> Maca2lr {
+        self.raw = (self.raw & !(((1 << 31) - 1) << 0)) | ((val & ((1 << 31) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x54) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca2lr {
@@ -1084,8 +1222,9 @@ impl Maca3hr {
     }
 
     #[inline(always)]
-    pub fn maca3h_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn maca3h(mut self, val: u32) -> Maca3hr {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1094,8 +1233,9 @@ impl Maca3hr {
     }
 
     #[inline(always)]
-    pub fn mbc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 6) - 1) << 24)) | ((val & ((1 << 6) - 1)) << 24)
+    pub fn mbc(mut self, val: u32) -> Maca3hr {
+        self.raw = (self.raw & !(((1 << 6) - 1) << 24)) | ((val & ((1 << 6) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -1104,8 +1244,9 @@ impl Maca3hr {
     }
 
     #[inline(always)]
-    pub fn sa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn sa(mut self, val: u32) -> Maca3hr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1114,10 +1255,15 @@ impl Maca3hr {
     }
 
     #[inline(always)]
-    pub fn ae_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn ae(mut self, val: u32) -> Maca3hr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x58) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca3hr {
@@ -1145,10 +1291,15 @@ impl Maca3lr {
     }
 
     #[inline(always)]
-    pub fn mbca3l_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn mbca3l(mut self, val: u32) -> Maca3lr {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40028000 + 0x5C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod maca3lr {

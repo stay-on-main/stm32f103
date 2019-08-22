@@ -9,8 +9,9 @@ impl Fs_hcfg {
     }
 
     #[inline(always)]
-    pub fn fslspcs_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0)
+    pub fn fslspcs(mut self, val: u32) -> Fs_hcfg {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,10 +20,15 @@ impl Fs_hcfg {
     }
 
     #[inline(always)]
-    pub fn fslss_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn fslss(mut self, val: u32) -> Fs_hcfg {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcfg {
@@ -50,10 +56,15 @@ impl Hfir {
     }
 
     #[inline(always)]
-    pub fn frivl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn frivl(mut self, val: u32) -> Hfir {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod hfir {
@@ -81,8 +92,9 @@ impl Fs_hfnum {
     }
 
     #[inline(always)]
-    pub fn frnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn frnum(mut self, val: u32) -> Fs_hfnum {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -91,10 +103,15 @@ impl Fs_hfnum {
     }
 
     #[inline(always)]
-    pub fn ftrem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16)
+    pub fn ftrem(mut self, val: u32) -> Fs_hfnum {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hfnum {
@@ -122,8 +139,9 @@ impl Fs_hptxsts {
     }
 
     #[inline(always)]
-    pub fn ptxfsavl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ptxfsavl(mut self, val: u32) -> Fs_hptxsts {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -132,8 +150,9 @@ impl Fs_hptxsts {
     }
 
     #[inline(always)]
-    pub fn ptxqsav_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ptxqsav(mut self, val: u32) -> Fs_hptxsts {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -142,10 +161,15 @@ impl Fs_hptxsts {
     }
 
     #[inline(always)]
-    pub fn ptxqtop_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ptxqtop(mut self, val: u32) -> Fs_hptxsts {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hptxsts {
@@ -173,10 +197,15 @@ impl Haint {
     }
 
     #[inline(always)]
-    pub fn haint_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn haint(mut self, val: u32) -> Haint {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod haint {
@@ -204,10 +233,15 @@ impl Haintmsk {
     }
 
     #[inline(always)]
-    pub fn haintm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn haintm(mut self, val: u32) -> Haintmsk {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod haintmsk {
@@ -235,8 +269,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn pcsts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn pcsts(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -245,8 +280,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn pcdet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn pcdet(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -255,8 +291,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn pena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn pena(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -265,8 +302,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn penchng_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn penchng(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -275,8 +313,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn poca_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn poca(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -285,8 +324,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn pocchng_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn pocchng(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -295,8 +335,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn pres_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pres(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -305,8 +346,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn psusp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn psusp(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -315,8 +357,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn prst_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn prst(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -325,8 +368,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn plsts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn plsts(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -335,8 +379,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn ppwr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn ppwr(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -345,8 +390,9 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn ptctl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 13)) | ((val & ((1 << 4) - 1)) << 13)
+    pub fn ptctl(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 13)) | ((val & ((1 << 4) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -355,10 +401,15 @@ impl Fs_hprt {
     }
 
     #[inline(always)]
-    pub fn pspd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 17)) | ((val & ((1 << 2) - 1)) << 17)
+    pub fn pspd(mut self, val: u32) -> Fs_hprt {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 17)) | ((val & ((1 << 2) - 1)) << 17);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x40) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hprt {
@@ -386,8 +437,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -396,8 +448,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -406,8 +459,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -416,8 +470,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -426,8 +481,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -436,8 +492,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -446,8 +503,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -456,8 +514,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -466,8 +525,9 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -476,10 +536,15 @@ impl Fs_hcchar0 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x100) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar0 {
@@ -507,8 +572,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -517,8 +583,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -527,8 +594,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -537,8 +605,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -547,8 +616,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -557,8 +627,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -567,8 +638,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -577,8 +649,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -587,8 +660,9 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -597,10 +671,15 @@ impl Fs_hcchar1 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x120) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar1 {
@@ -628,8 +707,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -638,8 +718,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -648,8 +729,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -658,8 +740,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -668,8 +751,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -678,8 +762,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -688,8 +773,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -698,8 +784,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -708,8 +795,9 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -718,10 +806,15 @@ impl Fs_hcchar2 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x140) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar2 {
@@ -749,8 +842,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -759,8 +853,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -769,8 +864,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -779,8 +875,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -789,8 +886,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -799,8 +897,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -809,8 +908,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -819,8 +919,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -829,8 +930,9 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -839,10 +941,15 @@ impl Fs_hcchar3 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x160) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar3 {
@@ -870,8 +977,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -880,8 +988,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -890,8 +999,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -900,8 +1010,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -910,8 +1021,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -920,8 +1032,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -930,8 +1043,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -940,8 +1054,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -950,8 +1065,9 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -960,10 +1076,15 @@ impl Fs_hcchar4 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x180) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar4 {
@@ -991,8 +1112,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1001,8 +1123,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -1011,8 +1134,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1021,8 +1145,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1031,8 +1156,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1041,8 +1167,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1051,8 +1178,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -1061,8 +1189,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -1071,8 +1200,9 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1081,10 +1211,15 @@ impl Fs_hcchar5 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1A0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar5 {
@@ -1112,8 +1247,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1122,8 +1258,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -1132,8 +1269,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1142,8 +1280,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1152,8 +1291,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1162,8 +1302,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1172,8 +1313,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -1182,8 +1324,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -1192,8 +1335,9 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1202,10 +1346,15 @@ impl Fs_hcchar6 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1C0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar6 {
@@ -1233,8 +1382,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1243,8 +1393,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn epnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11)
+    pub fn epnum(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 11)) | ((val & ((1 << 4) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -1253,8 +1404,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn epdir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn epdir(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1263,8 +1415,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn lsdev_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn lsdev(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1273,8 +1426,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1283,8 +1437,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20)
+    pub fn mcnt(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 20)) | ((val & ((1 << 2) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1293,8 +1448,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22)
+    pub fn dad(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 22)) | ((val & ((1 << 7) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -1303,8 +1459,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn oddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn oddfrm(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -1313,8 +1470,9 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn chdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn chdis(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1323,10 +1481,15 @@ impl Fs_hcchar7 {
     }
 
     #[inline(always)]
-    pub fn chena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn chena(mut self, val: u32) -> Fs_hcchar7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1E0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcchar7 {
@@ -1354,8 +1517,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1364,8 +1528,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1374,8 +1539,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1384,8 +1550,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1394,8 +1561,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1404,8 +1572,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1414,8 +1583,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1424,8 +1594,9 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1434,10 +1605,15 @@ impl Fs_hcint0 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x108) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint0 {
@@ -1465,8 +1641,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1475,8 +1652,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1485,8 +1663,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1495,8 +1674,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1505,8 +1685,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1515,8 +1696,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1525,8 +1707,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1535,8 +1718,9 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1545,10 +1729,15 @@ impl Fs_hcint1 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x128) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint1 {
@@ -1576,8 +1765,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1586,8 +1776,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1596,8 +1787,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1606,8 +1798,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1616,8 +1809,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1626,8 +1820,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1636,8 +1831,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1646,8 +1842,9 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1656,10 +1853,15 @@ impl Fs_hcint2 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x148) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint2 {
@@ -1687,8 +1889,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1697,8 +1900,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1707,8 +1911,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1717,8 +1922,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1727,8 +1933,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1737,8 +1944,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1747,8 +1955,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1757,8 +1966,9 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1767,10 +1977,15 @@ impl Fs_hcint3 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x168) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint3 {
@@ -1798,8 +2013,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1808,8 +2024,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1818,8 +2035,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1828,8 +2046,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1838,8 +2057,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1848,8 +2068,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1858,8 +2079,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1868,8 +2090,9 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1878,10 +2101,15 @@ impl Fs_hcint4 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x188) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint4 {
@@ -1909,8 +2137,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1919,8 +2148,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1929,8 +2159,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1939,8 +2170,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1949,8 +2181,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1959,8 +2192,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1969,8 +2203,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1979,8 +2214,9 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -1989,10 +2225,15 @@ impl Fs_hcint5 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1A8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint5 {
@@ -2020,8 +2261,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2030,8 +2272,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2040,8 +2283,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2050,8 +2294,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2060,8 +2305,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2070,8 +2316,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2080,8 +2327,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2090,8 +2338,9 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2100,10 +2349,15 @@ impl Fs_hcint6 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1C8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint6 {
@@ -2131,8 +2385,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2141,8 +2396,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn chh_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chh(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2151,8 +2407,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stall(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2161,8 +2418,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn nak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nak(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2171,8 +2429,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn ack_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ack(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2181,8 +2440,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn txerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerr(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2191,8 +2451,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn bberr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberr(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2201,8 +2462,9 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn frmor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmor(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2211,10 +2473,15 @@ impl Fs_hcint7 {
     }
 
     #[inline(always)]
-    pub fn dterr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterr(mut self, val: u32) -> Fs_hcint7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1E8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcint7 {
@@ -2242,8 +2509,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2252,8 +2520,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2262,8 +2531,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2272,8 +2542,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2282,8 +2553,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2292,8 +2564,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2302,8 +2575,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2312,8 +2586,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2322,8 +2597,9 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2332,10 +2608,15 @@ impl Fs_hcintmsk0 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x10C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk0 {
@@ -2363,8 +2644,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2373,8 +2655,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2383,8 +2666,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2393,8 +2677,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2403,8 +2688,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2413,8 +2699,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2423,8 +2710,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2433,8 +2721,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2443,8 +2732,9 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2453,10 +2743,15 @@ impl Fs_hcintmsk1 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x12C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk1 {
@@ -2484,8 +2779,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2494,8 +2790,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2504,8 +2801,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2514,8 +2812,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2524,8 +2823,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2534,8 +2834,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2544,8 +2845,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2554,8 +2856,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2564,8 +2867,9 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2574,10 +2878,15 @@ impl Fs_hcintmsk2 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x14C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk2 {
@@ -2605,8 +2914,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2615,8 +2925,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2625,8 +2936,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2635,8 +2947,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2645,8 +2958,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2655,8 +2969,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2665,8 +2980,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2675,8 +2991,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2685,8 +3002,9 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2695,10 +3013,15 @@ impl Fs_hcintmsk3 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x16C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk3 {
@@ -2726,8 +3049,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2736,8 +3060,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2746,8 +3071,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2756,8 +3082,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2766,8 +3093,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2776,8 +3104,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2786,8 +3115,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2796,8 +3126,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2806,8 +3137,9 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2816,10 +3148,15 @@ impl Fs_hcintmsk4 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x18C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk4 {
@@ -2847,8 +3184,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2857,8 +3195,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2867,8 +3206,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2877,8 +3217,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2887,8 +3228,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2897,8 +3239,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2907,8 +3250,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2917,8 +3261,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2927,8 +3272,9 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -2937,10 +3283,15 @@ impl Fs_hcintmsk5 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1AC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk5 {
@@ -2968,8 +3319,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2978,8 +3330,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2988,8 +3341,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2998,8 +3352,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -3008,8 +3363,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -3018,8 +3374,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -3028,8 +3385,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -3038,8 +3396,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -3048,8 +3407,9 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -3058,10 +3418,15 @@ impl Fs_hcintmsk6 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1CC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk6 {
@@ -3089,8 +3454,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3099,8 +3465,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn chhm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn chhm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -3109,8 +3476,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn stallm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stallm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -3119,8 +3487,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn nakm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn nakm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -3129,8 +3498,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn ackm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ackm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -3139,8 +3509,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn nyet_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn nyet(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -3149,8 +3520,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn txerrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txerrm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -3159,8 +3531,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn bberrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn bberrm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -3169,8 +3542,9 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn frmorm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn frmorm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -3179,10 +3553,15 @@ impl Fs_hcintmsk7 {
     }
 
     #[inline(always)]
-    pub fn dterrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn dterrm(mut self, val: u32) -> Fs_hcintmsk7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1EC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hcintmsk7 {
@@ -3210,8 +3589,9 @@ impl Fs_hctsiz0 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz0 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3220,8 +3600,9 @@ impl Fs_hctsiz0 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz0 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3230,10 +3611,15 @@ impl Fs_hctsiz0 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x110) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz0 {
@@ -3261,8 +3647,9 @@ impl Fs_hctsiz1 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz1 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3271,8 +3658,9 @@ impl Fs_hctsiz1 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz1 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3281,10 +3669,15 @@ impl Fs_hctsiz1 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x130) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz1 {
@@ -3312,8 +3705,9 @@ impl Fs_hctsiz2 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz2 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3322,8 +3716,9 @@ impl Fs_hctsiz2 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz2 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3332,10 +3727,15 @@ impl Fs_hctsiz2 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x150) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz2 {
@@ -3363,8 +3763,9 @@ impl Fs_hctsiz3 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz3 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3373,8 +3774,9 @@ impl Fs_hctsiz3 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz3 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3383,10 +3785,15 @@ impl Fs_hctsiz3 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x170) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz3 {
@@ -3414,8 +3821,9 @@ impl Fs_hctsiz4 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz4 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3424,8 +3832,9 @@ impl Fs_hctsiz4 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz4 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3434,10 +3843,15 @@ impl Fs_hctsiz4 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz4 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x190) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz4 {
@@ -3465,8 +3879,9 @@ impl Fs_hctsiz5 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz5 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3475,8 +3890,9 @@ impl Fs_hctsiz5 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz5 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3485,10 +3901,15 @@ impl Fs_hctsiz5 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz5 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1B0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz5 {
@@ -3516,8 +3937,9 @@ impl Fs_hctsiz6 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz6 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3526,8 +3948,9 @@ impl Fs_hctsiz6 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz6 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3536,10 +3959,15 @@ impl Fs_hctsiz6 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz6 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1D0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz6 {
@@ -3567,8 +3995,9 @@ impl Fs_hctsiz7 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Fs_hctsiz7 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -3577,8 +4006,9 @@ impl Fs_hctsiz7 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Fs_hctsiz7 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -3587,10 +4017,15 @@ impl Fs_hctsiz7 {
     }
 
     #[inline(always)]
-    pub fn dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn dpid(mut self, val: u32) -> Fs_hctsiz7 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000400 + 0x1F0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_hctsiz7 {

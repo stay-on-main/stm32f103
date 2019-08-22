@@ -9,8 +9,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn gif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn gif1(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn tcif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcif1(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn htif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htif1(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -39,8 +42,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn teif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teif1(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -49,8 +53,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn gif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn gif2(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -59,8 +64,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn tcif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn tcif2(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -69,8 +75,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn htif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn htif2(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -79,8 +86,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn teif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn teif2(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -89,8 +97,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn gif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn gif3(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -99,8 +108,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn tcif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn tcif3(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -109,8 +119,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn htif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn htif3(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -119,8 +130,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn teif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn teif3(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -129,8 +141,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn gif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn gif4(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -139,8 +152,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn tcif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13)
+    pub fn tcif4(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -149,8 +163,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn htif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn htif4(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -159,8 +174,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn teif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn teif4(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -169,8 +185,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn gif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn gif5(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -179,8 +196,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn tcif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn tcif5(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -189,8 +207,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn htif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18)
+    pub fn htif5(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -199,8 +218,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn teif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19)
+    pub fn teif5(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -209,8 +229,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn gif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn gif6(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -219,8 +240,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn tcif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn tcif6(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -229,8 +251,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn htif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22)
+    pub fn htif6(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -239,8 +262,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn teif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23)
+    pub fn teif6(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23);
+        self
     }
 
     #[inline(always)]
@@ -249,8 +273,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn gif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 24)) | ((val & ((1 << 1) - 1)) << 24)
+    pub fn gif7(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 24)) | ((val & ((1 << 1) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -259,8 +284,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn tcif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 25)) | ((val & ((1 << 1) - 1)) << 25)
+    pub fn tcif7(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 25)) | ((val & ((1 << 1) - 1)) << 25);
+        self
     }
 
     #[inline(always)]
@@ -269,8 +295,9 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn htif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn htif7(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -279,10 +306,15 @@ impl Isr {
     }
 
     #[inline(always)]
-    pub fn teif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn teif7(mut self, val: u32) -> Isr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod isr {
@@ -310,8 +342,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cgif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn cgif1(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -320,8 +353,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cgif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn cgif2(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -330,8 +364,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cgif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn cgif3(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -340,8 +375,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cgif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn cgif4(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -350,8 +386,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cgif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn cgif5(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -360,8 +397,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cgif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn cgif6(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -370,8 +408,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cgif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 24)) | ((val & ((1 << 1) - 1)) << 24)
+    pub fn cgif7(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 24)) | ((val & ((1 << 1) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -380,8 +419,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn ctcif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn ctcif1(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -390,8 +430,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn ctcif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn ctcif2(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -400,8 +441,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn ctcif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn ctcif3(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -410,8 +452,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn ctcif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13)
+    pub fn ctcif4(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
+        self
     }
 
     #[inline(always)]
@@ -420,8 +463,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn ctcif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn ctcif5(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -430,8 +474,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn ctcif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn ctcif6(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -440,8 +485,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn ctcif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 25)) | ((val & ((1 << 1) - 1)) << 25)
+    pub fn ctcif7(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 25)) | ((val & ((1 << 1) - 1)) << 25);
+        self
     }
 
     #[inline(always)]
@@ -450,8 +496,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn chtif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn chtif1(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -460,8 +507,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn chtif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn chtif2(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -470,8 +518,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn chtif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn chtif3(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -480,8 +529,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn chtif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn chtif4(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
     #[inline(always)]
@@ -490,8 +540,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn chtif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18)
+    pub fn chtif5(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -500,8 +551,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn chtif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22)
+    pub fn chtif6(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 22)) | ((val & ((1 << 1) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -510,8 +562,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn chtif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn chtif7(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -520,8 +573,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cteif1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn cteif1(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -530,8 +584,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cteif2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn cteif2(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -540,8 +595,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cteif3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn cteif3(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -550,8 +606,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cteif4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn cteif4(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -560,8 +617,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cteif5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19)
+    pub fn cteif5(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -570,8 +628,9 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cteif6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23)
+    pub fn cteif6(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 23)) | ((val & ((1 << 1) - 1)) << 23);
+        self
     }
 
     #[inline(always)]
@@ -580,10 +639,15 @@ impl Ifcr {
     }
 
     #[inline(always)]
-    pub fn cteif7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn cteif7(mut self, val: u32) -> Ifcr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ifcr {
@@ -611,8 +675,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn en_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -621,8 +686,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn tcie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcie(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -631,8 +697,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn htie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htie(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -641,8 +708,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn teie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teie(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -651,8 +719,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -661,8 +730,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn circ_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn circ(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -671,8 +741,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn pinc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pinc(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -681,8 +752,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn minc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn minc(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -691,8 +763,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn psize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn psize(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -701,8 +774,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn msize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn msize(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -711,8 +785,9 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn pl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn pl(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -721,10 +796,15 @@ impl Ccr1 {
     }
 
     #[inline(always)]
-    pub fn mem2mem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn mem2mem(mut self, val: u32) -> Ccr1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ccr1 {
@@ -752,10 +832,15 @@ impl Cndtr1 {
     }
 
     #[inline(always)]
-    pub fn ndt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ndt(mut self, val: u32) -> Cndtr1 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cndtr1 {
@@ -783,10 +868,15 @@ impl Cpar1 {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn pa(mut self, val: u32) -> Cpar1 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cpar1 {
@@ -814,10 +904,15 @@ impl Cmar1 {
     }
 
     #[inline(always)]
-    pub fn ma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ma(mut self, val: u32) -> Cmar1 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cmar1 {
@@ -845,8 +940,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn en_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -855,8 +951,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn tcie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcie(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -865,8 +962,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn htie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htie(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -875,8 +973,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn teie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teie(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -885,8 +984,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -895,8 +995,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn circ_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn circ(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -905,8 +1006,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn pinc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pinc(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -915,8 +1017,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn minc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn minc(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -925,8 +1028,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn psize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn psize(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -935,8 +1039,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn msize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn msize(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -945,8 +1050,9 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn pl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn pl(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -955,10 +1061,15 @@ impl Ccr2 {
     }
 
     #[inline(always)]
-    pub fn mem2mem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn mem2mem(mut self, val: u32) -> Ccr2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ccr2 {
@@ -986,10 +1097,15 @@ impl Cndtr2 {
     }
 
     #[inline(always)]
-    pub fn ndt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ndt(mut self, val: u32) -> Cndtr2 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x20) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cndtr2 {
@@ -1017,10 +1133,15 @@ impl Cpar2 {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn pa(mut self, val: u32) -> Cpar2 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x24) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cpar2 {
@@ -1048,10 +1169,15 @@ impl Cmar2 {
     }
 
     #[inline(always)]
-    pub fn ma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ma(mut self, val: u32) -> Cmar2 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x28) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cmar2 {
@@ -1079,8 +1205,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn en_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1089,8 +1216,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn tcie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcie(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1099,8 +1227,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn htie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htie(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -1109,8 +1238,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn teie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teie(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1119,8 +1249,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1129,8 +1260,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn circ_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn circ(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1139,8 +1271,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn pinc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pinc(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1149,8 +1282,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn minc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn minc(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1159,8 +1293,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn psize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn psize(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1169,8 +1304,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn msize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn msize(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -1179,8 +1315,9 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn pl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn pl(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -1189,10 +1326,15 @@ impl Ccr3 {
     }
 
     #[inline(always)]
-    pub fn mem2mem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn mem2mem(mut self, val: u32) -> Ccr3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x30) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ccr3 {
@@ -1220,10 +1362,15 @@ impl Cndtr3 {
     }
 
     #[inline(always)]
-    pub fn ndt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ndt(mut self, val: u32) -> Cndtr3 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x34) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cndtr3 {
@@ -1251,10 +1398,15 @@ impl Cpar3 {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn pa(mut self, val: u32) -> Cpar3 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x38) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cpar3 {
@@ -1282,10 +1434,15 @@ impl Cmar3 {
     }
 
     #[inline(always)]
-    pub fn ma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ma(mut self, val: u32) -> Cmar3 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x3C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cmar3 {
@@ -1313,8 +1470,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn en_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1323,8 +1481,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn tcie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcie(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1333,8 +1492,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn htie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htie(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -1343,8 +1503,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn teie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teie(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1353,8 +1514,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1363,8 +1525,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn circ_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn circ(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1373,8 +1536,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn pinc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pinc(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1383,8 +1547,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn minc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn minc(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1393,8 +1558,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn psize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn psize(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1403,8 +1569,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn msize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn msize(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -1413,8 +1580,9 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn pl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn pl(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -1423,10 +1591,15 @@ impl Ccr4 {
     }
 
     #[inline(always)]
-    pub fn mem2mem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn mem2mem(mut self, val: u32) -> Ccr4 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x44) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ccr4 {
@@ -1454,10 +1627,15 @@ impl Cndtr4 {
     }
 
     #[inline(always)]
-    pub fn ndt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ndt(mut self, val: u32) -> Cndtr4 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x48) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cndtr4 {
@@ -1485,10 +1663,15 @@ impl Cpar4 {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn pa(mut self, val: u32) -> Cpar4 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x4C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cpar4 {
@@ -1516,10 +1699,15 @@ impl Cmar4 {
     }
 
     #[inline(always)]
-    pub fn ma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ma(mut self, val: u32) -> Cmar4 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x50) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cmar4 {
@@ -1547,8 +1735,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn en_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1557,8 +1746,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn tcie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcie(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1567,8 +1757,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn htie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htie(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -1577,8 +1768,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn teie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teie(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1587,8 +1779,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1597,8 +1790,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn circ_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn circ(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1607,8 +1801,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn pinc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pinc(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1617,8 +1812,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn minc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn minc(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1627,8 +1823,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn psize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn psize(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1637,8 +1834,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn msize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn msize(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -1647,8 +1845,9 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn pl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn pl(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -1657,10 +1856,15 @@ impl Ccr5 {
     }
 
     #[inline(always)]
-    pub fn mem2mem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn mem2mem(mut self, val: u32) -> Ccr5 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x58) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ccr5 {
@@ -1688,10 +1892,15 @@ impl Cndtr5 {
     }
 
     #[inline(always)]
-    pub fn ndt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ndt(mut self, val: u32) -> Cndtr5 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x5C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cndtr5 {
@@ -1719,10 +1928,15 @@ impl Cpar5 {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn pa(mut self, val: u32) -> Cpar5 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x60) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cpar5 {
@@ -1750,10 +1964,15 @@ impl Cmar5 {
     }
 
     #[inline(always)]
-    pub fn ma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ma(mut self, val: u32) -> Cmar5 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x64) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cmar5 {
@@ -1781,8 +2000,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn en_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1791,8 +2011,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn tcie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcie(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1801,8 +2022,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn htie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htie(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -1811,8 +2033,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn teie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teie(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1821,8 +2044,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1831,8 +2055,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn circ_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn circ(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -1841,8 +2066,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn pinc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pinc(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1851,8 +2077,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn minc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn minc(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1861,8 +2088,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn psize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn psize(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1871,8 +2099,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn msize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn msize(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -1881,8 +2110,9 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn pl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn pl(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -1891,10 +2121,15 @@ impl Ccr6 {
     }
 
     #[inline(always)]
-    pub fn mem2mem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn mem2mem(mut self, val: u32) -> Ccr6 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x6C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ccr6 {
@@ -1922,10 +2157,15 @@ impl Cndtr6 {
     }
 
     #[inline(always)]
-    pub fn ndt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ndt(mut self, val: u32) -> Cndtr6 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x70) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cndtr6 {
@@ -1953,10 +2193,15 @@ impl Cpar6 {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn pa(mut self, val: u32) -> Cpar6 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x74) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cpar6 {
@@ -1984,10 +2229,15 @@ impl Cmar6 {
     }
 
     #[inline(always)]
-    pub fn ma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ma(mut self, val: u32) -> Cmar6 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x78) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cmar6 {
@@ -2015,8 +2265,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn en_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -2025,8 +2276,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn tcie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tcie(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2035,8 +2287,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn htie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn htie(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -2045,8 +2298,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn teie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn teie(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2055,8 +2309,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn dir_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn dir(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2065,8 +2320,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn circ_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn circ(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -2075,8 +2331,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn pinc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn pinc(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2085,8 +2342,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn minc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn minc(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -2095,8 +2353,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn psize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8)
+    pub fn psize(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 8)) | ((val & ((1 << 2) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -2105,8 +2364,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn msize_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10)
+    pub fn msize(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 10)) | ((val & ((1 << 2) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -2115,8 +2375,9 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn pl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12)
+    pub fn pl(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -2125,10 +2386,15 @@ impl Ccr7 {
     }
 
     #[inline(always)]
-    pub fn mem2mem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14)
+    pub fn mem2mem(mut self, val: u32) -> Ccr7 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x80) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ccr7 {
@@ -2156,10 +2422,15 @@ impl Cndtr7 {
     }
 
     #[inline(always)]
-    pub fn ndt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ndt(mut self, val: u32) -> Cndtr7 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x84) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cndtr7 {
@@ -2187,10 +2458,15 @@ impl Cpar7 {
     }
 
     #[inline(always)]
-    pub fn pa_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn pa(mut self, val: u32) -> Cpar7 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x88) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cpar7 {
@@ -2218,10 +2494,15 @@ impl Cmar7 {
     }
 
     #[inline(always)]
-    pub fn ma_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn ma(mut self, val: u32) -> Cmar7 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40020000 + 0x8C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cmar7 {

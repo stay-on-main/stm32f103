@@ -9,10 +9,15 @@ impl Dr1 {
     }
 
     #[inline(always)]
-    pub fn d1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d1(mut self, val: u32) -> Dr1 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr1 {
@@ -40,10 +45,15 @@ impl Dr2 {
     }
 
     #[inline(always)]
-    pub fn d2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d2(mut self, val: u32) -> Dr2 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr2 {
@@ -71,10 +81,15 @@ impl Dr3 {
     }
 
     #[inline(always)]
-    pub fn d3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d3(mut self, val: u32) -> Dr3 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr3 {
@@ -102,10 +117,15 @@ impl Dr4 {
     }
 
     #[inline(always)]
-    pub fn d4_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d4(mut self, val: u32) -> Dr4 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr4 {
@@ -133,10 +153,15 @@ impl Dr5 {
     }
 
     #[inline(always)]
-    pub fn d5_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d5(mut self, val: u32) -> Dr5 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr5 {
@@ -164,10 +189,15 @@ impl Dr6 {
     }
 
     #[inline(always)]
-    pub fn d6_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d6(mut self, val: u32) -> Dr6 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr6 {
@@ -195,10 +225,15 @@ impl Dr7 {
     }
 
     #[inline(always)]
-    pub fn d7_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d7(mut self, val: u32) -> Dr7 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr7 {
@@ -226,10 +261,15 @@ impl Dr8 {
     }
 
     #[inline(always)]
-    pub fn d8_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d8(mut self, val: u32) -> Dr8 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr8 {
@@ -257,10 +297,15 @@ impl Dr9 {
     }
 
     #[inline(always)]
-    pub fn d9_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d9(mut self, val: u32) -> Dr9 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x20) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr9 {
@@ -288,10 +333,15 @@ impl Dr10 {
     }
 
     #[inline(always)]
-    pub fn d10_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d10(mut self, val: u32) -> Dr10 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x24) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr10 {
@@ -319,10 +369,15 @@ impl Dr11 {
     }
 
     #[inline(always)]
-    pub fn dr11_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn dr11(mut self, val: u32) -> Dr11 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x3C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr11 {
@@ -350,10 +405,15 @@ impl Dr12 {
     }
 
     #[inline(always)]
-    pub fn dr12_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn dr12(mut self, val: u32) -> Dr12 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x40) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr12 {
@@ -381,10 +441,15 @@ impl Dr13 {
     }
 
     #[inline(always)]
-    pub fn dr13_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn dr13(mut self, val: u32) -> Dr13 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x44) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr13 {
@@ -412,10 +477,15 @@ impl Dr14 {
     }
 
     #[inline(always)]
-    pub fn d14_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d14(mut self, val: u32) -> Dr14 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x48) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr14 {
@@ -443,10 +513,15 @@ impl Dr15 {
     }
 
     #[inline(always)]
-    pub fn d15_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d15(mut self, val: u32) -> Dr15 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x4C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr15 {
@@ -474,10 +549,15 @@ impl Dr16 {
     }
 
     #[inline(always)]
-    pub fn d16_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d16(mut self, val: u32) -> Dr16 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x50) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr16 {
@@ -505,10 +585,15 @@ impl Dr17 {
     }
 
     #[inline(always)]
-    pub fn d17_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d17(mut self, val: u32) -> Dr17 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x54) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr17 {
@@ -536,10 +621,15 @@ impl Dr18 {
     }
 
     #[inline(always)]
-    pub fn d18_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d18(mut self, val: u32) -> Dr18 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x58) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr18 {
@@ -567,10 +657,15 @@ impl Dr19 {
     }
 
     #[inline(always)]
-    pub fn d19_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d19(mut self, val: u32) -> Dr19 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x5C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr19 {
@@ -598,10 +693,15 @@ impl Dr20 {
     }
 
     #[inline(always)]
-    pub fn d20_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d20(mut self, val: u32) -> Dr20 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x60) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr20 {
@@ -629,10 +729,15 @@ impl Dr21 {
     }
 
     #[inline(always)]
-    pub fn d21_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d21(mut self, val: u32) -> Dr21 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x64) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr21 {
@@ -660,10 +765,15 @@ impl Dr22 {
     }
 
     #[inline(always)]
-    pub fn d22_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d22(mut self, val: u32) -> Dr22 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x68) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr22 {
@@ -691,10 +801,15 @@ impl Dr23 {
     }
 
     #[inline(always)]
-    pub fn d23_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d23(mut self, val: u32) -> Dr23 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x6C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr23 {
@@ -722,10 +837,15 @@ impl Dr24 {
     }
 
     #[inline(always)]
-    pub fn d24_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d24(mut self, val: u32) -> Dr24 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x70) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr24 {
@@ -753,10 +873,15 @@ impl Dr25 {
     }
 
     #[inline(always)]
-    pub fn d25_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d25(mut self, val: u32) -> Dr25 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x74) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr25 {
@@ -784,10 +909,15 @@ impl Dr26 {
     }
 
     #[inline(always)]
-    pub fn d26_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d26(mut self, val: u32) -> Dr26 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x78) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr26 {
@@ -815,10 +945,15 @@ impl Dr27 {
     }
 
     #[inline(always)]
-    pub fn d27_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d27(mut self, val: u32) -> Dr27 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x7C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr27 {
@@ -846,10 +981,15 @@ impl Dr28 {
     }
 
     #[inline(always)]
-    pub fn d28_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d28(mut self, val: u32) -> Dr28 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x80) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr28 {
@@ -877,10 +1017,15 @@ impl Dr29 {
     }
 
     #[inline(always)]
-    pub fn d29_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d29(mut self, val: u32) -> Dr29 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x84) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr29 {
@@ -908,10 +1053,15 @@ impl Dr30 {
     }
 
     #[inline(always)]
-    pub fn d30_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d30(mut self, val: u32) -> Dr30 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x88) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr30 {
@@ -939,10 +1089,15 @@ impl Dr31 {
     }
 
     #[inline(always)]
-    pub fn d31_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d31(mut self, val: u32) -> Dr31 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x8C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr31 {
@@ -970,10 +1125,15 @@ impl Dr32 {
     }
 
     #[inline(always)]
-    pub fn d32_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d32(mut self, val: u32) -> Dr32 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x90) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr32 {
@@ -1001,10 +1161,15 @@ impl Dr33 {
     }
 
     #[inline(always)]
-    pub fn d33_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d33(mut self, val: u32) -> Dr33 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x94) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr33 {
@@ -1032,10 +1197,15 @@ impl Dr34 {
     }
 
     #[inline(always)]
-    pub fn d34_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d34(mut self, val: u32) -> Dr34 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x98) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr34 {
@@ -1063,10 +1233,15 @@ impl Dr35 {
     }
 
     #[inline(always)]
-    pub fn d35_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d35(mut self, val: u32) -> Dr35 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x9C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr35 {
@@ -1094,10 +1269,15 @@ impl Dr36 {
     }
 
     #[inline(always)]
-    pub fn d36_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d36(mut self, val: u32) -> Dr36 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xA0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr36 {
@@ -1125,10 +1305,15 @@ impl Dr37 {
     }
 
     #[inline(always)]
-    pub fn d37_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d37(mut self, val: u32) -> Dr37 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xA4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr37 {
@@ -1156,10 +1341,15 @@ impl Dr38 {
     }
 
     #[inline(always)]
-    pub fn d38_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d38(mut self, val: u32) -> Dr38 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xA8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr38 {
@@ -1187,10 +1377,15 @@ impl Dr39 {
     }
 
     #[inline(always)]
-    pub fn d39_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d39(mut self, val: u32) -> Dr39 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xAC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr39 {
@@ -1218,10 +1413,15 @@ impl Dr40 {
     }
 
     #[inline(always)]
-    pub fn d40_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d40(mut self, val: u32) -> Dr40 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xB0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr40 {
@@ -1249,10 +1449,15 @@ impl Dr41 {
     }
 
     #[inline(always)]
-    pub fn d41_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d41(mut self, val: u32) -> Dr41 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xB4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr41 {
@@ -1280,10 +1485,15 @@ impl Dr42 {
     }
 
     #[inline(always)]
-    pub fn d42_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn d42(mut self, val: u32) -> Dr42 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0xB8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dr42 {
@@ -1311,8 +1521,9 @@ impl Rtccr {
     }
 
     #[inline(always)]
-    pub fn cal_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0)
+    pub fn cal(mut self, val: u32) -> Rtccr {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1321,8 +1532,9 @@ impl Rtccr {
     }
 
     #[inline(always)]
-    pub fn cco_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn cco(mut self, val: u32) -> Rtccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1331,8 +1543,9 @@ impl Rtccr {
     }
 
     #[inline(always)]
-    pub fn asoe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn asoe(mut self, val: u32) -> Rtccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1341,10 +1554,15 @@ impl Rtccr {
     }
 
     #[inline(always)]
-    pub fn asos_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn asos(mut self, val: u32) -> Rtccr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x28) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod rtccr {
@@ -1372,8 +1590,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn tpe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn tpe(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1382,10 +1601,15 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn tpal_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn tpal(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x2C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cr {
@@ -1413,8 +1637,9 @@ impl Csr {
     }
 
     #[inline(always)]
-    pub fn cte_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn cte(mut self, val: u32) -> Csr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1423,8 +1648,9 @@ impl Csr {
     }
 
     #[inline(always)]
-    pub fn cti_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn cti(mut self, val: u32) -> Csr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1433,8 +1659,9 @@ impl Csr {
     }
 
     #[inline(always)]
-    pub fn tpie_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn tpie(mut self, val: u32) -> Csr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -1443,8 +1670,9 @@ impl Csr {
     }
 
     #[inline(always)]
-    pub fn tef_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn tef(mut self, val: u32) -> Csr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1453,10 +1681,15 @@ impl Csr {
     }
 
     #[inline(always)]
-    pub fn tif_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn tif(mut self, val: u32) -> Csr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40006C00 + 0x30) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod csr {

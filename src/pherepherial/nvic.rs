@@ -9,10 +9,15 @@ impl Iser0 {
     }
 
     #[inline(always)]
-    pub fn setena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn setena(mut self, val: u32) -> Iser0 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod iser0 {
@@ -40,10 +45,15 @@ impl Iser1 {
     }
 
     #[inline(always)]
-    pub fn setena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn setena(mut self, val: u32) -> Iser1 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod iser1 {
@@ -71,10 +81,15 @@ impl Icer0 {
     }
 
     #[inline(always)]
-    pub fn clrena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn clrena(mut self, val: u32) -> Icer0 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x80) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod icer0 {
@@ -102,10 +117,15 @@ impl Icer1 {
     }
 
     #[inline(always)]
-    pub fn clrena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn clrena(mut self, val: u32) -> Icer1 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x84) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod icer1 {
@@ -133,10 +153,15 @@ impl Ispr0 {
     }
 
     #[inline(always)]
-    pub fn setpend_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn setpend(mut self, val: u32) -> Ispr0 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x100) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ispr0 {
@@ -164,10 +189,15 @@ impl Ispr1 {
     }
 
     #[inline(always)]
-    pub fn setpend_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn setpend(mut self, val: u32) -> Ispr1 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x104) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ispr1 {
@@ -195,10 +225,15 @@ impl Icpr0 {
     }
 
     #[inline(always)]
-    pub fn clrpend_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn clrpend(mut self, val: u32) -> Icpr0 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x180) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod icpr0 {
@@ -226,10 +261,15 @@ impl Icpr1 {
     }
 
     #[inline(always)]
-    pub fn clrpend_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn clrpend(mut self, val: u32) -> Icpr1 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x184) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod icpr1 {
@@ -257,10 +297,15 @@ impl Iabr0 {
     }
 
     #[inline(always)]
-    pub fn active_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn active(mut self, val: u32) -> Iabr0 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x200) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod iabr0 {
@@ -288,10 +333,15 @@ impl Iabr1 {
     }
 
     #[inline(always)]
-    pub fn active_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0)
+    pub fn active(mut self, val: u32) -> Iabr1 {
+        self.raw = (self.raw & !(((1 << 32) - 1) << 0)) | ((val & ((1 << 32) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x204) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod iabr1 {
@@ -319,8 +369,9 @@ impl Ipr0 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr0 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -329,8 +380,9 @@ impl Ipr0 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr0 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -339,8 +391,9 @@ impl Ipr0 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr0 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -349,10 +402,15 @@ impl Ipr0 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr0 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x300) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr0 {
@@ -380,8 +438,9 @@ impl Ipr1 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr1 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -390,8 +449,9 @@ impl Ipr1 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr1 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -400,8 +460,9 @@ impl Ipr1 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr1 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -410,10 +471,15 @@ impl Ipr1 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr1 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x304) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr1 {
@@ -441,8 +507,9 @@ impl Ipr2 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr2 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -451,8 +518,9 @@ impl Ipr2 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr2 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -461,8 +529,9 @@ impl Ipr2 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr2 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -471,10 +540,15 @@ impl Ipr2 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr2 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x308) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr2 {
@@ -502,8 +576,9 @@ impl Ipr3 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr3 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -512,8 +587,9 @@ impl Ipr3 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr3 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -522,8 +598,9 @@ impl Ipr3 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr3 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -532,10 +609,15 @@ impl Ipr3 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr3 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x30C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr3 {
@@ -563,8 +645,9 @@ impl Ipr4 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr4 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -573,8 +656,9 @@ impl Ipr4 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr4 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -583,8 +667,9 @@ impl Ipr4 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr4 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -593,10 +678,15 @@ impl Ipr4 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr4 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x310) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr4 {
@@ -624,8 +714,9 @@ impl Ipr5 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr5 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -634,8 +725,9 @@ impl Ipr5 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr5 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -644,8 +736,9 @@ impl Ipr5 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr5 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -654,10 +747,15 @@ impl Ipr5 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr5 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x314) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr5 {
@@ -685,8 +783,9 @@ impl Ipr6 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr6 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -695,8 +794,9 @@ impl Ipr6 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr6 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -705,8 +805,9 @@ impl Ipr6 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr6 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -715,10 +816,15 @@ impl Ipr6 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr6 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x318) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr6 {
@@ -746,8 +852,9 @@ impl Ipr7 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr7 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -756,8 +863,9 @@ impl Ipr7 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr7 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -766,8 +874,9 @@ impl Ipr7 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr7 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -776,10 +885,15 @@ impl Ipr7 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr7 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x31C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr7 {
@@ -807,8 +921,9 @@ impl Ipr8 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr8 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -817,8 +932,9 @@ impl Ipr8 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr8 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -827,8 +943,9 @@ impl Ipr8 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr8 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -837,10 +954,15 @@ impl Ipr8 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr8 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x320) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr8 {
@@ -868,8 +990,9 @@ impl Ipr9 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr9 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -878,8 +1001,9 @@ impl Ipr9 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr9 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -888,8 +1012,9 @@ impl Ipr9 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr9 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -898,10 +1023,15 @@ impl Ipr9 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr9 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x324) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr9 {
@@ -929,8 +1059,9 @@ impl Ipr10 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr10 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -939,8 +1070,9 @@ impl Ipr10 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr10 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -949,8 +1081,9 @@ impl Ipr10 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr10 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -959,10 +1092,15 @@ impl Ipr10 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr10 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x328) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr10 {
@@ -990,8 +1128,9 @@ impl Ipr11 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr11 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1000,8 +1139,9 @@ impl Ipr11 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr11 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1010,8 +1150,9 @@ impl Ipr11 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr11 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1020,10 +1161,15 @@ impl Ipr11 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr11 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x32C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr11 {
@@ -1051,8 +1197,9 @@ impl Ipr12 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr12 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1061,8 +1208,9 @@ impl Ipr12 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr12 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1071,8 +1219,9 @@ impl Ipr12 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr12 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1081,10 +1230,15 @@ impl Ipr12 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr12 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x330) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr12 {
@@ -1112,8 +1266,9 @@ impl Ipr13 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr13 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1122,8 +1277,9 @@ impl Ipr13 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr13 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1132,8 +1288,9 @@ impl Ipr13 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr13 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1142,10 +1299,15 @@ impl Ipr13 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr13 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x334) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr13 {
@@ -1173,8 +1335,9 @@ impl Ipr14 {
     }
 
     #[inline(always)]
-    pub fn ipr_n0_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn ipr_n0(mut self, val: u32) -> Ipr14 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -1183,8 +1346,9 @@ impl Ipr14 {
     }
 
     #[inline(always)]
-    pub fn ipr_n1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn ipr_n1(mut self, val: u32) -> Ipr14 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -1193,8 +1357,9 @@ impl Ipr14 {
     }
 
     #[inline(always)]
-    pub fn ipr_n2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn ipr_n2(mut self, val: u32) -> Ipr14 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1203,10 +1368,15 @@ impl Ipr14 {
     }
 
     #[inline(always)]
-    pub fn ipr_n3_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24)
+    pub fn ipr_n3(mut self, val: u32) -> Ipr14 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 24)) | ((val & ((1 << 8) - 1)) << 24);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E100 + 0x338) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod ipr14 {

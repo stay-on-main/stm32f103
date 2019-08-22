@@ -9,8 +9,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn en1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn en1(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn boff1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn boff1(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn ten1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn ten1(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -39,8 +42,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn tsel1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 3)) | ((val & ((1 << 3) - 1)) << 3)
+    pub fn tsel1(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 3)) | ((val & ((1 << 3) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -49,8 +53,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn wave1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6)
+    pub fn wave1(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 6)) | ((val & ((1 << 2) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -59,8 +64,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn mamp1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8)
+    pub fn mamp1(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 8)) | ((val & ((1 << 4) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -69,8 +75,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dmaen1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn dmaen1(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
     #[inline(always)]
@@ -79,8 +86,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn en2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn en2(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -89,8 +97,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn boff2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn boff2(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -99,8 +108,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn ten2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18)
+    pub fn ten2(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -109,8 +119,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn tsel2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 19)) | ((val & ((1 << 3) - 1)) << 19)
+    pub fn tsel2(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 19)) | ((val & ((1 << 3) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -119,8 +130,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn wave2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 22)) | ((val & ((1 << 2) - 1)) << 22)
+    pub fn wave2(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 22)) | ((val & ((1 << 2) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -129,8 +141,9 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn mamp2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 24)) | ((val & ((1 << 4) - 1)) << 24)
+    pub fn mamp2(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 24)) | ((val & ((1 << 4) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -139,10 +152,15 @@ impl Cr {
     }
 
     #[inline(always)]
-    pub fn dmaen2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn dmaen2(mut self, val: u32) -> Cr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod cr {
@@ -170,8 +188,9 @@ impl Swtrigr {
     }
 
     #[inline(always)]
-    pub fn swtrig1_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn swtrig1(mut self, val: u32) -> Swtrigr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -180,10 +199,15 @@ impl Swtrigr {
     }
 
     #[inline(always)]
-    pub fn swtrig2_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn swtrig2(mut self, val: u32) -> Swtrigr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod swtrigr {
@@ -211,10 +235,15 @@ impl Dhr12r1 {
     }
 
     #[inline(always)]
-    pub fn dacc1dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn dacc1dhr(mut self, val: u32) -> Dhr12r1 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr12r1 {
@@ -242,10 +271,15 @@ impl Dhr12l1 {
     }
 
     #[inline(always)]
-    pub fn dacc1dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 4)) | ((val & ((1 << 12) - 1)) << 4)
+    pub fn dacc1dhr(mut self, val: u32) -> Dhr12l1 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 4)) | ((val & ((1 << 12) - 1)) << 4);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr12l1 {
@@ -273,10 +307,15 @@ impl Dhr8r1 {
     }
 
     #[inline(always)]
-    pub fn dacc1dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn dacc1dhr(mut self, val: u32) -> Dhr8r1 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr8r1 {
@@ -304,10 +343,15 @@ impl Dhr12r2 {
     }
 
     #[inline(always)]
-    pub fn dacc2dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn dacc2dhr(mut self, val: u32) -> Dhr12r2 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr12r2 {
@@ -335,10 +379,15 @@ impl Dhr12l2 {
     }
 
     #[inline(always)]
-    pub fn dacc2dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 4)) | ((val & ((1 << 12) - 1)) << 4)
+    pub fn dacc2dhr(mut self, val: u32) -> Dhr12l2 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 4)) | ((val & ((1 << 12) - 1)) << 4);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr12l2 {
@@ -366,10 +415,15 @@ impl Dhr8r2 {
     }
 
     #[inline(always)]
-    pub fn dacc2dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn dacc2dhr(mut self, val: u32) -> Dhr8r2 {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr8r2 {
@@ -397,8 +451,9 @@ impl Dhr12rd {
     }
 
     #[inline(always)]
-    pub fn dacc1dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn dacc1dhr(mut self, val: u32) -> Dhr12rd {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -407,10 +462,15 @@ impl Dhr12rd {
     }
 
     #[inline(always)]
-    pub fn dacc2dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 16)) | ((val & ((1 << 12) - 1)) << 16)
+    pub fn dacc2dhr(mut self, val: u32) -> Dhr12rd {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 16)) | ((val & ((1 << 12) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x20) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr12rd {
@@ -438,8 +498,9 @@ impl Dhr12ld {
     }
 
     #[inline(always)]
-    pub fn dacc1dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 4)) | ((val & ((1 << 12) - 1)) << 4)
+    pub fn dacc1dhr(mut self, val: u32) -> Dhr12ld {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 4)) | ((val & ((1 << 12) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -448,10 +509,15 @@ impl Dhr12ld {
     }
 
     #[inline(always)]
-    pub fn dacc2dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 20)) | ((val & ((1 << 12) - 1)) << 20)
+    pub fn dacc2dhr(mut self, val: u32) -> Dhr12ld {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 20)) | ((val & ((1 << 12) - 1)) << 20);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x24) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr12ld {
@@ -479,8 +545,9 @@ impl Dhr8rd {
     }
 
     #[inline(always)]
-    pub fn dacc1dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn dacc1dhr(mut self, val: u32) -> Dhr8rd {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -489,10 +556,15 @@ impl Dhr8rd {
     }
 
     #[inline(always)]
-    pub fn dacc2dhr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn dacc2dhr(mut self, val: u32) -> Dhr8rd {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x28) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dhr8rd {
@@ -520,10 +592,15 @@ impl Dor1 {
     }
 
     #[inline(always)]
-    pub fn dacc1dor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn dacc1dor(mut self, val: u32) -> Dor1 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x2C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dor1 {
@@ -551,10 +628,15 @@ impl Dor2 {
     }
 
     #[inline(always)]
-    pub fn dacc2dor_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn dacc2dor(mut self, val: u32) -> Dor2 {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x40007400 + 0x30) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dor2 {

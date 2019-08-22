@@ -9,8 +9,9 @@ impl Actrl {
     }
 
     #[inline(always)]
-    pub fn disfold_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn disfold(mut self, val: u32) -> Actrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Actrl {
     }
 
     #[inline(always)]
-    pub fn fpexcodis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn fpexcodis(mut self, val: u32) -> Actrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Actrl {
     }
 
     #[inline(always)]
-    pub fn disramode_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn disramode(mut self, val: u32) -> Actrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
     #[inline(always)]
@@ -39,10 +42,15 @@ impl Actrl {
     }
 
     #[inline(always)]
-    pub fn disitmatbflush_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12)
+    pub fn disitmatbflush(mut self, val: u32) -> Actrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000E008 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod actrl {

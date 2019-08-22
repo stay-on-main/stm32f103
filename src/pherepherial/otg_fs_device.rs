@@ -9,8 +9,9 @@ impl Fs_dcfg {
     }
 
     #[inline(always)]
-    pub fn dspd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0)
+    pub fn dspd(mut self, val: u32) -> Fs_dcfg {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Fs_dcfg {
     }
 
     #[inline(always)]
-    pub fn nzlsohsk_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn nzlsohsk(mut self, val: u32) -> Fs_dcfg {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -29,8 +31,9 @@ impl Fs_dcfg {
     }
 
     #[inline(always)]
-    pub fn dad_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 4)) | ((val & ((1 << 7) - 1)) << 4)
+    pub fn dad(mut self, val: u32) -> Fs_dcfg {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 4)) | ((val & ((1 << 7) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -39,10 +42,15 @@ impl Fs_dcfg {
     }
 
     #[inline(always)]
-    pub fn pfivl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 11)) | ((val & ((1 << 2) - 1)) << 11)
+    pub fn pfivl(mut self, val: u32) -> Fs_dcfg {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 11)) | ((val & ((1 << 2) - 1)) << 11);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_dcfg {
@@ -70,8 +78,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn rwusig_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn rwusig(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -80,8 +89,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn sdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn sdis(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -90,8 +100,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn ginsts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn ginsts(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
     #[inline(always)]
@@ -100,8 +111,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn gonsts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn gonsts(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -110,8 +122,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn tctl_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 4)) | ((val & ((1 << 3) - 1)) << 4)
+    pub fn tctl(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 4)) | ((val & ((1 << 3) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -120,8 +133,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn sginak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn sginak(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -130,8 +144,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn cginak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8)
+    pub fn cginak(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -140,8 +155,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn sgonak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9)
+    pub fn sgonak(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
+        self
     }
 
     #[inline(always)]
@@ -150,8 +166,9 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn cgonak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10)
+    pub fn cgonak(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
+        self
     }
 
     #[inline(always)]
@@ -160,10 +177,15 @@ impl Fs_dctl {
     }
 
     #[inline(always)]
-    pub fn poprgdne_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11)
+    pub fn poprgdne(mut self, val: u32) -> Fs_dctl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_dctl {
@@ -191,8 +213,9 @@ impl Fs_dsts {
     }
 
     #[inline(always)]
-    pub fn suspsts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn suspsts(mut self, val: u32) -> Fs_dsts {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -201,8 +224,9 @@ impl Fs_dsts {
     }
 
     #[inline(always)]
-    pub fn enumspd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 1)) | ((val & ((1 << 2) - 1)) << 1)
+    pub fn enumspd(mut self, val: u32) -> Fs_dsts {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 1)) | ((val & ((1 << 2) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -211,8 +235,9 @@ impl Fs_dsts {
     }
 
     #[inline(always)]
-    pub fn eerr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn eerr(mut self, val: u32) -> Fs_dsts {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -221,10 +246,15 @@ impl Fs_dsts {
     }
 
     #[inline(always)]
-    pub fn fnsof_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 14) - 1) << 8)) | ((val & ((1 << 14) - 1)) << 8)
+    pub fn fnsof(mut self, val: u32) -> Fs_dsts {
+        self.raw = (self.raw & !(((1 << 14) - 1) << 8)) | ((val & ((1 << 14) - 1)) << 8);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_dsts {
@@ -252,8 +282,9 @@ impl Fs_diepmsk {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_diepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -262,8 +293,9 @@ impl Fs_diepmsk {
     }
 
     #[inline(always)]
-    pub fn epdm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdm(mut self, val: u32) -> Fs_diepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -272,8 +304,9 @@ impl Fs_diepmsk {
     }
 
     #[inline(always)]
-    pub fn tom_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn tom(mut self, val: u32) -> Fs_diepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -282,8 +315,9 @@ impl Fs_diepmsk {
     }
 
     #[inline(always)]
-    pub fn ittxfemsk_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn ittxfemsk(mut self, val: u32) -> Fs_diepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -292,8 +326,9 @@ impl Fs_diepmsk {
     }
 
     #[inline(always)]
-    pub fn inepnmm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5)
+    pub fn inepnmm(mut self, val: u32) -> Fs_diepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
+        self
     }
 
     #[inline(always)]
@@ -302,10 +337,15 @@ impl Fs_diepmsk {
     }
 
     #[inline(always)]
-    pub fn inepnem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn inepnem(mut self, val: u32) -> Fs_diepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_diepmsk {
@@ -333,8 +373,9 @@ impl Fs_doepmsk {
     }
 
     #[inline(always)]
-    pub fn xfrcm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrcm(mut self, val: u32) -> Fs_doepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -343,8 +384,9 @@ impl Fs_doepmsk {
     }
 
     #[inline(always)]
-    pub fn epdm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdm(mut self, val: u32) -> Fs_doepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -353,8 +395,9 @@ impl Fs_doepmsk {
     }
 
     #[inline(always)]
-    pub fn stupm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stupm(mut self, val: u32) -> Fs_doepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -363,10 +406,15 @@ impl Fs_doepmsk {
     }
 
     #[inline(always)]
-    pub fn otepdm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn otepdm(mut self, val: u32) -> Fs_doepmsk {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x14) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_doepmsk {
@@ -394,8 +442,9 @@ impl Fs_daint {
     }
 
     #[inline(always)]
-    pub fn iepint_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn iepint(mut self, val: u32) -> Fs_daint {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -404,10 +453,15 @@ impl Fs_daint {
     }
 
     #[inline(always)]
-    pub fn oepint_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16)
+    pub fn oepint(mut self, val: u32) -> Fs_daint {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x18) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_daint {
@@ -435,8 +489,9 @@ impl Fs_daintmsk {
     }
 
     #[inline(always)]
-    pub fn iepm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn iepm(mut self, val: u32) -> Fs_daintmsk {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -445,10 +500,15 @@ impl Fs_daintmsk {
     }
 
     #[inline(always)]
-    pub fn oepint_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16)
+    pub fn oepint(mut self, val: u32) -> Fs_daintmsk {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 16)) | ((val & ((1 << 16) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x1C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_daintmsk {
@@ -476,10 +536,15 @@ impl Dvbusdis {
     }
 
     #[inline(always)]
-    pub fn vbusdt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn vbusdt(mut self, val: u32) -> Dvbusdis {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x28) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dvbusdis {
@@ -507,10 +572,15 @@ impl Dvbuspulse {
     }
 
     #[inline(always)]
-    pub fn dvbusp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0)
+    pub fn dvbusp(mut self, val: u32) -> Dvbuspulse {
+        self.raw = (self.raw & !(((1 << 12) - 1) << 0)) | ((val & ((1 << 12) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x2C) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dvbuspulse {
@@ -538,10 +608,15 @@ impl Diepempmsk {
     }
 
     #[inline(always)]
-    pub fn ineptxfem_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ineptxfem(mut self, val: u32) -> Diepempmsk {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x34) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepempmsk {
@@ -569,8 +644,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -579,8 +655,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -589,8 +666,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -599,8 +677,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -609,8 +688,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -619,8 +699,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn txfnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22)
+    pub fn txfnum(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -629,8 +710,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -639,8 +721,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -649,8 +732,9 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -659,10 +743,15 @@ impl Fs_diepctl0 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Fs_diepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x100) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod fs_diepctl0 {
@@ -690,8 +779,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
     #[inline(always)]
@@ -700,8 +790,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -710,8 +801,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn soddfrm_sd1pid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn soddfrm_sd1pid(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -720,8 +812,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn sd0pid_sevnfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn sd0pid_sevnfrm(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
     #[inline(always)]
@@ -730,8 +823,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -740,8 +834,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -750,8 +845,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn txfnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22)
+    pub fn txfnum(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -760,8 +856,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -770,8 +867,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -780,8 +878,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -790,8 +889,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn eonum_dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn eonum_dpid(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -800,8 +900,9 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -810,10 +911,15 @@ impl Diepctl1 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Diepctl1 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x120) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepctl1 {
@@ -841,8 +947,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
     #[inline(always)]
@@ -851,8 +958,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -861,8 +969,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn soddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn soddfrm(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -871,8 +980,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn sd0pid_sevnfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn sd0pid_sevnfrm(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
     #[inline(always)]
@@ -881,8 +991,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -891,8 +1002,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -901,8 +1013,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn txfnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22)
+    pub fn txfnum(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -911,8 +1024,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -921,8 +1035,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -931,8 +1046,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -941,8 +1057,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn eonum_dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn eonum_dpid(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -951,8 +1068,9 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -961,10 +1079,15 @@ impl Diepctl2 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Diepctl2 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x140) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepctl2 {
@@ -992,8 +1115,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
     #[inline(always)]
@@ -1002,8 +1126,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1012,8 +1137,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn soddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn soddfrm(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -1022,8 +1148,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn sd0pid_sevnfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn sd0pid_sevnfrm(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
     #[inline(always)]
@@ -1032,8 +1159,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -1042,8 +1170,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -1052,8 +1181,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn txfnum_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22)
+    pub fn txfnum(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 22)) | ((val & ((1 << 4) - 1)) << 22);
+        self
     }
 
     #[inline(always)]
@@ -1062,8 +1192,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -1072,8 +1203,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1082,8 +1214,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1092,8 +1225,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn eonum_dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn eonum_dpid(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1102,8 +1236,9 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1112,10 +1247,15 @@ impl Diepctl3 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Diepctl3 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x160) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepctl3 {
@@ -1143,8 +1283,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
     #[inline(always)]
@@ -1153,8 +1294,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1163,8 +1305,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -1173,8 +1316,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -1183,8 +1327,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -1193,8 +1338,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn snpm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn snpm(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1203,8 +1349,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1213,8 +1360,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1223,8 +1371,9 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1233,10 +1382,15 @@ impl Doepctl0 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Doepctl0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 0)) | ((val & ((1 << 2) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x300) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepctl0 {
@@ -1264,8 +1418,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
     #[inline(always)]
@@ -1274,8 +1429,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1284,8 +1440,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn soddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn soddfrm(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -1294,8 +1451,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn sd0pid_sevnfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn sd0pid_sevnfrm(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
     #[inline(always)]
@@ -1304,8 +1462,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -1314,8 +1473,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -1324,8 +1484,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -1334,8 +1495,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn snpm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn snpm(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1344,8 +1506,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1354,8 +1517,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1364,8 +1528,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn eonum_dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn eonum_dpid(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1374,8 +1539,9 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1384,10 +1550,15 @@ impl Doepctl1 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Doepctl1 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x320) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepctl1 {
@@ -1415,8 +1586,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
     #[inline(always)]
@@ -1425,8 +1597,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1435,8 +1608,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn soddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn soddfrm(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -1445,8 +1619,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn sd0pid_sevnfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn sd0pid_sevnfrm(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
     #[inline(always)]
@@ -1455,8 +1630,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -1465,8 +1641,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -1475,8 +1652,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -1485,8 +1663,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn snpm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn snpm(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1495,8 +1674,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1505,8 +1685,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1515,8 +1696,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn eonum_dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn eonum_dpid(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1525,8 +1707,9 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1535,10 +1718,15 @@ impl Doepctl2 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Doepctl2 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x340) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepctl2 {
@@ -1566,8 +1754,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn epena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31)
+    pub fn epena(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 31)) | ((val & ((1 << 1) - 1)) << 31);
+        self
     }
 
     #[inline(always)]
@@ -1576,8 +1765,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn epdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30)
+    pub fn epdis(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 30)) | ((val & ((1 << 1) - 1)) << 30);
+        self
     }
 
     #[inline(always)]
@@ -1586,8 +1776,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn soddfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29)
+    pub fn soddfrm(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 29)) | ((val & ((1 << 1) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -1596,8 +1787,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn sd0pid_sevnfrm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn sd0pid_sevnfrm(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
     #[inline(always)]
@@ -1606,8 +1798,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn snak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27)
+    pub fn snak(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 27)) | ((val & ((1 << 1) - 1)) << 27);
+        self
     }
 
     #[inline(always)]
@@ -1616,8 +1809,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn cnak_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26)
+    pub fn cnak(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 26)) | ((val & ((1 << 1) - 1)) << 26);
+        self
     }
 
     #[inline(always)]
@@ -1626,8 +1820,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn stall_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21)
+    pub fn stall(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 21)) | ((val & ((1 << 1) - 1)) << 21);
+        self
     }
 
     #[inline(always)]
@@ -1636,8 +1831,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn snpm_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20)
+    pub fn snpm(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 20)) | ((val & ((1 << 1) - 1)) << 20);
+        self
     }
 
     #[inline(always)]
@@ -1646,8 +1842,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn eptyp_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18)
+    pub fn eptyp(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 18)) | ((val & ((1 << 2) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -1656,8 +1853,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn naksts_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn naksts(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -1666,8 +1864,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn eonum_dpid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn eonum_dpid(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -1676,8 +1875,9 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn usbaep_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15)
+    pub fn usbaep(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 15)) | ((val & ((1 << 1) - 1)) << 15);
+        self
     }
 
     #[inline(always)]
@@ -1686,10 +1886,15 @@ impl Doepctl3 {
     }
 
     #[inline(always)]
-    pub fn mpsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0)
+    pub fn mpsiz(mut self, val: u32) -> Doepctl3 {
+        self.raw = (self.raw & !(((1 << 11) - 1) << 0)) | ((val & ((1 << 11) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x360) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepctl3 {
@@ -1717,8 +1922,9 @@ impl Diepint0 {
     }
 
     #[inline(always)]
-    pub fn txfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txfe(mut self, val: u32) -> Diepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1727,8 +1933,9 @@ impl Diepint0 {
     }
 
     #[inline(always)]
-    pub fn inepne_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn inepne(mut self, val: u32) -> Diepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1737,8 +1944,9 @@ impl Diepint0 {
     }
 
     #[inline(always)]
-    pub fn ittxfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn ittxfe(mut self, val: u32) -> Diepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1747,8 +1955,9 @@ impl Diepint0 {
     }
 
     #[inline(always)]
-    pub fn toc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn toc(mut self, val: u32) -> Diepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1757,8 +1966,9 @@ impl Diepint0 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Diepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1767,10 +1977,15 @@ impl Diepint0 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Diepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x108) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepint0 {
@@ -1798,8 +2013,9 @@ impl Diepint1 {
     }
 
     #[inline(always)]
-    pub fn txfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txfe(mut self, val: u32) -> Diepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1808,8 +2024,9 @@ impl Diepint1 {
     }
 
     #[inline(always)]
-    pub fn inepne_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn inepne(mut self, val: u32) -> Diepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1818,8 +2035,9 @@ impl Diepint1 {
     }
 
     #[inline(always)]
-    pub fn ittxfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn ittxfe(mut self, val: u32) -> Diepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1828,8 +2046,9 @@ impl Diepint1 {
     }
 
     #[inline(always)]
-    pub fn toc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn toc(mut self, val: u32) -> Diepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1838,8 +2057,9 @@ impl Diepint1 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Diepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1848,10 +2068,15 @@ impl Diepint1 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Diepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x128) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepint1 {
@@ -1879,8 +2104,9 @@ impl Diepint2 {
     }
 
     #[inline(always)]
-    pub fn txfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txfe(mut self, val: u32) -> Diepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1889,8 +2115,9 @@ impl Diepint2 {
     }
 
     #[inline(always)]
-    pub fn inepne_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn inepne(mut self, val: u32) -> Diepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1899,8 +2126,9 @@ impl Diepint2 {
     }
 
     #[inline(always)]
-    pub fn ittxfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn ittxfe(mut self, val: u32) -> Diepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1909,8 +2137,9 @@ impl Diepint2 {
     }
 
     #[inline(always)]
-    pub fn toc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn toc(mut self, val: u32) -> Diepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -1919,8 +2148,9 @@ impl Diepint2 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Diepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -1929,10 +2159,15 @@ impl Diepint2 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Diepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x148) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepint2 {
@@ -1960,8 +2195,9 @@ impl Diepint3 {
     }
 
     #[inline(always)]
-    pub fn txfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7)
+    pub fn txfe(mut self, val: u32) -> Diepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
+        self
     }
 
     #[inline(always)]
@@ -1970,8 +2206,9 @@ impl Diepint3 {
     }
 
     #[inline(always)]
-    pub fn inepne_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn inepne(mut self, val: u32) -> Diepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -1980,8 +2217,9 @@ impl Diepint3 {
     }
 
     #[inline(always)]
-    pub fn ittxfe_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn ittxfe(mut self, val: u32) -> Diepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -1990,8 +2228,9 @@ impl Diepint3 {
     }
 
     #[inline(always)]
-    pub fn toc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn toc(mut self, val: u32) -> Diepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2000,8 +2239,9 @@ impl Diepint3 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Diepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2010,10 +2250,15 @@ impl Diepint3 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Diepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x168) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod diepint3 {
@@ -2041,8 +2286,9 @@ impl Doepint0 {
     }
 
     #[inline(always)]
-    pub fn b2bstup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn b2bstup(mut self, val: u32) -> Doepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2051,8 +2297,9 @@ impl Doepint0 {
     }
 
     #[inline(always)]
-    pub fn otepdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn otepdis(mut self, val: u32) -> Doepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2061,8 +2308,9 @@ impl Doepint0 {
     }
 
     #[inline(always)]
-    pub fn stup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stup(mut self, val: u32) -> Doepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2071,8 +2319,9 @@ impl Doepint0 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Doepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2081,10 +2330,15 @@ impl Doepint0 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Doepint0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x308) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepint0 {
@@ -2112,8 +2366,9 @@ impl Doepint1 {
     }
 
     #[inline(always)]
-    pub fn b2bstup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn b2bstup(mut self, val: u32) -> Doepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2122,8 +2377,9 @@ impl Doepint1 {
     }
 
     #[inline(always)]
-    pub fn otepdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn otepdis(mut self, val: u32) -> Doepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2132,8 +2388,9 @@ impl Doepint1 {
     }
 
     #[inline(always)]
-    pub fn stup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stup(mut self, val: u32) -> Doepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2142,8 +2399,9 @@ impl Doepint1 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Doepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2152,10 +2410,15 @@ impl Doepint1 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Doepint1 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x328) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepint1 {
@@ -2183,8 +2446,9 @@ impl Doepint2 {
     }
 
     #[inline(always)]
-    pub fn b2bstup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn b2bstup(mut self, val: u32) -> Doepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2193,8 +2457,9 @@ impl Doepint2 {
     }
 
     #[inline(always)]
-    pub fn otepdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn otepdis(mut self, val: u32) -> Doepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2203,8 +2468,9 @@ impl Doepint2 {
     }
 
     #[inline(always)]
-    pub fn stup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stup(mut self, val: u32) -> Doepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2213,8 +2479,9 @@ impl Doepint2 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Doepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2223,10 +2490,15 @@ impl Doepint2 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Doepint2 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x348) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepint2 {
@@ -2254,8 +2526,9 @@ impl Doepint3 {
     }
 
     #[inline(always)]
-    pub fn b2bstup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6)
+    pub fn b2bstup(mut self, val: u32) -> Doepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
+        self
     }
 
     #[inline(always)]
@@ -2264,8 +2537,9 @@ impl Doepint3 {
     }
 
     #[inline(always)]
-    pub fn otepdis_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn otepdis(mut self, val: u32) -> Doepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -2274,8 +2548,9 @@ impl Doepint3 {
     }
 
     #[inline(always)]
-    pub fn stup_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3)
+    pub fn stup(mut self, val: u32) -> Doepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
+        self
     }
 
     #[inline(always)]
@@ -2284,8 +2559,9 @@ impl Doepint3 {
     }
 
     #[inline(always)]
-    pub fn epdisd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn epdisd(mut self, val: u32) -> Doepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -2294,10 +2570,15 @@ impl Doepint3 {
     }
 
     #[inline(always)]
-    pub fn xfrc_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn xfrc(mut self, val: u32) -> Doepint3 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x368) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doepint3 {
@@ -2325,8 +2606,9 @@ impl Dieptsiz0 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 19)) | ((val & ((1 << 2) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Dieptsiz0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 19)) | ((val & ((1 << 2) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2335,10 +2617,15 @@ impl Dieptsiz0 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Dieptsiz0 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x110) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dieptsiz0 {
@@ -2366,8 +2653,9 @@ impl Doeptsiz0 {
     }
 
     #[inline(always)]
-    pub fn stupcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn stupcnt(mut self, val: u32) -> Doeptsiz0 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -2376,8 +2664,9 @@ impl Doeptsiz0 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Doeptsiz0 {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 19)) | ((val & ((1 << 1) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2386,10 +2675,15 @@ impl Doeptsiz0 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Doeptsiz0 {
+        self.raw = (self.raw & !(((1 << 7) - 1) << 0)) | ((val & ((1 << 7) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x310) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doeptsiz0 {
@@ -2417,8 +2711,9 @@ impl Dieptsiz1 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn mcnt(mut self, val: u32) -> Dieptsiz1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -2427,8 +2722,9 @@ impl Dieptsiz1 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Dieptsiz1 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2437,10 +2733,15 @@ impl Dieptsiz1 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Dieptsiz1 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x130) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dieptsiz1 {
@@ -2468,8 +2769,9 @@ impl Dieptsiz2 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn mcnt(mut self, val: u32) -> Dieptsiz2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -2478,8 +2780,9 @@ impl Dieptsiz2 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Dieptsiz2 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2488,10 +2791,15 @@ impl Dieptsiz2 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Dieptsiz2 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x150) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dieptsiz2 {
@@ -2519,8 +2827,9 @@ impl Dieptsiz3 {
     }
 
     #[inline(always)]
-    pub fn mcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn mcnt(mut self, val: u32) -> Dieptsiz3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -2529,8 +2838,9 @@ impl Dieptsiz3 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Dieptsiz3 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2539,10 +2849,15 @@ impl Dieptsiz3 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Dieptsiz3 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x170) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dieptsiz3 {
@@ -2570,10 +2885,15 @@ impl Dtxfsts0 {
     }
 
     #[inline(always)]
-    pub fn ineptfsav_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ineptfsav(mut self, val: u32) -> Dtxfsts0 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x118) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dtxfsts0 {
@@ -2601,10 +2921,15 @@ impl Dtxfsts1 {
     }
 
     #[inline(always)]
-    pub fn ineptfsav_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ineptfsav(mut self, val: u32) -> Dtxfsts1 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x138) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dtxfsts1 {
@@ -2632,10 +2957,15 @@ impl Dtxfsts2 {
     }
 
     #[inline(always)]
-    pub fn ineptfsav_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ineptfsav(mut self, val: u32) -> Dtxfsts2 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x158) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dtxfsts2 {
@@ -2663,10 +2993,15 @@ impl Dtxfsts3 {
     }
 
     #[inline(always)]
-    pub fn ineptfsav_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0)
+    pub fn ineptfsav(mut self, val: u32) -> Dtxfsts3 {
+        self.raw = (self.raw & !(((1 << 16) - 1) << 0)) | ((val & ((1 << 16) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x178) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod dtxfsts3 {
@@ -2694,8 +3029,9 @@ impl Doeptsiz1 {
     }
 
     #[inline(always)]
-    pub fn rxdpid_stupcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn rxdpid_stupcnt(mut self, val: u32) -> Doeptsiz1 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -2704,8 +3040,9 @@ impl Doeptsiz1 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Doeptsiz1 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2714,10 +3051,15 @@ impl Doeptsiz1 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Doeptsiz1 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x330) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doeptsiz1 {
@@ -2745,8 +3087,9 @@ impl Doeptsiz2 {
     }
 
     #[inline(always)]
-    pub fn rxdpid_stupcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn rxdpid_stupcnt(mut self, val: u32) -> Doeptsiz2 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -2755,8 +3098,9 @@ impl Doeptsiz2 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Doeptsiz2 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2765,10 +3109,15 @@ impl Doeptsiz2 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Doeptsiz2 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x350) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doeptsiz2 {
@@ -2796,8 +3145,9 @@ impl Doeptsiz3 {
     }
 
     #[inline(always)]
-    pub fn rxdpid_stupcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29)
+    pub fn rxdpid_stupcnt(mut self, val: u32) -> Doeptsiz3 {
+        self.raw = (self.raw & !(((1 << 2) - 1) << 29)) | ((val & ((1 << 2) - 1)) << 29);
+        self
     }
 
     #[inline(always)]
@@ -2806,8 +3156,9 @@ impl Doeptsiz3 {
     }
 
     #[inline(always)]
-    pub fn pktcnt_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19)
+    pub fn pktcnt(mut self, val: u32) -> Doeptsiz3 {
+        self.raw = (self.raw & !(((1 << 10) - 1) << 19)) | ((val & ((1 << 10) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -2816,10 +3167,15 @@ impl Doeptsiz3 {
     }
 
     #[inline(always)]
-    pub fn xfrsiz_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0)
+    pub fn xfrsiz(mut self, val: u32) -> Doeptsiz3 {
+        self.raw = (self.raw & !(((1 << 19) - 1) << 0)) | ((val & ((1 << 19) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0x50000800 + 0x370) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod doeptsiz3 {

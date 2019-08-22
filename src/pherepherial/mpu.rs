@@ -9,8 +9,9 @@ impl Mpu_typer {
     }
 
     #[inline(always)]
-    pub fn separate_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn separate(mut self, val: u32) -> Mpu_typer {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -19,8 +20,9 @@ impl Mpu_typer {
     }
 
     #[inline(always)]
-    pub fn dregion_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn dregion(mut self, val: u32) -> Mpu_typer {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -29,10 +31,15 @@ impl Mpu_typer {
     }
 
     #[inline(always)]
-    pub fn iregion_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16)
+    pub fn iregion(mut self, val: u32) -> Mpu_typer {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 16)) | ((val & ((1 << 8) - 1)) << 16);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000ED90 + 0x0) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mpu_typer {
@@ -60,8 +67,9 @@ impl Mpu_ctrl {
     }
 
     #[inline(always)]
-    pub fn enable_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn enable(mut self, val: u32) -> Mpu_ctrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -70,8 +78,9 @@ impl Mpu_ctrl {
     }
 
     #[inline(always)]
-    pub fn hfnmiena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1)
+    pub fn hfnmiena(mut self, val: u32) -> Mpu_ctrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -80,10 +89,15 @@ impl Mpu_ctrl {
     }
 
     #[inline(always)]
-    pub fn privdefena_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2)
+    pub fn privdefena(mut self, val: u32) -> Mpu_ctrl {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000ED90 + 0x4) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mpu_ctrl {
@@ -111,10 +125,15 @@ impl Mpu_rnr {
     }
 
     #[inline(always)]
-    pub fn region_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0)
+    pub fn region(mut self, val: u32) -> Mpu_rnr {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 0)) | ((val & ((1 << 8) - 1)) << 0);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000ED90 + 0x8) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mpu_rnr {
@@ -142,8 +161,9 @@ impl Mpu_rbar {
     }
 
     #[inline(always)]
-    pub fn region_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0)
+    pub fn region(mut self, val: u32) -> Mpu_rbar {
+        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -152,8 +172,9 @@ impl Mpu_rbar {
     }
 
     #[inline(always)]
-    pub fn valid_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4)
+    pub fn valid(mut self, val: u32) -> Mpu_rbar {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
+        self
     }
 
     #[inline(always)]
@@ -162,10 +183,15 @@ impl Mpu_rbar {
     }
 
     #[inline(always)]
-    pub fn addr_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 27) - 1) << 5)) | ((val & ((1 << 27) - 1)) << 5)
+    pub fn addr(mut self, val: u32) -> Mpu_rbar {
+        self.raw = (self.raw & !(((1 << 27) - 1) << 5)) | ((val & ((1 << 27) - 1)) << 5);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000ED90 + 0xC) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mpu_rbar {
@@ -193,8 +219,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn enable_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0)
+    pub fn enable(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
+        self
     }
 
     #[inline(always)]
@@ -203,8 +230,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn size_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 5) - 1) << 1)) | ((val & ((1 << 5) - 1)) << 1)
+    pub fn size(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 5) - 1) << 1)) | ((val & ((1 << 5) - 1)) << 1);
+        self
     }
 
     #[inline(always)]
@@ -213,8 +241,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn srd_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8)
+    pub fn srd(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 8) - 1) << 8)) | ((val & ((1 << 8) - 1)) << 8);
+        self
     }
 
     #[inline(always)]
@@ -223,8 +252,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn b_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16)
+    pub fn b(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 16)) | ((val & ((1 << 1) - 1)) << 16);
+        self
     }
 
     #[inline(always)]
@@ -233,8 +263,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn c_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17)
+    pub fn c(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 17)) | ((val & ((1 << 1) - 1)) << 17);
+        self
     }
 
     #[inline(always)]
@@ -243,8 +274,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn s_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18)
+    pub fn s(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 18)) | ((val & ((1 << 1) - 1)) << 18);
+        self
     }
 
     #[inline(always)]
@@ -253,8 +285,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn tex_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 19)) | ((val & ((1 << 3) - 1)) << 19)
+    pub fn tex(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 19)) | ((val & ((1 << 3) - 1)) << 19);
+        self
     }
 
     #[inline(always)]
@@ -263,8 +296,9 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn ap_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 3) - 1) << 24)) | ((val & ((1 << 3) - 1)) << 24)
+    pub fn ap(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 3) - 1) << 24)) | ((val & ((1 << 3) - 1)) << 24);
+        self
     }
 
     #[inline(always)]
@@ -273,10 +307,15 @@ impl Mpu_rasr {
     }
 
     #[inline(always)]
-    pub fn xn_set(&mut self, val: u32) {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28)
+    pub fn xn(mut self, val: u32) -> Mpu_rasr {
+        self.raw = (self.raw & !(((1 << 1) - 1) << 28)) | ((val & ((1 << 1) - 1)) << 28);
+        self
     }
 
+    #[inline(always)]
+    pub fn write(self) {
+       unsafe { *((0xE000ED90 + 0x10) as *mut u32) = self.raw; }
+    }
 }
 
 pub mod mpu_rasr {
