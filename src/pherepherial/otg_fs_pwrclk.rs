@@ -1,58 +1,51 @@
-pub struct Fs_pcgcctl {
-   raw: u32,
-}
-
-impl Fs_pcgcctl {
-    #[inline(always)]
-    pub fn stppclk_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn stppclk(mut self, val: u32) -> Fs_pcgcctl {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
-        self
-    }
-
-    #[inline(always)]
-    pub fn gatehclk_get(&self) -> u32 {
-        (self.raw >> 1) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn gatehclk(mut self, val: u32) -> Fs_pcgcctl {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
-        self
-    }
-
-    #[inline(always)]
-    pub fn physusp_get(&self) -> u32 {
-        (self.raw >> 4) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn physusp(mut self, val: u32) -> Fs_pcgcctl {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
-        self
-    }
-
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0x50000E00u32 + 0x0u32) as *mut u32) = self.raw; }
-    }
-}
-
 pub mod fs_pcgcctl {
-    #[inline(always)]
-    pub fn read() -> super::Fs_pcgcctl {
-        super::Fs_pcgcctl {
-            raw: unsafe { *((0x50000E00u32 + 0x0u32) as *const u32) }
+    pub mod stppclk {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0x50000E00u32 as *const u32) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x50000E00u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= val & 0x1;
+                core::ptr::write_volatile(0x50000E00u32 as *mut u32, reg);
+            }
         }
     }
+    pub mod gatehclk {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x50000E00u32 as *const u32) >> 1) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn write(val: & super::Fs_pcgcctl) {
-       unsafe { *((0x50000E00u32 + 0x0u32) as *mut u32) = val.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x50000E00u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 1;
+                core::ptr::write_volatile(0x50000E00u32 as *mut u32, reg);
+            }
+        }
+    }
+    pub mod physusp {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x50000E00u32 as *const u32) >> 4) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x50000E00u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 4;
+                core::ptr::write_volatile(0x50000E00u32 as *mut u32, reg);
+            }
+        }
     }
 }
 

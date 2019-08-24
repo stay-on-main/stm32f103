@@ -1,36 +1,19 @@
-pub struct Stir {
-   raw: u32,
-}
-
-impl Stir {
-    #[inline(always)]
-    pub fn intid_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 9) - 1)
-    }
-
-    #[inline(always)]
-    pub fn intid(mut self, val: u32) -> Stir {
-        self.raw = (self.raw & !(((1 << 9) - 1) << 0)) | ((val & ((1 << 9) - 1)) << 0);
-        self
-    }
-
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0xE000EF00u32 + 0x0u32) as *mut u32) = self.raw; }
-    }
-}
-
 pub mod stir {
-    #[inline(always)]
-    pub fn read() -> super::Stir {
-        super::Stir {
-            raw: unsafe { *((0xE000EF00u32 + 0x0u32) as *const u32) }
+    pub mod intid {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0xE000EF00u32 as *const u32) & 0x1FF
+            }
         }
-    }
 
-    #[inline(always)]
-    pub fn write(val: & super::Stir) {
-       unsafe { *((0xE000EF00u32 + 0x0u32) as *mut u32) = val.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0xE000EF00u32 as *const u32);
+                reg &= 0xFFFFFE00u32;
+                reg |= val & 0x1FF;
+                core::ptr::write_volatile(0xE000EF00u32 as *mut u32, reg);
+            }
+        }
     }
 }
 

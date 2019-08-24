@@ -1,557 +1,562 @@
-pub struct Sr {
-   raw: u32,
-}
-
-impl Sr {
-    #[inline(always)]
-    pub fn pe_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn pe(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
-        self
-    }
-
-    #[inline(always)]
-    pub fn fe_get(&self) -> u32 {
-        (self.raw >> 1) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn fe(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
-        self
-    }
-
-    #[inline(always)]
-    pub fn ne_get(&self) -> u32 {
-        (self.raw >> 2) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn ne(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
-        self
-    }
-
-    #[inline(always)]
-    pub fn ore_get(&self) -> u32 {
-        (self.raw >> 3) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn ore(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
-        self
-    }
-
-    #[inline(always)]
-    pub fn idle_get(&self) -> u32 {
-        (self.raw >> 4) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn idle(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
-        self
-    }
-
-    #[inline(always)]
-    pub fn rxne_get(&self) -> u32 {
-        (self.raw >> 5) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn rxne(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
-        self
-    }
-
-    #[inline(always)]
-    pub fn tc_get(&self) -> u32 {
-        (self.raw >> 6) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn tc(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
-        self
-    }
-
-    #[inline(always)]
-    pub fn txe_get(&self) -> u32 {
-        (self.raw >> 7) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn txe(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
-        self
-    }
-
-    #[inline(always)]
-    pub fn lbd_get(&self) -> u32 {
-        (self.raw >> 8) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn lbd(mut self, val: u32) -> Sr {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
-        self
-    }
-
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0x40004C00u32 + 0x0u32) as *mut u32) = self.raw; }
-    }
-}
-
 pub mod sr {
-    #[inline(always)]
-    pub fn read() -> super::Sr {
-        super::Sr {
-            raw: unsafe { *((0x40004C00u32 + 0x0u32) as *const u32) }
+    pub mod pe {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0x40004C00u32 as *const u32) & 0x1
+            }
+        }
+
+    }
+    pub mod fe {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 1) & 0x1
+            }
+        }
+
+    }
+    pub mod ne {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 2) & 0x1
+            }
+        }
+
+    }
+    pub mod ore {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 3) & 0x1
+            }
+        }
+
+    }
+    pub mod idle {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 4) & 0x1
+            }
+        }
+
+    }
+    pub mod rxne {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 5) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C00u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 5;
+                core::ptr::write_volatile(0x40004C00u32 as *mut u32, reg);
+            }
         }
     }
+    pub mod tc {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 6) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn write(val: & super::Sr) {
-       unsafe { *((0x40004C00u32 + 0x0u32) as *mut u32) = val.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C00u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 6;
+                core::ptr::write_volatile(0x40004C00u32 as *mut u32, reg);
+            }
+        }
     }
-}
+    pub mod txe {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 7) & 0x1
+            }
+        }
 
-pub struct Dr {
-   raw: u32,
-}
-
-impl Dr {
-    #[inline(always)]
-    pub fn dr_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 9) - 1)
     }
+    pub mod lbd {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C00u32 as *const u32) >> 8) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn dr(mut self, val: u32) -> Dr {
-        self.raw = (self.raw & !(((1 << 9) - 1) << 0)) | ((val & ((1 << 9) - 1)) << 0);
-        self
-    }
-
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0x40004C00u32 + 0x4u32) as *mut u32) = self.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C00u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 8;
+                core::ptr::write_volatile(0x40004C00u32 as *mut u32, reg);
+            }
+        }
     }
 }
 
 pub mod dr {
-    #[inline(always)]
-    pub fn read() -> super::Dr {
-        super::Dr {
-            raw: unsafe { *((0x40004C00u32 + 0x4u32) as *const u32) }
+    pub mod dr {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0x40004C04u32 as *const u32) & 0x1FF
+            }
         }
-    }
 
-    #[inline(always)]
-    pub fn write(val: & super::Dr) {
-       unsafe { *((0x40004C00u32 + 0x4u32) as *mut u32) = val.raw; }
-    }
-}
-
-pub struct Brr {
-   raw: u32,
-}
-
-impl Brr {
-    #[inline(always)]
-    pub fn div_fraction_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 4) - 1)
-    }
-
-    #[inline(always)]
-    pub fn div_fraction(mut self, val: u32) -> Brr {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
-        self
-    }
-
-    #[inline(always)]
-    pub fn div_mantissa_get(&self) -> u32 {
-        (self.raw >> 4) & ((1 << 12) - 1)
-    }
-
-    #[inline(always)]
-    pub fn div_mantissa(mut self, val: u32) -> Brr {
-        self.raw = (self.raw & !(((1 << 12) - 1) << 4)) | ((val & ((1 << 12) - 1)) << 4);
-        self
-    }
-
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0x40004C00u32 + 0x8u32) as *mut u32) = self.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C04u32 as *const u32);
+                reg &= 0xFFFFFE00u32;
+                reg |= val & 0x1FF;
+                core::ptr::write_volatile(0x40004C04u32 as *mut u32, reg);
+            }
+        }
     }
 }
 
 pub mod brr {
-    #[inline(always)]
-    pub fn read() -> super::Brr {
-        super::Brr {
-            raw: unsafe { *((0x40004C00u32 + 0x8u32) as *const u32) }
+    pub mod div_fraction {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0x40004C08u32 as *const u32) & 0xF
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C08u32 as *const u32);
+                reg &= 0xFFFFFFF0u32;
+                reg |= val & 0xF;
+                core::ptr::write_volatile(0x40004C08u32 as *mut u32, reg);
+            }
         }
     }
+    pub mod div_mantissa {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C08u32 as *const u32) >> 4) & 0xFFF
+            }
+        }
 
-    #[inline(always)]
-    pub fn write(val: & super::Brr) {
-       unsafe { *((0x40004C00u32 + 0x8u32) as *mut u32) = val.raw; }
-    }
-}
-
-pub struct Cr1 {
-   raw: u32,
-}
-
-impl Cr1 {
-    #[inline(always)]
-    pub fn sbk_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn sbk(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
-        self
-    }
-
-    #[inline(always)]
-    pub fn rwu_get(&self) -> u32 {
-        (self.raw >> 1) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn rwu(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
-        self
-    }
-
-    #[inline(always)]
-    pub fn re_get(&self) -> u32 {
-        (self.raw >> 2) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn re(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
-        self
-    }
-
-    #[inline(always)]
-    pub fn te_get(&self) -> u32 {
-        (self.raw >> 3) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn te(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
-        self
-    }
-
-    #[inline(always)]
-    pub fn idleie_get(&self) -> u32 {
-        (self.raw >> 4) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn idleie(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 4)) | ((val & ((1 << 1) - 1)) << 4);
-        self
-    }
-
-    #[inline(always)]
-    pub fn rxneie_get(&self) -> u32 {
-        (self.raw >> 5) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn rxneie(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
-        self
-    }
-
-    #[inline(always)]
-    pub fn tcie_get(&self) -> u32 {
-        (self.raw >> 6) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn tcie(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
-        self
-    }
-
-    #[inline(always)]
-    pub fn txeie_get(&self) -> u32 {
-        (self.raw >> 7) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn txeie(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
-        self
-    }
-
-    #[inline(always)]
-    pub fn peie_get(&self) -> u32 {
-        (self.raw >> 8) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn peie(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 8)) | ((val & ((1 << 1) - 1)) << 8);
-        self
-    }
-
-    #[inline(always)]
-    pub fn ps_get(&self) -> u32 {
-        (self.raw >> 9) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn ps(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 9)) | ((val & ((1 << 1) - 1)) << 9);
-        self
-    }
-
-    #[inline(always)]
-    pub fn pce_get(&self) -> u32 {
-        (self.raw >> 10) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn pce(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 10)) | ((val & ((1 << 1) - 1)) << 10);
-        self
-    }
-
-    #[inline(always)]
-    pub fn wake_get(&self) -> u32 {
-        (self.raw >> 11) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn wake(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 11)) | ((val & ((1 << 1) - 1)) << 11);
-        self
-    }
-
-    #[inline(always)]
-    pub fn m_get(&self) -> u32 {
-        (self.raw >> 12) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn m(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 12)) | ((val & ((1 << 1) - 1)) << 12);
-        self
-    }
-
-    #[inline(always)]
-    pub fn ue_get(&self) -> u32 {
-        (self.raw >> 13) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn ue(mut self, val: u32) -> Cr1 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 13)) | ((val & ((1 << 1) - 1)) << 13);
-        self
-    }
-
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0x40004C00u32 + 0xCu32) as *mut u32) = self.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C08u32 as *const u32);
+                reg &= 0xFFFFF000u32;
+                reg |= (val & 0xFFF) << 4;
+                core::ptr::write_volatile(0x40004C08u32 as *mut u32, reg);
+            }
+        }
     }
 }
 
 pub mod cr1 {
-    #[inline(always)]
-    pub fn read() -> super::Cr1 {
-        super::Cr1 {
-            raw: unsafe { *((0x40004C00u32 + 0xCu32) as *const u32) }
+    pub mod sbk {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0x40004C0Cu32 as *const u32) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= val & 0x1;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
         }
     }
+    pub mod rwu {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 1) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn write(val: & super::Cr1) {
-       unsafe { *((0x40004C00u32 + 0xCu32) as *mut u32) = val.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 1;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
-}
+    pub mod re {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 2) & 0x1
+            }
+        }
 
-pub struct Cr2 {
-   raw: u32,
-}
-
-impl Cr2 {
-    #[inline(always)]
-    pub fn add_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 4) - 1)
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 2;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod te {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 3) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn add(mut self, val: u32) -> Cr2 {
-        self.raw = (self.raw & !(((1 << 4) - 1) << 0)) | ((val & ((1 << 4) - 1)) << 0);
-        self
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 3;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod idleie {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 4) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn lbdl_get(&self) -> u32 {
-        (self.raw >> 5) & ((1 << 1) - 1)
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 4;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod rxneie {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 5) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn lbdl(mut self, val: u32) -> Cr2 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 5)) | ((val & ((1 << 1) - 1)) << 5);
-        self
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 5;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod tcie {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 6) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn lbdie_get(&self) -> u32 {
-        (self.raw >> 6) & ((1 << 1) - 1)
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 6;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod txeie {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 7) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn lbdie(mut self, val: u32) -> Cr2 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
-        self
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 7;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod peie {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 8) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn stop_get(&self) -> u32 {
-        (self.raw >> 12) & ((1 << 2) - 1)
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 8;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod ps {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 9) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn stop(mut self, val: u32) -> Cr2 {
-        self.raw = (self.raw & !(((1 << 2) - 1) << 12)) | ((val & ((1 << 2) - 1)) << 12);
-        self
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 9;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod pce {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 10) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn linen_get(&self) -> u32 {
-        (self.raw >> 14) & ((1 << 1) - 1)
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 10;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod wake {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 11) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn linen(mut self, val: u32) -> Cr2 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 14)) | ((val & ((1 << 1) - 1)) << 14);
-        self
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 11;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod m {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 12) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0x40004C00u32 + 0x10u32) as *mut u32) = self.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 12;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
+    }
+    pub mod ue {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C0Cu32 as *const u32) >> 13) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C0Cu32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 13;
+                core::ptr::write_volatile(0x40004C0Cu32 as *mut u32, reg);
+            }
+        }
     }
 }
 
 pub mod cr2 {
-    #[inline(always)]
-    pub fn read() -> super::Cr2 {
-        super::Cr2 {
-            raw: unsafe { *((0x40004C00u32 + 0x10u32) as *const u32) }
+    pub mod add {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0x40004C10u32 as *const u32) & 0xF
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C10u32 as *const u32);
+                reg &= 0xFFFFFFF0u32;
+                reg |= val & 0xF;
+                core::ptr::write_volatile(0x40004C10u32 as *mut u32, reg);
+            }
         }
     }
+    pub mod lbdl {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C10u32 as *const u32) >> 5) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn write(val: & super::Cr2) {
-       unsafe { *((0x40004C00u32 + 0x10u32) as *mut u32) = val.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C10u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 5;
+                core::ptr::write_volatile(0x40004C10u32 as *mut u32, reg);
+            }
+        }
     }
-}
+    pub mod lbdie {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C10u32 as *const u32) >> 6) & 0x1
+            }
+        }
 
-pub struct Cr3 {
-   raw: u32,
-}
-
-impl Cr3 {
-    #[inline(always)]
-    pub fn eie_get(&self) -> u32 {
-        (self.raw >> 0) & ((1 << 1) - 1)
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C10u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 6;
+                core::ptr::write_volatile(0x40004C10u32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod stop {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C10u32 as *const u32) >> 12) & 0x3
+            }
+        }
 
-    #[inline(always)]
-    pub fn eie(mut self, val: u32) -> Cr3 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 0)) | ((val & ((1 << 1) - 1)) << 0);
-        self
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C10u32 as *const u32);
+                reg &= 0xFFFFFFFCu32;
+                reg |= (val & 0x3) << 12;
+                core::ptr::write_volatile(0x40004C10u32 as *mut u32, reg);
+            }
+        }
     }
+    pub mod linen {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C10u32 as *const u32) >> 14) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn iren_get(&self) -> u32 {
-        (self.raw >> 1) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn iren(mut self, val: u32) -> Cr3 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 1)) | ((val & ((1 << 1) - 1)) << 1);
-        self
-    }
-
-    #[inline(always)]
-    pub fn irlp_get(&self) -> u32 {
-        (self.raw >> 2) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn irlp(mut self, val: u32) -> Cr3 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 2)) | ((val & ((1 << 1) - 1)) << 2);
-        self
-    }
-
-    #[inline(always)]
-    pub fn hdsel_get(&self) -> u32 {
-        (self.raw >> 3) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn hdsel(mut self, val: u32) -> Cr3 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 3)) | ((val & ((1 << 1) - 1)) << 3);
-        self
-    }
-
-    #[inline(always)]
-    pub fn dmar_get(&self) -> u32 {
-        (self.raw >> 6) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn dmar(mut self, val: u32) -> Cr3 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 6)) | ((val & ((1 << 1) - 1)) << 6);
-        self
-    }
-
-    #[inline(always)]
-    pub fn dmat_get(&self) -> u32 {
-        (self.raw >> 7) & ((1 << 1) - 1)
-    }
-
-    #[inline(always)]
-    pub fn dmat(mut self, val: u32) -> Cr3 {
-        self.raw = (self.raw & !(((1 << 1) - 1) << 7)) | ((val & ((1 << 1) - 1)) << 7);
-        self
-    }
-
-    #[inline(always)]
-    pub fn write(self) {
-       unsafe { *((0x40004C00u32 + 0x14u32) as *mut u32) = self.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C10u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 14;
+                core::ptr::write_volatile(0x40004C10u32 as *mut u32, reg);
+            }
+        }
     }
 }
 
 pub mod cr3 {
-    #[inline(always)]
-    pub fn read() -> super::Cr3 {
-        super::Cr3 {
-            raw: unsafe { *((0x40004C00u32 + 0x14u32) as *const u32) }
+    pub mod eie {
+        pub fn get() -> u32 {
+            unsafe {
+                core::ptr::read_volatile(0x40004C14u32 as *const u32) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C14u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= val & 0x1;
+                core::ptr::write_volatile(0x40004C14u32 as *mut u32, reg);
+            }
         }
     }
+    pub mod iren {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C14u32 as *const u32) >> 1) & 0x1
+            }
+        }
 
-    #[inline(always)]
-    pub fn write(val: & super::Cr3) {
-       unsafe { *((0x40004C00u32 + 0x14u32) as *mut u32) = val.raw; }
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C14u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 1;
+                core::ptr::write_volatile(0x40004C14u32 as *mut u32, reg);
+            }
+        }
+    }
+    pub mod irlp {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C14u32 as *const u32) >> 2) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C14u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 2;
+                core::ptr::write_volatile(0x40004C14u32 as *mut u32, reg);
+            }
+        }
+    }
+    pub mod hdsel {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C14u32 as *const u32) >> 3) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C14u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 3;
+                core::ptr::write_volatile(0x40004C14u32 as *mut u32, reg);
+            }
+        }
+    }
+    pub mod dmar {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C14u32 as *const u32) >> 6) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C14u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 6;
+                core::ptr::write_volatile(0x40004C14u32 as *mut u32, reg);
+            }
+        }
+    }
+    pub mod dmat {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40004C14u32 as *const u32) >> 7) & 0x1
+            }
+        }
+
+        pub fn set(val: u32) {
+            unsafe {
+                let mut reg = core::ptr::read_volatile(0x40004C14u32 as *const u32);
+                reg &= 0xFFFFFFFEu32;
+                reg |= (val & 0x1) << 7;
+                core::ptr::write_volatile(0x40004C14u32 as *mut u32, reg);
+            }
+        }
     }
 }
 

@@ -13,55 +13,67 @@ use pherepherial::stk;
 
 fn usart_init() {
     // PA9, PA10
-	rcc::apb2enr::read().iopaen(3).afioen(1).write();
-    gpioa::crh::read().mode9(1).cnf9(2).write();
-    gpioa::crh::read().mode10(0).cnf10(1).write();
+	rcc::apb2enr::iopaen::set(1);
+    rcc::apb2enr::afioen::set(1);
 
-    rcc::apb2enr::read().usart1en(1).write();
+    gpioa::crh::mode9::set(1);
+    gpioa::crh::cnf9::set(2);
+
+    gpioa::crh::mode10::set(0);
+    gpioa::crh::cnf10::set(1);
+
+    rcc::apb2enr::usart1en::set(1);
     // Enable the USART by writing the UE bit in USART_CR1 register to 1.
-    usart1::cr1::read().ue(1).write();
+    usart1::cr1::ue::set(1);
     // Program the M bit in USART_CR1 to define the word length.
-    usart1::cr2::read().stop(0).write();
+    usart1::cr2::stop::set(0);
     // Program the number of stop bits in USART_CR2.
     // Select the desired baud rate using the USART_BRR register
-    usart1::brr::read().div_mantissa(27).div_fraction(12).write();
+    usart1::brr::div_mantissa::set(0xEA);
+    usart1::brr::div_fraction::set(0x6);
     // Set the TE bit in USART_CR1 to send an idle frame as first transmission
-    usart1::cr1::read().te(1).write();
+    usart1::cr1::te::set(1);
     // Write the data to send in the USART_DR register (this clears the TXE bit).
     // Repeat this for each data to be transmitted in case of single buffer.
-    usart1::dr::read().dr(0x0f).write();
+    usart1::dr::dr::set(0xfff);
 }
 
 fn usart_send(byte: u8) {
-    while usart1::sr::read().txe_get() == 0 {
+    while usart1::sr::txe::get() == 0 {
         break;
     }
 
-    usart1::dr::read().dr(byte as u32).write();
+    usart1::dr::dr::set(byte as u32);
 }
 
 fn system_init()
 {
     // turn on high speed external osicilator
-    rcc::cr::read().hseon(1).write();
+    rcc::cr::hseon::set(1);
     // waiting while HSE unstable
-    while rcc::cr::read().hserdy_get() == 0 {
+    while rcc::cr::hserdy::get() == 0 {
 
     }
 
-    flash::acr::read().prftbe(1).latency(2).write();
+    flash::acr::prftbe::set(1);
+    flash::acr::latency::set(2);
 
-    rcc::cfgr::read().hpre(0).ppre2(0).ppre1(0).pllmul(0b111).pllxtpre(0).pllsrc(1).write(); // SYSCLK not divided, HCLK not divided,
+    rcc::cfgr::hpre::set(0);
+    rcc::cfgr::ppre2::set(0);
+    rcc::cfgr::ppre1::set(0);
+    rcc::cfgr::pllmul::set(0b111);
+    rcc::cfgr::pllxtpre::set(0);
+    rcc::cfgr::pllsrc::set(1); // SYSCLK not divided, HCLK not divided,
     // Caution: The PLL output frequency must not exceed 72 MHz
-    rcc::cr::read().pllon(1).write();
+    rcc::cr::pllon::set(1);
 
-    while rcc::cr::read().pllrdy_get() == 0 {
+    while rcc::cr::pllrdy::get() == 0 {
 
     }
     // PLL selected as system clock
-    rcc::cfgr::read().sw(2).write(); 
+    rcc::cfgr::sw::set(2); 
 
-    while rcc::cfgr::read().sws_get() != 2 {
+    while rcc::cfgr::sws::get() != 2 {
 
     }
 }
@@ -70,17 +82,18 @@ fn system_init()
 pub fn main() {
     system_init();
     
-
-    rcc::apb2enr::read().iopben(1).write();
+    rcc::apb2enr::iopben::set(1);
     // output 50 MHz general purpose push-pull
-    gpiob::crh::read().mode12(1).cnf12(0).write(); 
-    gpiob::odr::read().odr12(0).write();
+    gpiob::crh::mode12::set(1);
+    gpiob::crh::cnf12::set(0); 
+    gpiob::odr::odr12::set(0);
 
     usart_init();
 
-    stk::load_::read().reload(7200000u32).write();
-    stk::ctrl::read().clksource(1).tickint(1).enable(1).write();
-
+    stk::load_::reload::set(7200000u32);
+    stk::ctrl::clksource::set(1);
+    stk::ctrl::tickint::set(1);
+    stk::ctrl::enable::set(1);
 
     let mut count: u32 = 0;
     loop {
@@ -94,5 +107,5 @@ pub fn main() {
 
 #[no_mangle]
 pub fn systick_handler_interrupt() {
-	usart_send(0x55);
+	usart_send(0x36);
 }
