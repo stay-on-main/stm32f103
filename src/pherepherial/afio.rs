@@ -25,7 +25,7 @@ pub mod evcr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010000u32 as *const u32);
-                reg &= 0xFFFFFFF8u32;
+                reg &= 0xFFFFFF8Fu32;
                 reg |= (val & 0x7) << 4;
                 core::ptr::write_volatile(0x40010000u32 as *mut u32, reg);
             }
@@ -41,7 +41,7 @@ pub mod evcr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010000u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFF7Fu32;
                 reg |= (val & 0x1) << 7;
                 core::ptr::write_volatile(0x40010000u32 as *mut u32, reg);
             }
@@ -76,7 +76,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFFFDu32;
                 reg |= (val & 0x1) << 1;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -92,7 +92,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFFFBu32;
                 reg |= (val & 0x1) << 2;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -108,7 +108,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFFF7u32;
                 reg |= (val & 0x1) << 3;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -124,7 +124,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFCu32;
+                reg &= 0xFFFFFFCFu32;
                 reg |= (val & 0x3) << 4;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -140,7 +140,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFCu32;
+                reg &= 0xFFFFFF3Fu32;
                 reg |= (val & 0x3) << 6;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -156,7 +156,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFCu32;
+                reg &= 0xFFFFFCFFu32;
                 reg |= (val & 0x3) << 8;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -172,7 +172,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFCu32;
+                reg &= 0xFFFFF3FFu32;
                 reg |= (val & 0x3) << 10;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -188,7 +188,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFEFFFu32;
                 reg |= (val & 0x1) << 12;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -204,7 +204,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFCu32;
+                reg &= 0xFFFF9FFFu32;
                 reg |= (val & 0x3) << 13;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -220,7 +220,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFF7FFFu32;
                 reg |= (val & 0x1) << 15;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -236,7 +236,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFEFFFFu32;
                 reg |= (val & 0x1) << 16;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -252,7 +252,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFDFFFFu32;
                 reg |= (val & 0x1) << 17;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -268,7 +268,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFBFFFFu32;
                 reg |= (val & 0x1) << 18;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -284,7 +284,7 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFF7FFFFu32;
                 reg |= (val & 0x1) << 19;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -300,17 +300,23 @@ pub mod mapr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFEFFFFFu32;
                 reg |= (val & 0x1) << 20;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
         }
     }
     pub mod swj_cfg {
+        pub fn get() -> u32 {
+            unsafe {
+                (core::ptr::read_volatile(0x40010004u32 as *const u32) >> 24) & 0x7
+            }
+        }
+
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010004u32 as *const u32);
-                reg &= 0xFFFFFFF8u32;
+                reg &= 0xF8FFFFFFu32;
                 reg |= (val & 0x7) << 24;
                 core::ptr::write_volatile(0x40010004u32 as *mut u32, reg);
             }
@@ -345,7 +351,7 @@ pub mod exticr1 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010008u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFFF0Fu32;
                 reg |= (val & 0xF) << 4;
                 core::ptr::write_volatile(0x40010008u32 as *mut u32, reg);
             }
@@ -361,7 +367,7 @@ pub mod exticr1 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010008u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFF0FFu32;
                 reg |= (val & 0xF) << 8;
                 core::ptr::write_volatile(0x40010008u32 as *mut u32, reg);
             }
@@ -377,7 +383,7 @@ pub mod exticr1 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010008u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFF0FFFu32;
                 reg |= (val & 0xF) << 12;
                 core::ptr::write_volatile(0x40010008u32 as *mut u32, reg);
             }
@@ -412,7 +418,7 @@ pub mod exticr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001000Cu32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFFF0Fu32;
                 reg |= (val & 0xF) << 4;
                 core::ptr::write_volatile(0x4001000Cu32 as *mut u32, reg);
             }
@@ -428,7 +434,7 @@ pub mod exticr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001000Cu32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFF0FFu32;
                 reg |= (val & 0xF) << 8;
                 core::ptr::write_volatile(0x4001000Cu32 as *mut u32, reg);
             }
@@ -444,7 +450,7 @@ pub mod exticr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001000Cu32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFF0FFFu32;
                 reg |= (val & 0xF) << 12;
                 core::ptr::write_volatile(0x4001000Cu32 as *mut u32, reg);
             }
@@ -479,7 +485,7 @@ pub mod exticr3 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010010u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFFF0Fu32;
                 reg |= (val & 0xF) << 4;
                 core::ptr::write_volatile(0x40010010u32 as *mut u32, reg);
             }
@@ -495,7 +501,7 @@ pub mod exticr3 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010010u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFF0FFu32;
                 reg |= (val & 0xF) << 8;
                 core::ptr::write_volatile(0x40010010u32 as *mut u32, reg);
             }
@@ -511,7 +517,7 @@ pub mod exticr3 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010010u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFF0FFFu32;
                 reg |= (val & 0xF) << 12;
                 core::ptr::write_volatile(0x40010010u32 as *mut u32, reg);
             }
@@ -546,7 +552,7 @@ pub mod exticr4 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010014u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFFF0Fu32;
                 reg |= (val & 0xF) << 4;
                 core::ptr::write_volatile(0x40010014u32 as *mut u32, reg);
             }
@@ -562,7 +568,7 @@ pub mod exticr4 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010014u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFFF0FFu32;
                 reg |= (val & 0xF) << 8;
                 core::ptr::write_volatile(0x40010014u32 as *mut u32, reg);
             }
@@ -578,7 +584,7 @@ pub mod exticr4 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x40010014u32 as *const u32);
-                reg &= 0xFFFFFFF0u32;
+                reg &= 0xFFFF0FFFu32;
                 reg |= (val & 0xF) << 12;
                 core::ptr::write_volatile(0x40010014u32 as *mut u32, reg);
             }
@@ -597,7 +603,7 @@ pub mod mapr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001001Cu32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFFDFu32;
                 reg |= (val & 0x1) << 5;
                 core::ptr::write_volatile(0x4001001Cu32 as *mut u32, reg);
             }
@@ -613,7 +619,7 @@ pub mod mapr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001001Cu32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFFBFu32;
                 reg |= (val & 0x1) << 6;
                 core::ptr::write_volatile(0x4001001Cu32 as *mut u32, reg);
             }
@@ -629,7 +635,7 @@ pub mod mapr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001001Cu32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFF7Fu32;
                 reg |= (val & 0x1) << 7;
                 core::ptr::write_volatile(0x4001001Cu32 as *mut u32, reg);
             }
@@ -645,7 +651,7 @@ pub mod mapr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001001Cu32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFEFFu32;
                 reg |= (val & 0x1) << 8;
                 core::ptr::write_volatile(0x4001001Cu32 as *mut u32, reg);
             }
@@ -661,7 +667,7 @@ pub mod mapr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001001Cu32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFDFFu32;
                 reg |= (val & 0x1) << 9;
                 core::ptr::write_volatile(0x4001001Cu32 as *mut u32, reg);
             }
@@ -677,7 +683,7 @@ pub mod mapr2 {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0x4001001Cu32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFBFFu32;
                 reg |= (val & 0x1) << 10;
                 core::ptr::write_volatile(0x4001001Cu32 as *mut u32, reg);
             }

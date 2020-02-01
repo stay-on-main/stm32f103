@@ -18,6 +18,21 @@
                 "interface/stlink-v2.cfg",
                 "target/stm32f1x.cfg",
             ]
+        },
+        {
+            "name": "Cortex Release",
+            "cwd": "${workspaceRoot}",
+            "executable": "target/thumbv7m-none-eabi/release/stm32f103.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "STM32F103C8",
+            "interface": "swd",
+            "svdFile": "STM32F103.svd",
+            "configFiles": [
+                "interface/stlink-v2.cfg",
+                "target/stm32f1x.cfg",
+            ]
         }
     ]
 }

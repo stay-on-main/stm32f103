@@ -6,14 +6,6 @@ pub mod mpu_typer {
             }
         }
 
-        pub fn set(val: u32) {
-            unsafe {
-                let mut reg = core::ptr::read_volatile(0xE000ED90u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
-                reg |= val & 0x1;
-                core::ptr::write_volatile(0xE000ED90u32 as *mut u32, reg);
-            }
-        }
     }
     pub mod dregion {
         pub fn get() -> u32 {
@@ -22,14 +14,6 @@ pub mod mpu_typer {
             }
         }
 
-        pub fn set(val: u32) {
-            unsafe {
-                let mut reg = core::ptr::read_volatile(0xE000ED90u32 as *const u32);
-                reg &= 0xFFFFFF00u32;
-                reg |= (val & 0xFF) << 8;
-                core::ptr::write_volatile(0xE000ED90u32 as *mut u32, reg);
-            }
-        }
     }
     pub mod iregion {
         pub fn get() -> u32 {
@@ -38,14 +22,6 @@ pub mod mpu_typer {
             }
         }
 
-        pub fn set(val: u32) {
-            unsafe {
-                let mut reg = core::ptr::read_volatile(0xE000ED90u32 as *const u32);
-                reg &= 0xFFFFFF00u32;
-                reg |= (val & 0xFF) << 16;
-                core::ptr::write_volatile(0xE000ED90u32 as *mut u32, reg);
-            }
-        }
     }
 }
 
@@ -57,14 +33,6 @@ pub mod mpu_ctrl {
             }
         }
 
-        pub fn set(val: u32) {
-            unsafe {
-                let mut reg = core::ptr::read_volatile(0xE000ED94u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
-                reg |= val & 0x1;
-                core::ptr::write_volatile(0xE000ED94u32 as *mut u32, reg);
-            }
-        }
     }
     pub mod hfnmiena {
         pub fn get() -> u32 {
@@ -73,14 +41,6 @@ pub mod mpu_ctrl {
             }
         }
 
-        pub fn set(val: u32) {
-            unsafe {
-                let mut reg = core::ptr::read_volatile(0xE000ED94u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
-                reg |= (val & 0x1) << 1;
-                core::ptr::write_volatile(0xE000ED94u32 as *mut u32, reg);
-            }
-        }
     }
     pub mod privdefena {
         pub fn get() -> u32 {
@@ -89,14 +49,6 @@ pub mod mpu_ctrl {
             }
         }
 
-        pub fn set(val: u32) {
-            unsafe {
-                let mut reg = core::ptr::read_volatile(0xE000ED94u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
-                reg |= (val & 0x1) << 2;
-                core::ptr::write_volatile(0xE000ED94u32 as *mut u32, reg);
-            }
-        }
     }
 }
 
@@ -146,7 +98,7 @@ pub mod mpu_rbar {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000ED9Cu32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFFFFEFu32;
                 reg |= (val & 0x1) << 4;
                 core::ptr::write_volatile(0xE000ED9Cu32 as *mut u32, reg);
             }
@@ -162,7 +114,7 @@ pub mod mpu_rbar {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000ED9Cu32 as *const u32);
-                reg &= 0xF8000000u32;
+                reg &= 0x1Fu32;
                 reg |= (val & 0x7FFFFFF) << 5;
                 core::ptr::write_volatile(0xE000ED9Cu32 as *mut u32, reg);
             }
@@ -197,7 +149,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFFE0u32;
+                reg &= 0xFFFFFFC1u32;
                 reg |= (val & 0x1F) << 1;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }
@@ -213,7 +165,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFF00u32;
+                reg &= 0xFFFF00FFu32;
                 reg |= (val & 0xFF) << 8;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }
@@ -229,7 +181,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFEFFFFu32;
                 reg |= (val & 0x1) << 16;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }
@@ -245,7 +197,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFDFFFFu32;
                 reg |= (val & 0x1) << 17;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }
@@ -261,7 +213,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xFFFBFFFFu32;
                 reg |= (val & 0x1) << 18;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }
@@ -277,7 +229,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFFF8u32;
+                reg &= 0xFFC7FFFFu32;
                 reg |= (val & 0x7) << 19;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }
@@ -293,7 +245,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFFF8u32;
+                reg &= 0xF8FFFFFFu32;
                 reg |= (val & 0x7) << 24;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }
@@ -309,7 +261,7 @@ pub mod mpu_rasr {
         pub fn set(val: u32) {
             unsafe {
                 let mut reg = core::ptr::read_volatile(0xE000EDA0u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
+                reg &= 0xEFFFFFFFu32;
                 reg |= (val & 0x1) << 28;
                 core::ptr::write_volatile(0xE000EDA0u32 as *mut u32, reg);
             }

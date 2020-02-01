@@ -38,17 +38,9 @@ pub mod idr {
 
 pub mod cr {
     pub mod reset {
-        pub fn get() -> u32 {
-            unsafe {
-                core::ptr::read_volatile(0x40023008u32 as *const u32) & 0x1
-            }
-        }
-
         pub fn set(val: u32) {
             unsafe {
-                let mut reg = core::ptr::read_volatile(0x40023008u32 as *const u32);
-                reg &= 0xFFFFFFFEu32;
-                reg |= val & 0x1;
+                let reg = val & 0x1;
                 core::ptr::write_volatile(0x40023008u32 as *mut u32, reg);
             }
         }
