@@ -542,14 +542,14 @@ LOAD C:\Users\zahar.kravtsov\.rustup\toolchains\stable-x86_64-pc-windows-msvc\li
  *(.ARM.exidx.*)
 OUTPUT(D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a elf32-littlearm)
 
-.debug_str      0x00000000     0x20fa
+.debug_str      0x00000000     0x20cc
  .debug_str     0x00000000     0x134a D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.0.rcgu.o
                                0x13cc (size before relaxing)
  .debug_str     0x0000134a      0x2ab D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.14.rcgu.o
                                 0x3f2 (size before relaxing)
- .debug_str     0x000015f5      0x617 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
-                                0xac9 (size before relaxing)
- .debug_str     0x00001c0c      0x4ee D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
+ .debug_str     0x000015f5      0x5e9 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
+                                0xa99 (size before relaxing)
+ .debug_str     0x00001bde      0x4ee D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
                                 0x777 (size before relaxing)
 
 .debug_loc      0x00000000     0x10ce
@@ -558,23 +558,23 @@ OUTPUT(D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f10
  .debug_loc     0x00000c22      0x405 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
  .debug_loc     0x00001027       0xa7 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
 
-.debug_abbrev   0x00000000      0x7aa
+.debug_abbrev   0x00000000      0x790
  .debug_abbrev  0x00000000      0x236 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.0.rcgu.o
  .debug_abbrev  0x00000236      0x171 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.14.rcgu.o
- .debug_abbrev  0x000003a7      0x20c D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
- .debug_abbrev  0x000005b3      0x1f7 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
+ .debug_abbrev  0x000003a7      0x1f2 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
+ .debug_abbrev  0x00000599      0x1f7 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
 
-.debug_info     0x00000000     0x49bf
+.debug_info     0x00000000     0x4990
  .debug_info    0x00000000     0x2a8f D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.0.rcgu.o
  .debug_info    0x00002a8f      0x577 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.14.rcgu.o
- .debug_info    0x00003006     0x118b D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
- .debug_info    0x00004191      0x82e D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
+ .debug_info    0x00003006     0x115c D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
+ .debug_info    0x00004162      0x82e D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
 
-.debug_ranges   0x00000000     0x1028
+.debug_ranges   0x00000000     0x1008
  .debug_ranges  0x00000000      0xb08 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.0.rcgu.o
  .debug_ranges  0x00000b08       0xb8 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.14.rcgu.o
- .debug_ranges  0x00000bc0      0x400 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
- .debug_ranges  0x00000fc0       0x68 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
+ .debug_ranges  0x00000bc0      0x3e0 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
+ .debug_ranges  0x00000fa0       0x68 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
 
 .debug_macinfo  0x00000000        0x4
  .debug_macinfo
@@ -587,15 +587,15 @@ OUTPUT(D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f10
                 0x00000003        0x1 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
 
 .debug_pubnames
-                0x00000000      0x930
+                0x00000000      0x926
  .debug_pubnames
                 0x00000000      0x3e2 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.0.rcgu.o
  .debug_pubnames
                 0x000003e2      0x142 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.14.rcgu.o
  .debug_pubnames
-                0x00000524      0x263 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
+                0x00000524      0x259 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
  .debug_pubnames
-                0x00000787      0x1a9 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
+                0x0000077d      0x1a9 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
 
 .debug_pubtypes
                 0x00000000      0x6fc
@@ -636,8 +636,8 @@ OUTPUT(D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f10
  .debug_frame   0x000000c0       0x28 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
  .debug_frame   0x000000e8       0x74 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
 
-.debug_line     0x00000000     0x13f2
+.debug_line     0x00000000     0x13ec
  .debug_line    0x00000000      0xbdb D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.0.rcgu.o
  .debug_line    0x00000bdb      0x1b3 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.14.rcgu.o
- .debug_line    0x00000d8e      0x4c2 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
- .debug_line    0x00001250      0x1a2 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
+ .debug_line    0x00000d8e      0x4bc D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.2.rcgu.o
+ .debug_line    0x0000124a      0x1a2 D:\stay-on-main\stm32f103\target\thumbv7m-none-eabi\release\deps\stm32f103-1d1b90d2c90ff25a.stm32f103.csg4pax8-cgu.4.rcgu.o
