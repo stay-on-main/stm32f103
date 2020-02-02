@@ -1314,7 +1314,6 @@ pub fn main() {
     system::init();
     time::init();
     display::init();
-    
     //uart::init();
 
     let mut count: usize = 0;
@@ -1328,37 +1327,18 @@ pub fn main() {
             Color { r: 0, g: 0, b: 255},
         ];
 
-        let color = colors[count % 3].to_u16();
+        let color = [colors[count % 3].to_u16()];
         count += 1;
-        /*
-        for y in 0..160 {
-            for x in 0..128 {
-                display::set_pixel(x, y, color);
-            }
-        }
-        */
-        
+
         //display::fill(color);
         
-        display::set_window();
-        display::write(&IMAGE);
-
-        /*
-        if time::get_ms() >= (count + 1000) {
-            count = time::get_ms();
-           
-        }
-        */
+        display::set_window(0, 0, 128, 160);
         
-        //display::put();
-        /*
-        if count % 1000 == 0 {
-            display::put();
-            //usart_send(0x55);
+        for i in 0..(128 * 160) {
+            display::write(&color);
         }
-
-        count += 1;
-        */
+        
+        //display::write(&IMAGE);
     }
 }
 

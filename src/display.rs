@@ -59,24 +59,15 @@ fn rst_set(value: bool) {
 }
 
 fn write_data(data: u8) {
-    //rs_set(true);
-    //cs_set(false);
     spi::write(data);
-    //cs_set(true);
-    //time::delay_ms(1);
 }
 
 fn write_cmd(cmd: u8) {
     // If D/CX is “low”, the transmission byte is interpreted as a command byte
     rs_set(false);
     cs_set(false);
-    //cs_set(false);
     write_data(cmd);
-    //spi::write(cmd);
-    
-    //cs_set(true);
     rs_set(true);
-    //time::delay_ms(1);
 }
 
 pub fn init() {
@@ -200,8 +191,6 @@ pub fn init() {
 
     ];
 
-    //cs_set(false);
-
     for byte in init_sequence.iter() {
         match byte {
             DataType::Cmd(cmd) => write_cmd(*cmd),
@@ -215,35 +204,21 @@ pub fn init() {
 }
 
 pub fn set_pixel(x: u8, y: u8, color: u16) {
-    //cs_set(false);
     write_cmd(0x2a); // Column address set
     
     let data = [0, x, 0, x + 1];
     spi::write_bytes(&data);
-    /*
-    write_data(0);
-    write_data(x);
-    
-    write_data(0);
-    write_data(x + 1);
-    */
+
     write_cmd(0x2b); // Column address set
 
     let data = [0, y, 0, y + 1];
     spi::write_bytes(&data);
-    /*
-    write_data(0);
-    write_data(y);
-    
-    write_data(0);
-    write_data(y + 1);
-    */
+
     write_cmd(0x2c); // Memory write
 
     write_data((color >> 8) as u8);
     write_data(color as u8);
     cs_set(true);
-    //time::delay_ms(1);
 }
 
 pub fn fill(color: u16)
@@ -284,36 +259,23 @@ pub fn fill(color: u16)
     
 }
 
-pub fn set_window()
+pub fn set_window(x0: u8, y0: u8, x1: u8, y1: u8)
 {
     write_cmd(0x2a); // Column address set
     
-    let data = [0, 0, 0, 128];
+    let data = [0, x0, 0, x1];
     spi::write_bytes(&data);
-    /*
-    write_data(0);
-    write_data(x);
-    
-    write_data(0);
-    write_data(x + 1);
-    */
-    write_cmd(0x2b); // Column address set
 
-    let data = [0, 0, 0, 160];
+    write_cmd(0x2b); // Column address set
+    let data = [0, y0, 0, y1];
     spi::write_bytes(&data);
-    /*
-    write_data(0);
-    write_data(y);
-    
-    write_data(0);
-    write_data(y + 1);
-    */
+    write_cmd(0x2c); // Memory write
     cs_set(true);
 }
 
 pub fn write(colors: &[u16]) {
-    write_cmd(0x2c); // Memory write
-
+    
+    cs_set(false);
     for color in colors {
         write_data((*color >> 8) as u8);
         write_data(*color as u8);
