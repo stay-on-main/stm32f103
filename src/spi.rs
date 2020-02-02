@@ -29,8 +29,9 @@ pub fn init()
     // BR[2:0]: Baud rate control
     // 111: fPCLK/256
     // 001: fPCLK/4
-    //spi1::cr1::br::set(0b011); 
-    spi1::cr1::br::set(0b111); 
+    //spi1::cr1::br::set(0b000); 
+    spi1::cr1::br::set(0b000); 
+    //spi1::cr1::br::set(0b111); 
     // set clock settings
     spi1::cr1::cpol::set(0);
     spi1::cr1::cpha::set(0);
@@ -56,8 +57,9 @@ pub fn write(byte: u8) -> u8 {
         core::ptr::write_volatile(0x4001300Cu32 as *mut u32, byte as u32);
     }
 
-    //while spi1::sr::rxne::get() == 0
-    //    {}
+    while spi1::sr::rxne::get() == 0
+        {}
+    
     while spi1::sr::bsy::get() == 1
         {}
     
@@ -89,7 +91,13 @@ pub fn write_bytes(bytes: &[u8]) {
 
         //while spi1::sr::rxne::get() == 0
         //    {}
-        while spi1::sr::bsy::get() == 1
-        {}
+        //while spi1::sr::bsy::get() == 1
+        //{}
     }
+
+    while spi1::sr::rxne::get() == 0
+    {}
+
+    while spi1::sr::bsy::get() == 1
+        {}
 }

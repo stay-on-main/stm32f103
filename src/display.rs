@@ -4,6 +4,7 @@ use super::pherepherial::gpiob;
 use super::pherepherial::rcc;
 use super::spi;
 use super::time;
+use super::pherepherial::spi1;
 
 fn cs_init() {
     rcc::apb2enr::iopben::set(1);
@@ -62,7 +63,7 @@ fn write_data(data: u8) {
     //cs_set(false);
     spi::write(data);
     //cs_set(true);
-    time::delay_ms(1);
+    //time::delay_ms(1);
 }
 
 fn write_cmd(cmd: u8) {
@@ -75,7 +76,7 @@ fn write_cmd(cmd: u8) {
     
     //cs_set(true);
     rs_set(true);
-    time::delay_ms(1);
+    //time::delay_ms(1);
 }
 
 pub fn init() {
@@ -210,32 +211,113 @@ pub fn init() {
     }
 
     cs_set(true);
+    time::delay_ms(1);
 }
 
 pub fn set_pixel(x: u8, y: u8, color: u16) {
     //cs_set(false);
     write_cmd(0x2a); // Column address set
     
-    //let data = [0, x, 0, x + 1];
-    //spi::write_bytes(&data);
-    
+    let data = [0, x, 0, x + 1];
+    spi::write_bytes(&data);
+    /*
     write_data(0);
     write_data(x);
     
     write_data(0);
     write_data(x + 1);
-    
+    */
     write_cmd(0x2b); // Column address set
+
+    let data = [0, y, 0, y + 1];
+    spi::write_bytes(&data);
+    /*
     write_data(0);
     write_data(y);
     
     write_data(0);
     write_data(y + 1);
-
+    */
     write_cmd(0x2c); // Memory write
 
     write_data((color >> 8) as u8);
     write_data(color as u8);
+    cs_set(true);
+    //time::delay_ms(1);
+}
+
+pub fn fill(color: u16)
+{
+    write_cmd(0x2a); // Column address set
+    
+    let data = [0, 0, 0, 128];
+    spi::write_bytes(&data);
+    write_cmd(0x2b); // Column address set
+
+    let data = [0, 0, 0, 160];
+    spi::write_bytes(&data);
+
+    write_cmd(0x2c); // Memory write
+
+    for _ in 0..128 * 160 {
+
+        while spi1::sr::txe::get() == 0
+            {}
+    
+        unsafe {
+            core::ptr::write_volatile(0x4001300Cu32 as *mut u32, (color >> 8) as u32);
+        }
+
+        while spi1::sr::txe::get() == 0
+            {}
+    
+        unsafe {
+            core::ptr::write_volatile(0x4001300Cu32 as *mut u32, (color & 0xff) as u32);
+        }
+    }
+
+    while spi1::sr::rxne::get() == 0
+        {}
+
+    while spi1::sr::bsy::get() == 1
+        {}
+    
+}
+
+pub fn set_window()
+{
+    write_cmd(0x2a); // Column address set
+    
+    let data = [0, 0, 0, 128];
+    spi::write_bytes(&data);
+    /*
+    write_data(0);
+    write_data(x);
+    
+    write_data(0);
+    write_data(x + 1);
+    */
+    write_cmd(0x2b); // Column address set
+
+    let data = [0, 0, 0, 160];
+    spi::write_bytes(&data);
+    /*
+    write_data(0);
+    write_data(y);
+    
+    write_data(0);
+    write_data(y + 1);
+    */
+    cs_set(true);
+}
+
+pub fn write(colors: &[u16]) {
+    write_cmd(0x2c); // Memory write
+
+    for color in colors {
+        write_data((*color >> 8) as u8);
+        write_data(*color as u8);
+    }
     cs_set(true);
 }
 
