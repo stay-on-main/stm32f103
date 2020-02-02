@@ -6,3 +6,4 @@ pub mod flash;
 pub mod stk;
 pub mod spi1;
 pub mod afio;
+pub mod adc1;
